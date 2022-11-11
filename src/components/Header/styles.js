@@ -18,9 +18,17 @@ export const Title = styled.div`
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  padding: 0 20px;
-  >img {
+  
+  > img {
+    cursor: pointer;
     position: absolute;
-    left: 20px;
+    &:first-child {
+      left: 20px;
+    }
+    &:last-child {
+      right: 20px;
+    }
+    
+   
   }
 `;
