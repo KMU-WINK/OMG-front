@@ -1,13 +1,13 @@
 import React from 'react';
 import * as style from './styles';
 
-function Login(props) {
+function Join(props) {
 
     return (
         <style.Wrap>
-            Login Page
+            Join
         </style.Wrap>
     );
 }
 
-export default Login;
+export default Join;

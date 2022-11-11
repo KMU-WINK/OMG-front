@@ -21,8 +21,7 @@ export const BtnLink = styled.a`
   align-items: center;
   justify-content: center;
   
-  > svg {
+  > img {
     width: 24px;
-    cursor: pointer;
   }
 `;

@@ -1,13 +1,13 @@
 import React from 'react';
 import * as style from './styles';
 
-function Login(props) {
+function Map(props) {
 
     return (
         <style.Wrap>
-            Login Page
+            Map Page
         </style.Wrap>
     );
 }
 
-export default Login;
+export default Map;
