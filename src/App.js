@@ -9,6 +9,7 @@ import Noti from "./pages/Noti/noti";
 import Join from "./pages/Join/join";
 import Board from "./pages/Board/board";
 import Setting from "./pages/Setting/setting";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/noti" element={<Noti/>} />
                 <Route path="/mypage" element={<MyPage/>} />
                 <Route path="/setting" element={<Setting/>} />
+                <Route path="/change-password" element={<ChangePassword/>} />
             </Routes>
         </BrowserRouter>
     </div>
