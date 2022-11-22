@@ -4,7 +4,7 @@ function FullButton(props) {
 
     return (
         <style.fullButton>
-            <span>{props.btnName}</span>
+            <span onClick={props.onClick}>{props.btnName}</span>
         </style.fullButton>
     );
 }
