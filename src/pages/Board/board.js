@@ -7,9 +7,11 @@ function Board(props) {
 
     return (
         <style.Wrap>
-            <style.SearchBox/>
+            <Header title={"게시판"} />
+            <style.SearchContainer>
+                <style.Search />
+            </style.SearchContainer>
             <style.mainTitle>내 주변 소식</style.mainTitle>
-            
             <Footer />
         </style.Wrap>
     );
