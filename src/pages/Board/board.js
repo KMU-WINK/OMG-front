@@ -7,11 +7,14 @@ function Board(props) {
 
     return (
         <style.Wrap>
-            <Header title={'게시판'}/>
-            Board
+            <style.SearchBox/>
+            <style.mainTitle>내 주변 소식</style.mainTitle>
+            
             <Footer />
         </style.Wrap>
     );
 }
 
+
 export default Board;
+
