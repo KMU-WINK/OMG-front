@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import * as style from './styles';
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
 
 function Setting(props) {
+
+    const navigate = useNavigate();
 
     return (
         <style.Wrap>
@@ -15,7 +18,7 @@ function Setting(props) {
                         <img src={process.env.PUBLIC_URL + '/images/Setting/pwIcon.svg'} />
                         비밀번호 변경하기
                     </div>
-                    <img src={process.env.PUBLIC_URL + '/images/Common/nextIcon.svg'} />
+                    <img src={process.env.PUBLIC_URL + '/images/Common/nextIcon.svg'} onClick={()=> navigate("/change-password")}/>
                 </style.Section>
             </div>
             <div>
