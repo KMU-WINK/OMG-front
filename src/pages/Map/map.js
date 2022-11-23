@@ -1,11 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as style from "./styles";
 
 import Footer from "../../components/Footer/footer";
 
 const { kakao } = window;
 
+// level 의 상한선? 하한선? 있어야 할 듯!
 function Map(props) {
+  const [markerPosition, setMarkerPosition] = useState();
+  const [latitude, setLatitude] = useState(37.60983939384303);
+  const [longitude, setLongitude] = useState(126.99454107397042);
+
+  useEffect(() => {
+    setMarkerPosition([
+      {
+        title: "카카오",
+        lat: 37.60983939384303,
+        lng: 126.99454107397042,
+      },
+      {
+        title: "생태연못",
+        lat: 37.63983939384303,
+        lng: 126.99454107397042,
+      },
+      {
+        title: "텃밭",
+        lat: 37.6193939384303,
+        lng: 126.99454107397042,
+      },
+    ]);
+  }, []);
+
   useEffect(() => {
     const mapScript = document.createElement("script");
 
@@ -16,22 +41,39 @@ function Map(props) {
 
     const onLoadKakaoMap = () => {
       kakao.maps.load(() => {
-        const container = document.getElementById("map");
-        const options = {
-          center: new kakao.maps.LatLng(33.450701, 126.570667),
+        let container = document.getElementById("map");
+        let options = {
+          center: new kakao.maps.LatLng(latitude, longitude),
         };
-        const map = new kakao.maps.Map(container, options);
-        const markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
-        const marker = new kakao.maps.Marker({
-          position: markerPosition,
-        });
-        marker.setMap(map);
+        let map = new kakao.maps.Map(container, options);
+
+        // 마커 이미지의 이미지 주소
+        let imageSrc = process.env.PUBLIC_URL + "/images/Common/markerIcon.svg";
+
+        for (let i = 0; i < markerPosition.length; i++) {
+          // 마커 이미지의 이미지 크기
+          const imageSize = new kakao.maps.Size(24, 35);
+
+          // 마커 이미지를 생성
+          const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+          // 마커를 생성
+          const marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: new kakao.maps.LatLng(
+              markerPosition[i].lat,
+              markerPosition[i].lng
+            ), // 마커를 표시할 위치
+            title: markerPosition[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image: markerImage, // 마커 이미지
+          });
+        }
       });
     };
     mapScript.addEventListener("load", onLoadKakaoMap);
 
     return () => mapScript.removeEventListener("load", onLoadKakaoMap);
-  }, []);
+  }, [latitude, longitude, markerPosition]);
 
   return (
     <style.Wrap>

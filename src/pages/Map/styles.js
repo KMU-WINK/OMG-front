@@ -1,4 +1,3 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Wrap = styled.div`
-`;
+export const Wrap = styled.div``;
