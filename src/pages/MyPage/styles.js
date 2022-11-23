@@ -32,6 +32,7 @@ export const ImgBlock = styled.div`
   padding-top: 30px;
   margin-bottom: 20px;
     > img {
+      object-fit: cover;
       :first-child {
         width: 160px;
         height: 160px;
