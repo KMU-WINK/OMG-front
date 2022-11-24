@@ -28,6 +28,9 @@ function Setting(props) {
                         <img src={process.env.PUBLIC_URL + '/images/Setting/lockIcon.svg'} />
                         알림 설정
                     </div>
+                    <div className={"switch"}>
+                        <div></div>
+                    </div>
                 </style.Section>
             </div>
             <div>

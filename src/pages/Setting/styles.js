@@ -39,4 +39,21 @@ export const Section = styled.div`
   > span {
     color: #7C7C7C;
   }
+  .switch {
+    border: 2px solid #009800;
+    border-radius: 15px;
+    width: 50px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+
+    > div {
+      border-radius: 70%;
+      background-color: #009800;
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      left: 4px;
+    }
+  }
 `;
