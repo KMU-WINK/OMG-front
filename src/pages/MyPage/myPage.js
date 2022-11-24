@@ -84,13 +84,24 @@ function MyPage(props) {
                 </style.RecordBlock>
             </style.FirstContents>
             <style.SecondContents>
-                <div>
+                <style.Block color={"#009800"}>
                     <span>공병지수</span>
                     <span>
                         <span>1320</span>
                         <span>ml</span>
                     </span>
-                </div>
+                </style.Block>
+                <style.Block color={"#E0E0E0"}>
+                    <span>제한한 공병지수</span>
+                    <span>
+                        <span>400</span>
+                        <span>ml</span>
+                    </span>
+                </style.Block>
+                <style.Block>
+                    <span>획득한 뱃지</span>
+
+                </style.Block>
             </style.SecondContents>
             <Footer />
         </style.Wrap>
