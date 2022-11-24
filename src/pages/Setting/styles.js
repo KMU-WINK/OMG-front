@@ -39,21 +39,24 @@ export const Section = styled.div`
   > span {
     color: #7C7C7C;
   }
-  .switch {
-    border: 2px solid #009800;
-    border-radius: 15px;
-    width: 50px;
-    height: 24px;
-    position: relative;
-    cursor: pointer;
 
-    > div {
-      border-radius: 70%;
-      background-color: #009800;
-      width: 18px;
-      height: 18px;
-      position: absolute;
-      left: 4px;
-    }
-  }
 `;
+export const MySwitch = styled.div`
+  border: 2px solid ${(props) => props.mySwitch ? '#009800' : '#7C7C7C'};
+  border-radius: 15px;
+  width: 50px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+
+  > div {
+    transition: all .5s ease;
+    border-radius: 70%;
+    background-color: ${(props) => props.mySwitch ? '#009800' : '#7C7C7C'};
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: ${(props) => props.mySwitch ? '4px' : '28px'};
+    // left: ${(props) => props.mySwitch ? 'unset' : '4px'};
+  }
+`
