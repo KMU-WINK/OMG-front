@@ -32,7 +32,10 @@ function MyPage(props) {
                         console.log(x);
                     });
             }
-            if (afterFiles) {
+            else {
+                reader.readAsDataURL(files[0]);
+            }
+            if (files[0]) {
                 reader.onloadend = () => {
                     const base64 = reader.result;
                     if (base64) {
