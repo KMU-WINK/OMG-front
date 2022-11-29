@@ -32,6 +32,7 @@ export const ImgBlock = styled.div`
   padding-top: 30px;
   margin-bottom: 20px;
     > img {
+      object-fit: cover;
       :first-child {
         width: 160px;
         height: 160px;
@@ -56,6 +57,7 @@ export const RecordBlock = styled.div`
   border-radius: 30px;
   padding: 22px 50px;
   margin-bottom: 15px;
+  
   > div {
     display: flex;
     flex-direction: column;
@@ -78,15 +80,30 @@ export const SecondContents = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 20px;
+`;
+
+export const Block = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 2px solid #E0E0E0;
   
-  > div {
-    display: flex;
-    justify-content: space-between;
+    >span:first-child {
+      font-weight: 700;
+      font-size: 18px;
+      color: #000000;
+    }
+  
+  > span:last-child {
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
     
     > span:first-child {
-        font-weight: 700;
-        font-size: 18px;
-        color: #000000;
+      font-size: 22px;
+      color: ${(props) => props.color};
+      margin-right: 5px;
     }
   }
 `;
+

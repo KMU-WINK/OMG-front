@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import * as style from './styles';
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
+import {MySwitch} from "./styles";
 
 function Setting(props) {
 
     const navigate = useNavigate();
 
+    const [mySwitch, setMySwitch] = useState(false);
+    const switchClicked = () => {
+        setMySwitch(!mySwitch);
+    }
     return (
         <style.Wrap>
             <Header title={'세팅'}/>
@@ -28,6 +33,9 @@ function Setting(props) {
                         <img src={process.env.PUBLIC_URL + '/images/Setting/lockIcon.svg'} />
                         알림 설정
                     </div>
+                    <style.MySwitch onClick={switchClicked} mySwitch={mySwitch}>
+                        <div></div>
+                    </style.MySwitch>
                 </style.Section>
             </div>
             <div>
