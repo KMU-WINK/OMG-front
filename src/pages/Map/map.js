@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as style from "./styles";
 
 import Footer from "../../components/Footer/footer";
+import CircleButton from "../../components/Button/circleButton";
+import PreviewInfoBox from "../../components/Map/previewInfoBox";
+
+import { MARKERDATA, DATA } from "./data";
 
 const { kakao } = window;
 
-// level 의 상한선? 하한선? 있어야 할 듯!
+// marker 표시할 경도 위도 데이터
+// 해당 등록 글에 대한 data
 function Map(props) {
+  const navigator = useNavigate();
+
+  // marker 표시할 data
   const [markerPosition, setMarkerPosition] = useState();
   const [latitude, setLatitude] = useState(37.60983939384303);
   const [longitude, setLongitude] = useState(126.99454107397042);
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
 
   useEffect(() => {
-    setMarkerPosition([
-      {
-        title: "카카오",
-        lat: 37.60983939384303,
-        lng: 126.99454107397042,
-      },
-      {
-        title: "생태연못",
-        lat: 37.63983939384303,
-        lng: 126.99454107397042,
-      },
-      {
-        title: "텃밭",
-        lat: 37.6193939384303,
-        lng: 126.99454107397042,
-      },
-    ]);
+    setMarkerPosition(MARKERDATA);
   }, []);
 
   useEffect(() => {
@@ -40,10 +38,13 @@ function Map(props) {
     document.head.appendChild(mapScript);
 
     const onLoadKakaoMap = () => {
-      kakao.maps.load(() => {
+      new kakao.maps.load(() => {
         let container = document.getElementById("map");
         let options = {
           center: new kakao.maps.LatLng(latitude, longitude),
+          level: 3, // default zoom level
+          minLevel: 2,
+          maxLevel: 6,
         };
         let map = new kakao.maps.Map(container, options);
 
@@ -75,9 +76,57 @@ function Map(props) {
     return () => mapScript.removeEventListener("load", onLoadKakaoMap);
   }, [latitude, longitude, markerPosition]);
 
+  const previewInfos = () => {
+    return DATA.map((item) => (
+      <PreviewInfoBox
+        _id={item._id}
+        sojuNum={item.sojuNum}
+        beerNum={item.beerNum}
+        extraNum={item.extraNum}
+        money={item.money}
+        address={item.address}
+        isLiked={item.isLiked}
+        clickNum={item.click}
+        likeNum={item.like}
+      />
+    ));
+  };
+
   return (
     <style.Wrap>
-      <div id="map" style={{ width: "100%", height: "100vh" }}></div>
+      <div id="map" style={{ width: "100%", height: "100vh" }}>
+        <style.TopWrap>
+          <style.BackBtn>
+            <CircleButton
+              onClick={() => {
+                navigator("/main");
+              }}
+              src={process.env.PUBLIC_URL + "/images/Header/backIcon.svg"}
+            />
+          </style.BackBtn>
+          <style.searchBar>
+            <img src={process.env.PUBLIC_URL + "/images/Map/searchIcon.svg"} />
+            <input
+              placeholder="주소 검색"
+              value={searchInput}
+              onChange={handleInputChange}
+            ></input>
+          </style.searchBar>
+        </style.TopWrap>
+        <style.BottomWrap>
+          <style.BottomBtnWrap>
+            <style.ShowListBtn>
+              <CircleButton
+                onClick={() => {
+                  navigator("/main");
+                }}
+                src={process.env.PUBLIC_URL + "/images/Map/mapListIcon.svg"}
+              />
+            </style.ShowListBtn>
+          </style.BottomBtnWrap>
+          <style.BottomInfoBoxWrap>{previewInfos()}</style.BottomInfoBoxWrap>
+        </style.BottomWrap>
+      </div>
       <Footer />
     </style.Wrap>
   );
