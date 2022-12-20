@@ -10,6 +10,7 @@ import Join from "./pages/Join/join";
 import Board from "./pages/Board/board";
 import Setting from "./pages/Setting/setting";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import WritePost from './pages/WritePost/WritePost';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/mypage" element={<MyPage/>} />
                 <Route path="/setting" element={<Setting/>} />
                 <Route path="/change-password" element={<ChangePassword/>} />
+                <Route path="/write-post" element={<WritePost/>} />
             </Routes>
         </BrowserRouter>
     </div>
