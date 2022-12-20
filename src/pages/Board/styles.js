@@ -13,13 +13,20 @@ export const SearchContainer = styled.div`
   justify-content: center;
 `;
 
-export const Search = styled.div`
+export const Search = styled.input`
   width: 100%;
   max-width: 400px;
   height: 50px;
   background: rgba(217, 217, 217, 0.5);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  border:none;
   border-radius: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 19px;
+  color: #7A7171;
+  padding-left: 30px;
 `;
 
 export const mainTitle = styled.div`
@@ -30,4 +37,11 @@ export const mainTitle = styled.div`
   color: #000000;
   margin-top: 45px;
   margin-left: 35px;
+`;
+
+export const boardContent = styled.div`
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
 `;
