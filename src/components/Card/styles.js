@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-    margin-top: 30px;
+    margin-top: 35px;
     width: 439px;
-    height: 195px;
+    height: 200px;
     background: #FFFFFF;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 30px;

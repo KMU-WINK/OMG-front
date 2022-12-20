@@ -15,6 +15,9 @@ function Board(props) {
             <style.mainTitle>내 주변 소식</style.mainTitle>
             <style.boardContent>
                 <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
+                <Card name={"이다은"} getCnt={3} setCnt={2} point={1500}></Card>
+                <Card name={"이다은"} getCnt={3} setCnt={2} point={2000}></Card>
+                <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
             </style.boardContent>
             <Footer />
         </style.Wrap>
