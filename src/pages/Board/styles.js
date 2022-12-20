@@ -45,4 +45,30 @@ export const boardContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
 `;
+
+export const box = styled.div`
+  width: 90%;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end;
+`
+export const btnWrite = styled.button`
+  width: 62px;
+  height: 62px;
+  background: #009800;
+  border: none;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;  
+  cursor: pointer;
+  position: fixed;
+  margin-top: 30%;
+  margin-left: 19%;
+`;
+
+export const writeImg = styled.img`
+    width: 30px;
+    height: 30px;
+`

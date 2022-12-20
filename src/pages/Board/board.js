@@ -18,7 +18,11 @@ function Board(props) {
                 <Card name={"이다은"} getCnt={3} setCnt={2} point={1500}></Card>
                 <Card name={"이다은"} getCnt={3} setCnt={2} point={2000}></Card>
                 <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
+                <style.btnWrite>
+                    <style.writeImg src={process.env.PUBLIC_URL + '/images/Board/Write.svg'}/>
+                </style.btnWrite>
             </style.boardContent>
+            
             <Footer />
         </style.Wrap>
     );
