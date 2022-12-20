@@ -1,10 +1,12 @@
 import React from 'react';
 import * as style from './styles';
+import { useNavigate } from 'react-router-dom';
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
 import Card from "../../components/Card/card";
 
 function Board(props) {
+    const navigator = useNavigate();
 
     return (
         <style.Wrap>
@@ -18,11 +20,10 @@ function Board(props) {
                 <Card name={"이다은"} getCnt={3} setCnt={2} point={1500}></Card>
                 <Card name={"이다은"} getCnt={3} setCnt={2} point={2000}></Card>
                 <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
-                <style.btnWrite>
+                <style.btnWrite onClick={()=> navigator('/write-post')}>
                     <style.writeImg src={process.env.PUBLIC_URL + '/images/Board/Write.svg'}/>
                 </style.btnWrite>
             </style.boardContent>
-            
             <Footer />
         </style.Wrap>
     );
