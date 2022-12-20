@@ -27,6 +27,7 @@ export const Search = styled.input`
   line-height: 19px;
   color: #7A7171;
   padding-left: 30px;
+  outline: none;
 `;
 
 export const mainTitle = styled.div`
