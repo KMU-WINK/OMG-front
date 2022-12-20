@@ -15,11 +15,11 @@ function PreviewInfoBox(props) {
     <style.Wrap>
       <style.MainContent>
         <style.BottleType>소주병</style.BottleType>
-        <style.BottleNum>{props.sojuNum || 20 + "개"}</style.BottleNum>
+        <style.BottleNum>{`${props.sojuNum}개`}</style.BottleNum>
         <style.BottleType>맥주병</style.BottleType>
-        <style.BottleNum>{props.beerNum || 1 + "개"}</style.BottleNum>
+        <style.BottleNum>{`${props.beerNum}개`}</style.BottleNum>
         <style.BottleType>기타</style.BottleType>
-        <style.BottleNum>{props.extraNum || 0 + "개"}</style.BottleNum>
+        <style.BottleNum>{`${props.extraNum}개`}</style.BottleNum>
         <img
           alt={"likeIcon"}
           src={
@@ -31,12 +31,12 @@ function PreviewInfoBox(props) {
         />
       </style.MainContent>
       <style.SubContent>
-        <style.Money>보증금 {props.money || 1000}원</style.Money> 예상
+        <style.Money>보증금 {props.money}원</style.Money> 예상
         <style.Address>
           {props.address || "서울 성북구 솔샘로 6길 16-16"}
         </style.Address>
       </style.SubContent>
-      <style.ExtraContent>{`조희 ${props.clickNum || 35} | 관심 ${
+      <style.ExtraContent>{`조희 ${props.clickNum} | 관심 ${
         props.likeNum || 10
       }`}</style.ExtraContent>
       <style.DetailBtn
