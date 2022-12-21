@@ -3,6 +3,7 @@ import * as style from './styles';
 import Footer from "../../components/Footer/footer";
 import View from '../../components/View/view';
 import VerticalButton from '../../components/Button/verticalButton';
+import Banner from '../../components/Banner/banner';
 
 function Main(props) {
 
@@ -34,6 +35,26 @@ function Main(props) {
                     <h1>커뮤니티</h1>
                     <span>더보기▶</span>
                 </style.title>
+                <style.box>
+                    <style.community>
+                        커뮤니티 글 1 제목입니다.
+                    </style.community>
+                    <style.community>
+                        커뮤니티 글 2 제목입니다.
+                    </style.community>
+                    <style.community>
+                        커뮤니티 글 3 제목입니다.
+                    </style.community>
+                </style.box>
+                <style.title>
+                    <h1>환경 캠페인</h1>
+                    <span>더보기▶</span>
+                </style.title>
+                <style.banners>
+                    <Banner btnName={'2022 서울 환경 캠페인'}/>
+                    <Banner btnName={'2022 서울 환경 캠페인'}/>
+                    <Banner btnName={'2022 서울 환경 캠페인'}/>
+                </style.banners>
             </style.Wrap2>
             <Footer />
         </style.Wrap>

@@ -69,7 +69,32 @@ export const title = styled.div`
 `;
 
 export const community = styled.div`
-    background: #FFFFFF;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    background: #f5f5f5;
     border-radius: 30px;
+    margin-bottom: 15px;
+    padding: 10px 25px 10px 15px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+`;
+
+export const box = styled.div`
+    margin: 0px 20px 10px 20px;
+    background: #ffffff;
+    border-radius: 30px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px 15px 0px 15px;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const banners = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    .item {
+        flex-basis: 180px;
+        flex: 0 0 auto;
+    }
 `;
