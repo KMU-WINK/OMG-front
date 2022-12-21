@@ -21,5 +21,32 @@ export const strokeButton = styled.div`
     text-align: center;
     cursor: pointer;
 `;
-
+export const VerticalButton = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(49, 173, 49, 0.5);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    padding: 15px;
+    width: 110px;
+    height: 130px;
+    > span {
+      color: white;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 17px;
+      text-align: center;
+    }
+    > img {
+      height: 50px;
+      width: 50px;
+    }
+    > div {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 24px;
+    }
+`;
 
