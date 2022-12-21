@@ -89,12 +89,8 @@ export const box = styled.div`
 `;
 
 export const banners = styled.div`
+    margin: 0px 0px 0px 20px;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-
-    .item {
-        flex-basis: 180px;
-        flex: 0 0 auto;
-    }
 `;
