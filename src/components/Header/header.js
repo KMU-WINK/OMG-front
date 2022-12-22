@@ -14,6 +14,8 @@ function Header(props) {
                 {
                     props.title == '마이페이지' ?
                         <img src={process.env.PUBLIC_URL + '/images/Header/settingIcon.svg'} onClick={()=> navigator('/setting')}/>
+                        : props.title == "글 작성하기" ?
+                            <button> 확인 </button>
                         : null
                 }
             </style.Title>
