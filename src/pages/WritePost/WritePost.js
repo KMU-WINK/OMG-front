@@ -4,9 +4,14 @@ import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
 
 function WritePost(props) {
+
+    const UploadPost = () => {
+        alert("upload clicked");
+    }
+
     return (
         <style.Wrap>
-            <Header title={"글 작성하기"} />
+            <Header title={"글 작성하기"} onClick={UploadPost}/>
             <style.titleInput type={"text"} placeholder={"제목"}/>
             <style.cardBox>
                 <style.noticeCard>
