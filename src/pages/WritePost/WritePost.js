@@ -1,17 +1,12 @@
 import react from "react";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
+import Header from "../../components/Header/header";
 
 function WritePost(props) {
     return (
         <style.Wrap>
-            <style.headerWrap>
-                <style.headerContent>
-                    <img src={process.env.PUBLIC_URL + '/images/Header/backIcon.svg'}/>
-                    <span>{"글 작성하기"}</span>
-                    <style.btnWrite> 확인 </style.btnWrite>
-                </style.headerContent>
-            </style.headerWrap>
+            <Header title={"글 작성하기"} />
             <style.titleInput type={"text"} placeholder={"제목"}/>
             <style.cardBox>
                 <style.noticeCard>
