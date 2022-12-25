@@ -30,15 +30,13 @@ margin: 10px 20px;
     }
 `;
 
-export const buttons = styled.div`
-    margin: -80px 20px 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    display: flex;
+export const View = styled.div`
+    margin: 10px 20px;
 `;
 
 export const Wrap2 = styled.div`
-    margin: 85px 0px 0px 0px;
+    margin: 5px 0px 0px 0px;
+    padding: 20px 0px 0px 0px;
     background: white;
     display: flex;
     flex-direction: column;
@@ -56,37 +54,9 @@ export const title = styled.div`
         font-size: 20px;
         line-height: 24px;
     }
-    > span {
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 13px;
-        color: #009800;
-    }
-`;
-
-export const community = styled.div`
-    background: #f5f5f5;
-    border-radius: 30px;
-    margin-bottom: 15px;
-    padding: 10px 25px 10px 15px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-`;
-
-export const box = styled.div`
-    margin: 0px 20px 10px 20px;
-    background: #ffffff;
-    border-radius: 30px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-    padding: 15px 15px 0px 15px;
-    display: flex;
-    flex-direction: column;
 `;
 
 export const banners = styled.div`
-    margin: 0px 0px 50px 20px;
+    margin: 0px 0px 10px 20px;
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
 `;

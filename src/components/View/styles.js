@@ -9,4 +9,5 @@ export const View = styled.div`
     font-size: 16px;
     text-align: center;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 0px 20px 10px 20px;
 `;

@@ -16,9 +16,7 @@ function Main(props) {
             <style.Top2>
                 <h1>{props.name}님 안녕하세요<br /> {props.bottles}병의 공병을 재활용 했어요 </h1>
             </style.Top2>
-            <style.View>
-                <View contents={'3병의 공병을 수거하고 2병의 공병을 등록했어요'} />
-            </style.View>
+            <View contents={'3병의 공병을 수거하고 2병의 공병을 등록했어요'} />
             <style.Wrap2>
                 <style.buttons>
                     <VerticalButton content1={['근처 3곳에',<br />,'공병이 있어요']}
