@@ -1,9 +1,11 @@
 import React from 'react';
 import * as style from './styles';
+import { useNavigate } from 'react-router-dom';
 
 function Card(props) {
+    const navigator = useNavigate();
     return (
-        <style.Wrap>
+        <style.Wrap onClick={()=> navigator('/post-detail')}>
             <style.infoContainer>
                 <style.profileImg src={process.env.PUBLIC_URL + '/images/Common/Profile.svg'}/>
                 <style.userInfoBox>
