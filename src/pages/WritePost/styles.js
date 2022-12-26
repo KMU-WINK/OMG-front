@@ -95,6 +95,13 @@ export const noticeCard = styled.div`
     line-height: 30px;
 `;
 
+export const line = styled.div`
+    width: 439px;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+`;
+
 export const contentInput = styled.input`
     width: 100%;
     height: fit-content;
