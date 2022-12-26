@@ -105,3 +105,27 @@ export const SearchContainer = styled.div`
         cursor: pointer;
     }
 `;
+
+export const menuModalBack = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 480px;
+    position: fixed;
+    z-index: 99;
+    top:0; bottom: 0; 
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+`;
+
+export const menuModal = styled.div`
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 80px;
+    width: 440px;
+    height: 195px;
+    background: #ffffff;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    font-size: 18px;
+`

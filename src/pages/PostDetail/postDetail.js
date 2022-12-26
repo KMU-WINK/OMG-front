@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
 import { useLocation } from "react-router-dom";
 
+const Menu = () => {
+    return (
+        <style.menuModalBack>
+            <style.menuModal>
+            </style.menuModal>
+        </style.menuModalBack>
+    )
+}
+
 function PostDetail(props) {
     const { state } = useLocation();
-    
+    const [showMenuPopup, setMenuPopup] = useState(false);
     const clickMenu = () => {
-        alert("메뉴 클릭");
+        setMenuPopup(true);
     }
 
     const clickReaction = () => {
-        alert("공감 클릭")
+        alert("공감 클릭");
+    }
+
+    const clickPost = () => {
+        alert("댓글 전송");
     }
 
     return (
@@ -38,8 +51,9 @@ function PostDetail(props) {
             </style.reactionBox>
             <style.SearchContainer>
                 <input type={"text"} placeholder={"댓글을 입력해주세요"}/>
-                <img src={process.env.PUBLIC_URL + '/images/Board/SendComment.svg'}/>
+                <img src={process.env.PUBLIC_URL + '/images/Board/SendComment.svg'} onClick={clickPost}/>
             </style.SearchContainer>
+            {showMenuPopup ? <Menu /> : null}
             <Footer />
         </style.Wrap>
     )
