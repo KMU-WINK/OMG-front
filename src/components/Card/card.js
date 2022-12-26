@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as style from './styles';
 import { useNavigate } from 'react-router-dom';
 
 function Card(props) {
     const navigator = useNavigate();
+    const info = {
+        name: props.name,
+        getCnt: props.getCnt,
+        setCnt: props.setCnt,
+        point: props.point 
+    }
+
+    const handleClick = () => {
+        navigator('/post-detail', {state: info});
+    }
+    
     return (
-        <style.Wrap onClick={()=> navigator('/post-detail')}>
+        <style.Wrap onClick={handleClick}>
             <style.infoContainer>
                 <style.profileImg src={process.env.PUBLIC_URL + '/images/Common/Profile.svg'}/>
                 <style.userInfoBox>

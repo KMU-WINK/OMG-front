@@ -2,11 +2,13 @@ import React from "react";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
-import { click } from "@testing-library/user-event/dist/click";
+import { useLocation } from "react-router-dom";
 
 function PostDetail(props) {
+    const { state } = useLocation();
+    
     const clickMenu = () => {
-        alert("메뉴 클릭")
+        alert("메뉴 클릭");
     }
 
     const clickReaction = () => {
@@ -19,10 +21,10 @@ function PostDetail(props) {
             <style.infoContainer>
                 <style.profileImg src={process.env.PUBLIC_URL + '/images/Common/Profile.svg'}/>
                 <style.userInfoBox>
-                    <span> {"이다은"} </span>
-                    <span> 수거 <span style={{color: "#009800"}}> 3회 </span> | 
-                    등록 <span style={{color: "#009800"}}> 2회 </span> | 
-                    공병지수 <span style={{color: "#009800"}}> 100ml </span> </span>
+                    <span> {state.name} </span>
+                    <span> 수거 <span style={{color: "#009800", fontWeight: "700"}}> {state.getCnt}회 </span> | 
+                    등록 <span style={{color: "#009800", fontWeight: "700"}}> {state.setCnt}회 </span> | 
+                    공병지수 <span style={{color: "#009800", fontWeight: "700"}}> {state.point}ml </span> </span>
                 </style.userInfoBox>
                 <span style={{color: "#7A7171", marginLeft: "25px"}}>2시간 전</span>
             </style.infoContainer>
