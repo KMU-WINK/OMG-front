@@ -69,3 +69,39 @@ export const reactionImg = styled.img`
     margin-right: 5px;
     margin-left: 15px;
 `
+
+export const SearchContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    > input {
+        bottom: 0;
+        z-index: 99;
+        position: fixed;
+        width: 100%;
+        max-width: 400px;
+        height: 43px;
+        background: rgba(217, 217, 217, 0.5);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+        border:none;
+        border-radius: 20px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #7A7171;
+        padding-left: 30px;
+        outline: none;
+        margin-bottom: 80px;
+    }
+    > img {
+        width: 24px;
+        height: 24px;
+        bottom: 0;
+        z-index: 99;
+        position: fixed;
+        margin-bottom: 89px;
+        margin-left: 18%;
+        cursor: pointer;
+    }
+`;
