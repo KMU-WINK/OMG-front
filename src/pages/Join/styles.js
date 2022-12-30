@@ -9,7 +9,7 @@ export const Wrap = styled.div`
   }
 `;
 export const InputWrap = styled.div`
-  > hr {
+  > div > hr {
     margin: 20px 0;
     width: 100%;
   }
@@ -28,5 +28,26 @@ export const InputWrap = styled.div`
         margin: 20px 0 8px 0;
       }
     }
+  }
+`;
+
+export const Modal = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  height: 100%;
+  z-index: 100;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  > div {
+    background-color: #ffffff;
+    width: 80%;
+    height: 80%;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;

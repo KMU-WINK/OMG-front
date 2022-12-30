@@ -31,10 +31,29 @@ function Join() {
 
     }
 
+    const [modal, setModal] = useState(false);
+
+    const ModalClose = (e) => {
+        e.preventDefault();
+        setModal(false);
+    }
+
 
     return (
         <style.Wrap>
             <Header title={"회원가입"} />
+            {
+                modal ?  <style.Modal>
+                    <div>
+                        <h6>개인정보 처리방침</h6>
+                        <div>
+
+                        </div>
+                        <button onClick={ModalClose}>닫기</button>
+                    </div>
+                </style.Modal> : null
+            }
+
             <div>
                 <style.InputWrap>
                     <div>
@@ -43,7 +62,7 @@ function Join() {
                         <Input title={'이메일'}/>
                         <Input title={'비밀번호'}/>
                         <Input title={'비밀번호 확인'}/>
-                        <hr style={{border: "2px solid #E0E0E0"}} />
+                        <hr style={{border: "1px solid #E0E0E0"}} />
                     </div>
                     <div>
                         <div>
