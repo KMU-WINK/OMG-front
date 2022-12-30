@@ -1,10 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as style from './styles';
 import Header from "../../components/Header/header";
 import FullButton from "../../components/Button/fullButton";
 import Input from "../../components/Input/input";
+import {Checkbox} from "./styles";
 
-function Join(props) {
+function Join() {
+
+    // 전체선택, privacy policy, terms of service
+    const [all, setAll] = useState(false);
+    const [pp, setPP] = useState(false);
+    const [ts, setTs] = useState(false);
+
+    const [check, setCheck] = useState("");
+
+    const checkBoxClicked = async (e) => {
+        // e.preventDefault();
+        if(e.target.tagName === "svg") {
+            setCheck(e.target.parentElement.id);
+        }
+        else if(e.target.tagName === "path") {
+            setCheck(e.target.parentElement.parentElement.id);
+        }
+        else {
+            setCheck(e.target.id);
+        }
+
+    }
+
 
     return (
         <style.Wrap>
@@ -21,15 +44,15 @@ function Join(props) {
                     </div>
                     <div>
                         <div>
-                            <input type={"checkbox"} />
+                            <Checkbox checked={all} id={"all"} onClick={checkBoxClicked}/>
                             <span>전체 선택</span>
                         </div>
                         <div>
-                            <input type={"checkbox"} />
+                            <Checkbox checked={pp} id={"pp"} onClick={checkBoxClicked}/>
                             <span>개인정보 처리방침을 확인했습니다.</span>
                         </div>
                         <div>
-                            <input type={"checkbox"} />
+                            <Checkbox checked={ts} id={"ts"} onClick={checkBoxClicked}/>
                             <span>서비스 이용방침을 확인했습니다.</span>
                         </div>
                     </div>
