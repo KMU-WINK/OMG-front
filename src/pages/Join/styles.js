@@ -40,7 +40,7 @@ export const svgC = styled.svg`
 `;
 
 
-export const CheckBox = styled.div`
+export const C = styled.div`
   border: ${(props) => (props.checked ? '2px solid #009800' : '2px solid #E0E0E0')};
   background-color: ${(props) => (props.checked ? '#009800' : '')};
   border-radius: 4px;
@@ -60,10 +60,10 @@ export const P = styled.path`
 `;
 
 export const Checkbox = ({ checked, onClick, id }) => (
-    <CheckBox type="button" onClick={onClick} id={id} checked={checked}>
+    <C type="button" onClick={onClick} id={id} checked={checked}>
         <S>
             <P d="M1.00005 6.81818L3.90914 9L10.4546 1" checked={checked}/>
         </S>
-    </CheckBox>
+    </C>
 );
 
