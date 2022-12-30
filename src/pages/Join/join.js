@@ -3,7 +3,6 @@ import * as style from './styles';
 import Header from "../../components/Header/header";
 import FullButton from "../../components/Button/fullButton";
 import Input from "../../components/Input/input";
-import {Checkbox} from "./styles";
 
 function Join() {
 
@@ -12,18 +11,22 @@ function Join() {
     const [pp, setPP] = useState(false);
     const [ts, setTs] = useState(false);
 
-    const [check, setCheck] = useState("");
+    const [check, setCheck] = useState();
 
     const checkBoxClicked = async (e) => {
-        // e.preventDefault();
-        if(e.target.tagName === "svg") {
-            setCheck(e.target.parentElement.id);
+        await setCheck(e.target.parentNode.id);
+
+        if( check === 'pp' ) await setPP(!pp);
+        else if( check === 'ts' ) await setTs(!ts);
+        else if( check === 'all' && all === true ) {
+            await setPP(false);
+            await setTs(false);
+            await setAll(false);
         }
-        else if(e.target.tagName === "path") {
-            setCheck(e.target.parentElement.parentElement.id);
-        }
-        else {
-            setCheck(e.target.id);
+        else if( check === 'all' && all === false ) {
+            await setPP(true);
+            await setTs(true);
+            await setAll(true);
         }
 
     }
@@ -44,15 +47,30 @@ function Join() {
                     </div>
                     <div>
                         <div>
-                            <Checkbox checked={all} id={"all"} onClick={checkBoxClicked}/>
+                            <span id={"all"} onClick={checkBoxClicked}>
+                                {
+                                    all ?  <img src={process.env.PUBLIC_URL + '/images/Common/checkedIcon.svg'}/>
+                                        :  <img src={process.env.PUBLIC_URL + '/images/Common/uncheckedIcon.svg'}/>
+                                }
+                            </span>
                             <span>전체 선택</span>
                         </div>
                         <div>
-                            <Checkbox checked={pp} id={"pp"} onClick={checkBoxClicked}/>
+                            <span id={"pp"} onClick={checkBoxClicked}>
+                                 {
+                                     pp ?  <img src={process.env.PUBLIC_URL + '/images/Common/checkedIcon.svg'}/>
+                                         :  <img src={process.env.PUBLIC_URL + '/images/Common/uncheckedIcon.svg'}/>
+                                 }
+                            </span>
                             <span>개인정보 처리방침을 확인했습니다.</span>
                         </div>
                         <div>
-                            <Checkbox checked={ts} id={"ts"} onClick={checkBoxClicked}/>
+                            <span id={"ts"} onClick={checkBoxClicked}>
+                                 {
+                                     ts ?  <img src={process.env.PUBLIC_URL + '/images/Common/checkedIcon.svg'}/>
+                                         :  <img src={process.env.PUBLIC_URL + '/images/Common/uncheckedIcon.svg'}/>
+                                 }
+                            </span>
                             <span>서비스 이용방침을 확인했습니다.</span>
                         </div>
                     </div>
