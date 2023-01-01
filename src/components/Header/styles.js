@@ -28,7 +28,18 @@ export const Title = styled.div`
     &:last-child {
       right: 20px;
     }
-    
-   
+  }
+  > button {
+    all: unset;
+    padding: 2px 12px;
+    background: #009800;
+    position: absolute;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    right: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
   }
 `;
