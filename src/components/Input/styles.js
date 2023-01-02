@@ -17,6 +17,12 @@ export const Wrap = styled.div`
     padding: 12px 15px;
     font-weight: 400;
     font-size: 18px;
+    
+    :hover, :focus-visible {
+      border: 2px solid #009800;
+      outline: none;
+      transition: .5s ease;
+    }
   }
 `;
 
