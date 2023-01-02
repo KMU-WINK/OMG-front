@@ -3,8 +3,11 @@ import * as style from './styles';
 import Header from "../../components/Header/header";
 import FullButton from "../../components/Button/fullButton";
 import Input from "../../components/Input/input";
+import {useNavigate} from "react-router";
 
 function Join() {
+
+    const navigate = useNavigate();
 
     // 전체선택, privacy policy, terms of service
     const [all, setAll] = useState(false);
@@ -37,6 +40,12 @@ function Join() {
         e.preventDefault();
         setModal(false);
     }
+
+    const Join = () => {
+        alert("join")
+        navigate("/login");
+    }
+
 
 
     return (
@@ -94,7 +103,7 @@ function Join() {
                         </div>
                     </div>
                 </style.InputWrap>
-                <FullButton btnName={"회원가입 완료"} />
+                <FullButton btnName={"회원가입 완료"} onClick={Join} />
             </div>
         </style.Wrap>
     );

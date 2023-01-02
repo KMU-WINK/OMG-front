@@ -25,9 +25,9 @@ function App() {
     }}>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/join" element={<Join />} />
-                <Route path="/main" element={<Main/>} />
+                <Route path="/" element={<Main/>} />
                 <Route path="/board" element={<Board/>} />
                 <Route path="/map" element={<Map/>} />
                 <Route path="/noti" element={<Noti/>} />
