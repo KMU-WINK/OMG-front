@@ -10,40 +10,27 @@ function MyPage(props) {
     const [base64, setBase64] = useState('');
 
     const upload = async e => {
-        let { files } = e.target;
-        let reader = new FileReader();
-
-        if (files[0]) {
-            let file = e.target.files[0];
-            let afterFiles = files[0];
-            const extensionFileName = afterFiles.name.split('.')[1].toLowerCase(); //확장자명 체크를 위해 소문자 변환 HEIC, heic
-
-            if (extensionFileName === 'heic') {
-                let blob = file;
-                await heic2any({ blob: blob, toType: 'image/jpeg' })
-                    .then(function (resultBlob) {
-                        file = new File([resultBlob], file.name.split('.')[0] + '.jpg', {
-                            type: 'image/jpeg',
-                            lastModified: new Date().getTime(),
-                        });
-                        reader.readAsDataURL(file);
-                    })
-                    .catch(function (x) {
-                        console.log(x);
+        let file = imgRef.current.files[0];
+        const fileName = file.name.split('.')[1].toLowerCase(); //확장자명 체크를 위해 소문자 변환 HEIC, heic
+        if (fileName === 'heic') {
+            let blob = file;
+            await heic2any({ blob: blob, toType: 'image/jpeg' })
+                .then(function (resultBlob) {
+                    file = new File([resultBlob], file.name.split('.')[0] + '.jpg', {
+                        type: 'image/jpeg',
+                        lastModified: new Date().getTime(),
                     });
-            }
-            else {
-                reader.readAsDataURL(files[0]);
-            }
-            if (files[0]) {
-                reader.onloadend = () => {
-                    const base64 = reader.result;
-                    if (base64) {
-                        setBase64(base64.toString());
-                    }
-                };
-            }
+                    reader.readAsDataURL(file);
+                })
+                .catch(function (x) {
+                    console.log(x);
+                });
         }
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setBase64(reader.result);
+        };
     };
 
     return (
