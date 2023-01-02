@@ -5,23 +5,24 @@ export const Wrap = styled.div`
     background: #009800;
     display: flex;
     flex-direction: column;
+    margin-bottom: 40px;
 `;
 
 export const Top = styled.div`
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: flex-end;
     margin: 10px 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    gap: 10px;
+  
     > img {
         width: 21.5px;
         height: 21.5px;
-        margin-left: 10px;
+        cursor: pointer;
     }
 `;
 
 export const Top2 = styled.div`
-margin: 10px 20px;
+    margin: 10px 20px;
     > h1 {
         color: white;
         font-weight: 600;
@@ -30,23 +31,18 @@ margin: 10px 20px;
     }
 `;
 
-export const View = styled.div`
-    margin: 10px 20px;
-`;
-
 export const buttons = styled.div`
     margin: -80px 20px 10px 20px;
     display: flex;
     justify-content: space-between;
-    display: flex;
 `;
 
 export const Wrap2 = styled.div`
-    margin: 85px 0px 0px 0px;
+    margin: 85px 0 0 0;
     background: white;
     display: flex;
     flex-direction: column;
-    border-radius: 30px 30px 0px 0px;
+    border-radius: 30px 30px 0 0;
 `;
 
 export const title = styled.div`
@@ -55,7 +51,7 @@ export const title = styled.div`
     justify-content: space-between;
     align-items: center;
     > h1 {
-        margin: 0px;
+        margin: 0;
         font-weight: 600;
         font-size: 20px;
         line-height: 24px;
@@ -65,6 +61,7 @@ export const title = styled.div`
         font-size: 11px;
         line-height: 13px;
         color: #009800;
+        cursor: pointer;
     }
 `;
 
@@ -79,7 +76,7 @@ export const community = styled.div`
 `;
 
 export const box = styled.div`
-    margin: 0px 20px 10px 20px;
+    margin: 0 20px 10px 20px;
     background: #ffffff;
     border-radius: 30px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
@@ -89,7 +86,7 @@ export const box = styled.div`
 `;
 
 export const banners = styled.div`
-    margin: 0px 0px 0px 20px;
+    margin: 0 0 50px 20px;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
