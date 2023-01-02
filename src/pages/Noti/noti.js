@@ -3,7 +3,7 @@ import * as style from './styles';
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
 
-function Noti(props) {
+function Noti() {
 
     return (
         <style.Wrap>

@@ -12,6 +12,7 @@ import Setting from "./pages/Setting/setting";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import WritePost from './pages/WritePost/WritePost';
 import PostDetail from './pages/PostDetail/postDetail';
+import Add from './pages/Add/add';
 
 function App() {
   return (
@@ -25,15 +26,16 @@ function App() {
     }}>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/join" element={<Join />} />
-                <Route path="/main" element={<Main/>} />
+                <Route path="/" element={<Main/>} />
                 <Route path="/board" element={<Board/>} />
                 <Route path="/map" element={<Map/>} />
                 <Route path="/noti" element={<Noti/>} />
                 <Route path="/mypage" element={<MyPage/>} />
                 <Route path="/setting" element={<Setting/>} />
                 <Route path="/change-password" element={<ChangePassword/>} />
+                <Route path="/add" element={<Add/>} />
                 <Route path="/write-post" element={<WritePost/>} />
                 <Route path="/post-detail" element={<PostDetail/>} />
             </Routes>
