@@ -14,7 +14,7 @@ export const BackBtn = styled.div`
   z-index: 9;
 `;
 
-export const searchBar = styled.div`
+export const searchBar = styled.form`
   flex: 3;
   height: 22px;
   background: #ffffff;
@@ -59,15 +59,25 @@ export const ShowListBtn = styled.div`
 `;
 
 export const BottomInfoBoxWrap = styled.div`
-  position: absolute;
-  left: 4.38%;
-  right: 3.96%;
+  // position: absolute;
+  // left: 20px;
+  // right: 20px;
+  width: 440px;
   bottom: 70px;
-  overflow: scroll;
   min-height: 180px;
   max-height: 350px;
   overflow: scroll;
   background: #ffffff;
   border-radius: 30px;
   z-index: 9;
+`;
+
+export const title = styled.div`
+backgroundColor: '#00bcd4',
+    padding: '16px 0',
+    boxSizing: 'border-box',
+    color: 'white',
+    minHeight: '64px',
+    fontSize: '24px',
+    textAlign: 'center'
 `;

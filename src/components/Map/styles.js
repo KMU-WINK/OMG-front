@@ -6,6 +6,7 @@ export const Wrap = styled.div`
   padding: 20px;
   width: 400px;
   height: 130px;
+  margin-bottom: 10px;
   border-radius: 30px;
   font-family: "Inter";
   color: #000000;

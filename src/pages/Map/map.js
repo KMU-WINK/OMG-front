@@ -7,6 +7,7 @@ import CircleButton from "../../components/Button/circleButton";
 import PreviewInfoBox from "../../components/Map/previewInfoBox";
 
 import { MARKERDATA, DATA } from "./data";
+import BottomSheet from "../../components/BottomSheet/bottomSheet";
 
 const { kakao } = window;
 
@@ -17,12 +18,31 @@ function Map(props) {
 
   // marker 표시할 data
   const [markerPosition, setMarkerPosition] = useState();
-  const [latitude, setLatitude] = useState(37.60983939384303);
-  const [longitude, setLongitude] = useState(126.99454107397042);
+  const [mapCenter, setMapCenter] = useState({
+    lat: 37.60983939384303,
+    lng: 126.99454107397042,
+  });
   const [searchInput, setSearchInput] = useState("");
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
+  };
+
+  const submitSearchInput = (e) => {
+    // 페이지 리랜더링 방지
+    e.preventDefault();
+
+    const ps = new kakao.maps.services.Places();
+    const placeSearchCB = function (data, status, pagination) {
+      if (status === kakao.maps.services.Status.OK) {
+        const newSearch = data[0];
+        setMapCenter({
+          lat: newSearch.y,
+          lng: newSearch.x,
+        });
+      }
+    };
+    ps.keywordSearch(searchInput, placeSearchCB);
   };
 
   useEffect(() => {
@@ -33,7 +53,7 @@ function Map(props) {
     const mapScript = document.createElement("script");
 
     mapScript.async = true;
-    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAOMAP_KEY}&autoload=false`;
+    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAOMAP_KEY}&autoload=false&libraries=services`;
 
     document.head.appendChild(mapScript);
 
@@ -41,7 +61,7 @@ function Map(props) {
       new kakao.maps.load(() => {
         let container = document.getElementById("map");
         let options = {
-          center: new kakao.maps.LatLng(latitude, longitude),
+          center: new kakao.maps.LatLng(mapCenter.lat, mapCenter.lng),
           level: 3, // default zoom level
           minLevel: 2,
           maxLevel: 6,
@@ -55,10 +75,10 @@ function Map(props) {
           // 마커 이미지의 이미지 크기
           const imageSize = new kakao.maps.Size(24, 35);
 
-          // 마커 이미지를 생성
+          // 마커 이미지 생성
           const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
-          // 마커를 생성
+          // 마커 생성
           const marker = new kakao.maps.Marker({
             map: map, // 마커를 표시할 지도
             position: new kakao.maps.LatLng(
@@ -74,7 +94,7 @@ function Map(props) {
     mapScript.addEventListener("load", onLoadKakaoMap);
 
     return () => mapScript.removeEventListener("load", onLoadKakaoMap);
-  }, [latitude, longitude, markerPosition]);
+  }, [mapCenter.lat, mapCenter.lng, markerPosition]);
 
   const previewInfos = () => {
     return DATA.map((item) => (
@@ -104,9 +124,10 @@ function Map(props) {
               src={process.env.PUBLIC_URL + "/images/Header/backIcon.svg"}
             />
           </style.BackBtn>
-          <style.searchBar>
+          <style.searchBar onSubmit={submitSearchInput}>
             <img src={process.env.PUBLIC_URL + "/images/Map/searchIcon.svg"} />
             <input
+              type={"text"}
               placeholder="주소 검색"
               value={searchInput}
               onChange={handleInputChange}
@@ -124,7 +145,10 @@ function Map(props) {
               />
             </style.ShowListBtn>
           </style.BottomBtnWrap>
-          <style.BottomInfoBoxWrap>{previewInfos()}</style.BottomInfoBoxWrap>
+          {/* <BottomSheet></BottomSheet> */}
+          {/* <style.BottomInfoBoxWrap> */}
+          <BottomSheet>{previewInfos()}</BottomSheet>
+          {/* </style.BottomInfoBoxWrap> */}
         </style.BottomWrap>
       </div>
       <Footer />

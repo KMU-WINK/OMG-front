@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as style from "./styles";
 import propTypes from "prop-types";
 
 function PreviewInfoBox(props) {
+  const navigator = useNavigate();
   const [like, setLike] = useState(props.isLiked);
 
-  const handleLikeClick = () => {
+  const handleLikeClick = (e) => {
+    // e.stopPropagation();
+    console.log("하트");
+
     // console.log(props._id);
     //_id로 isLiked 갱신
     setLike((like) => !like);
@@ -41,7 +46,9 @@ function PreviewInfoBox(props) {
       }`}</style.ExtraContent>
       <style.DetailBtn
         onClick={() => {
+          console.log("상세");
           /*_id api request*/
+          navigator("/setting");
         }}
       >
         상세보기
