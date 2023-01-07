@@ -3,7 +3,7 @@ import * as style from './styles';
 function BottleBanner(props) {
 
     return (
-        <style.bottleBanner>
+        <style.bottleBanner {...props}>
             <span>{props.btnName}</span>
         </style.bottleBanner>
     );

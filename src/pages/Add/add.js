@@ -20,9 +20,9 @@ function Add(props) {
             <style.Wrap2>
                 <style.title><h1>어떤 종류의 공병을 가지고 있나요?</h1></style.title>
                 <style.banners>
-                    <BottleBanner btnName={['소주병',<br />,'20병']}/>
-                    <BottleBanner btnName={['맥주병',<br />,'20병']}/>
-                    <BottleBanner btnName={['기타',<br />,'20병']}/>
+                    <BottleBanner style1 btnName={['소주병',<br />,'20병']}/>
+                    <BottleBanner style2 btnName={['맥주병',<br />,'20병']}/>
+                    <BottleBanner style3 btnName={['기타',<br />,'20병']}/>
                 </style.banners>
                 <style.title><h1>공병의 상태를 확인해주세요</h1></style.title>
                 <View contents={'모든 공병 내부에 이물질이 없습니다'} />

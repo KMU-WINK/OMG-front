@@ -25,17 +25,20 @@ function Main(props) {
                 <style.buttons>
                     <VerticalButton content1={['근처 3곳에',<br />,'공병이 있어요']}
                         content2={process.env.PUBLIC_URL + '/images/Main/bycicleIcon.svg'}
-                        content3={'수거하기'} />
+                        content3={'수거하기'}
+                        content4={()=>navigate("/map")}/>
                     <VerticalButton content1={['공병 등록하고',<br />,'환경을 지켜주세요']}
-                        content2={process.env.PUBLIC_URL + '/images/Main/bycicleIcon.svg'}
-                        content3={'등록하기'} />
+                        content2={process.env.PUBLIC_URL + '/images/Main/bottlesIcon.svg'}
+                        content3={'등록하기'} 
+                        content4={()=>navigate("/add")} />
                     <VerticalButton content1={['원하는',<br />,'공병이 없나요?']}
-                        content2={process.env.PUBLIC_URL + '/images/Main/bycicleIcon.svg'}
-                        content3={'커뮤니티'} />
+                        content2={process.env.PUBLIC_URL + '/images/Main/commentsIcon.svg'}
+                        content3={'커뮤니티'} 
+                        content4={()=>navigate("/board")} />
                 </style.buttons>
                 <style.title>
                     <h1>커뮤니티</h1>
-                    <span>더보기▶</span>
+                    <span onClick={()=>navigate("/board")}>더보기▶</span>
                 </style.title>
                 <style.box>
                     <style.community>
@@ -53,9 +56,9 @@ function Main(props) {
                     <span>더보기▶</span>
                 </style.title>
                 <style.banners>
-                    <Banner btnName={'2022 서울 환경 캠페인'}/>
-                    <Banner btnName={'2022 서울 환경 캠페인'}/>
-                    <Banner btnName={'2022 서울 환경 캠페인'}/>
+                    <Banner style1 btnName={'2022 서울 환경 캠페인'}/>
+                    <Banner style2 btnName={'2022 서울 환경 캠페인'}/>
+                    <Banner style3 btnName={'2022 서울 환경 캠페인'}/>
                 </style.banners>
             </style.Wrap2>
             <Footer />

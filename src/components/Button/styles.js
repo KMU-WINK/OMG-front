@@ -32,6 +32,7 @@ export const VerticalButton = styled.div`
     padding: 15px;
     width: 110px;
     height: 130px;
+    cursor: pointer;
     > span {
       color: white;
       font-weight: 600;
