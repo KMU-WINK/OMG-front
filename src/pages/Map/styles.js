@@ -11,6 +11,7 @@ export const TopWrap = styled.div`
 
 export const BackBtn = styled.div`
   margin-right: 9px;
+  cursor: pointer;
   z-index: 9;
 `;
 
@@ -54,14 +55,11 @@ export const ShowListBtn = styled.div`
   display: inline-block;
   position: absolute;
   right: 20px;
-  bottom: 150px;
+  bottom: 200px;
   z-index: 9;
 `;
 
 export const BottomInfoBoxWrap = styled.div`
-  // position: absolute;
-  // left: 20px;
-  // right: 20px;
   width: 440px;
   bottom: 70px;
   min-height: 180px;
@@ -72,12 +70,9 @@ export const BottomInfoBoxWrap = styled.div`
   z-index: 9;
 `;
 
-export const title = styled.div`
-backgroundColor: '#00bcd4',
-    padding: '16px 0',
-    boxSizing: 'border-box',
-    color: 'white',
-    minHeight: '64px',
-    fontSize: '24px',
-    textAlign: 'center'
+export const singleInfoWrapper = styled.div`
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 70px;
 `;
