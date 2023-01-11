@@ -21,6 +21,7 @@ export const strokeButton = styled.div`
   text-align: center;
   cursor: pointer;
 `;
+
 export const CircleButton = styled.div`
   width: 50px;
   height: 50px;
@@ -32,7 +33,6 @@ export const CircleButton = styled.div`
   border-radius: 30px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
 `;
-
 export const VerticalButton = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,6 +44,7 @@ export const VerticalButton = styled.div`
   padding: 15px;
   width: 110px;
   height: 130px;
+  cursor: pointer;
   > span {
     color: white;
     font-weight: 600;
@@ -59,9 +60,5 @@ export const VerticalButton = styled.div`
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
-  }
-
-  > img {
-    cursor: pointer;
   }
 `;

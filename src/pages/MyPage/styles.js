@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-  margin-top: 50px;
-  height: calc(100vh - 50px);
+  height: 100vh;
 `;
 
 export const FirstContents = styled.div`
@@ -62,6 +61,8 @@ export const RecordBlock = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
+    
     :nth-child(2) {
       padding: 0 40px;
       border-left: 2px solid #ffffff;
@@ -88,7 +89,7 @@ export const Block = styled.div`
   padding: 20px 0;
   border-bottom: 2px solid #E0E0E0;
   
-    >span:first-child {
+    > span:first-child {
       font-weight: 700;
       font-size: 18px;
       color: #000000;

@@ -4,7 +4,7 @@ function View(props) {
 
     return (
         <style.View>
-            <span>{props.contents}</span>
+            <span onClick={props.onClick}>{props.contents}</span>
         </style.View>
     );
 }

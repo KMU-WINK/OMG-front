@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const Wrap = styled.div`
     background-color: #D9D9D9;
-    padding-top: 62px;
-  height: calc(100vh - 62px);
+  height:100vh;
   > div {
     :nth-child(2), :nth-child(3){
       margin-bottom: 12px;

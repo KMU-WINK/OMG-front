@@ -3,8 +3,8 @@ import * as style from './styles';
 function Banner(props) {
 
     return (
-        <style.banner>
-            <span onClick={props.onClick}>{props.btnName}</span>
+        <style.banner {...props}>
+            <span onClick={props.onClick} >{props.btnName}</span>
         </style.banner>
     );
 }

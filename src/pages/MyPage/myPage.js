@@ -3,8 +3,11 @@ import heic2any from "heic2any";
 import * as style from './styles';
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
+import {useNavigate} from "react-router";
 
 function MyPage(props) {
+
+    const navigate = useNavigate();
 
     const imgRef = useRef();
     const [base64, setBase64] = useState('');
@@ -59,7 +62,7 @@ function MyPage(props) {
                     <span>입니다.</span>
                 </div>
                 <style.RecordBlock>
-                    <div>
+                    <div onClick={()=> navigate('/registration')}>
                         <span>등록내역</span>
                         <span>28 건</span>
                     </div>

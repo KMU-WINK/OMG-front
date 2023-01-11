@@ -8,7 +8,7 @@ export const Wrap = styled.div`
 export const SearchContainer = styled.div`
   width: 100%;
   height: 50px;
-  margin-top: 80px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 `;

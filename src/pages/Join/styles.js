@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React from "react";
 
 export const Wrap = styled.div`
-    margin-top: 50px;
   
   > div:last-child {
     padding: 20px;
