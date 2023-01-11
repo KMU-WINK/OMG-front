@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-  position: fixed;
+  position: sticky;
   width: 100%;
   max-width: 480px;
   top: 0;
