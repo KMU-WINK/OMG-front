@@ -24,6 +24,7 @@ export const strokeButton = styled.div`
 export const CircleButton = styled.div`
   width: 50px;
   height: 50px;
+  cursor: pointer;
   background: #ffffff;
   align-items: center;
   display: flex;
