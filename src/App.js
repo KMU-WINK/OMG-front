@@ -13,6 +13,7 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import WritePost from './pages/WritePost/WritePost';
 import PostDetail from './pages/PostDetail/postDetail';
 import Add from './pages/Add/add';
+import Registration from  './pages/Registration/Registration';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
                 <Route path="/add" element={<Add/>} />
                 <Route path="/write-post" element={<WritePost/>} />
                 <Route path="/post-detail" element={<PostDetail/>} />
+                <Route path={"/registration"} element={<Registration />} />
             </Routes>
         </BrowserRouter>
     </div>
