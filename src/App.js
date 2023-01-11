@@ -5,7 +5,7 @@ import Login from "./pages/Login/login";
 import Main from "./pages/Main/main";
 import Map from "./pages/Map/map";
 import MyPage from "./pages/MyPage/myPage";
-import Noti from "./pages/Noti/noti";
+import Notification from "./pages/Notification/Notification";
 import Join from "./pages/Join/join";
 import Board from "./pages/Board/board";
 import Setting from "./pages/Setting/setting";
@@ -31,7 +31,7 @@ function App() {
                 <Route path="/" element={<Main/>} />
                 <Route path="/board" element={<Board/>} />
                 <Route path="/map" element={<Map/>} />
-                <Route path="/noti" element={<Noti/>} />
+                <Route path="/noti" element={<Notification/>} />
                 <Route path="/mypage" element={<MyPage/>} />
                 <Route path="/setting" element={<Setting/>} />
                 <Route path="/change-password" element={<ChangePassword/>} />
