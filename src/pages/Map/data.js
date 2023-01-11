@@ -1,4 +1,4 @@
-export const MARKERDATA = [
+export const MARKERDATA_T = [
   {
     title: "카카오", // 등록_id
     lat: 37.60983939384303,
@@ -14,12 +14,18 @@ export const MARKERDATA = [
     lat: 37.6193939384303,
     lng: 126.99454107397042,
   },
+  {
+    title: "집",
+    lat: 37.60983939384303,
+    lng: 127.01454107397042,
+  },
 ];
 
 export const DATA = [
   {
     _id: "1alsfoisjdfoa",
-    sojuNum: 20,
+    title: "카카오",
+    sojuNum: 10,
     beerNum: 1,
     extraNum: 0,
     money: 1000,
@@ -27,10 +33,12 @@ export const DATA = [
     isLiked: false,
     click: 35,
     like: 10,
+    markerData: MARKERDATA_T[0],
   },
   {
     _id: "2bosadijfaosdf",
-    sojuNum: 2,
+    title: "생태연못",
+    sojuNum: 20,
     beerNum: 10,
     extraNum: 1,
     money: 1500,
@@ -38,16 +46,47 @@ export const DATA = [
     isLiked: true,
     click: 25,
     like: 6,
+    markerData: MARKERDATA_T[1],
   },
   {
     _id: "3calsdfjaldskfja",
-    sojuNum: 20,
+    title: "텃밭",
+    sojuNum: 30,
     beerNum: 1,
     extraNum: 0,
-    money: 1000,
+    money: 2000,
     address: "서울 성북구 솔샘로 6길 16-16",
     isLiked: false,
     click: 35,
     like: 10,
+    markerData: MARKERDATA_T[2],
+  },
+  {
+    _id: "4calsdfjaldskfja",
+    title: "집",
+    sojuNum: 40,
+    beerNum: 1,
+    extraNum: 0,
+    money: 2500,
+    address: "서울 성북구 솔샘로 6길 16-16",
+    isLiked: false,
+    click: 35,
+    like: 10,
+    markerData: MARKERDATA_T[3],
   },
 ];
+
+const getMarkerData = () => {
+  let result = [];
+  DATA.map((item) => {
+    result.push({
+      title: item.markerData.title,
+      lat: item.markerData.lat,
+      lng: item.markerData.lng,
+    });
+  });
+
+  return result;
+};
+
+export const MARKERDATA = getMarkerData();
