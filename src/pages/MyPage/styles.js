@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrap = styled.div`
-  margin-top: 50px;
-  height: calc(100vh - 50px);
+  height: 100vh;
 `;
 
 export const FirstContents = styled.div`
