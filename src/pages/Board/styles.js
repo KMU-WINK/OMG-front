@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrap = styled.div`
   width: 100%;
@@ -19,13 +19,13 @@ export const Search = styled.input`
   height: 50px;
   background: rgba(217, 217, 217, 0.5);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-  border:none;
+  border: none;
   border-radius: 20px;
   font-style: normal;
   font-weight: 400;
   font-size: 19px;
   line-height: 19px;
-  color: #7A7171;
+  color: #7a7171;
   padding-left: 30px;
   outline: none;
 `;
@@ -55,14 +55,14 @@ export const box = styled.div`
   height: fit-content;
   display: flex;
   justify-content: flex-end;
-`
+`;
 export const btnWrite = styled.button`
   width: 62px;
   height: 62px;
   background: #009800;
   border: none;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 30px;  
+  border-radius: 30px;
   cursor: pointer;
   position: fixed;
   margin-top: 30%;
@@ -70,6 +70,6 @@ export const btnWrite = styled.button`
 `;
 
 export const writeImg = styled.img`
-    width: 30px;
-    height: 30px;
-`
+  width: 30px;
+  height: 30px;
+`;

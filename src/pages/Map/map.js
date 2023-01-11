@@ -252,7 +252,7 @@ function Map(props) {
           <style.BackBtn>
             <CircleButton
               onClick={() => {
-                navigator("/main");
+                navigator(-1);
               }}
               src={process.env.PUBLIC_URL + "/images/Header/backIcon.svg"}
             />

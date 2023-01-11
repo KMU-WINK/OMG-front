@@ -9,7 +9,9 @@ export const Wrapper = styled(motion.div)`
   position: fixed;
   z-index: 9;
   bottom: 40px;
-  width: 480px;
+  // width: 480px;
+  width: 100vw;
+  max-width: 480px;
 
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
@@ -35,7 +37,9 @@ export const BottomSheetContent = styled.div`
 
 export const HeaderWrapper = styled.div`
   height: 24px;
-  width: 480px;
+  // width: 480px;
+  width: 100vw;
+  max-width: 480px;
   border-top-left-radius: 12px;
   border-bottom-right-radius: 12px;
   position: fixed;

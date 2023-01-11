@@ -41,9 +41,7 @@ function PreviewInfoBox(props) {
           {props.address || "서울 성북구 솔샘로 6길 16-16"}
         </style.Address>
       </style.SubContent>
-      <style.ExtraContent>{`조희 ${props.clickNum} | 관심 ${
-        props.likeNum || 10
-      }`}</style.ExtraContent>
+      <style.ExtraContent>{`조희 ${props.clickNum} | 관심 ${props.likeNum}`}</style.ExtraContent>
       <style.DetailBtn
         onClick={() => {
           console.log("상세");
