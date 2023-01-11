@@ -11,7 +11,7 @@ export const infoContainer = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: row;
-    margin-top: 92px;
+    margin-top: 20px;
     justify-content: center;
 `;
 

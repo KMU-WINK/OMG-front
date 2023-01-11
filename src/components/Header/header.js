@@ -17,7 +17,7 @@ function Header(props) {
                     : props.title === "글 작성하기" ?
                         <button onClick={props.onClick}> 확인 </button>
                     : props.title === "게시글" ?
-                        <img src={process.env.PUBLIC_URL + '/images/Header/Menu.svg'} onClick={props.onClick}/>
+                        <img src={process.env.PUBLIC_URL + '/images/Common/meatballs.svg'} onClick={props.onClick}/>
                     : props.title === "알림" ?
                         <img src={process.env.PUBLIC_URL + '/images/Common/meatballs.svg'}/>
                     :   null
