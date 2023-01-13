@@ -121,8 +121,22 @@ export const ImgBlock = styled.div`
     }
   `;
 
-  export const ImgContents = styled.div`
+export const ImgContents = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-  `;
+`;
+
+export const texts = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 7px 20px;
+    color: #535353;
+`;
+
+export const bottom = styled.div`
+    margin: 10px 20px 30px 10px;
+`;

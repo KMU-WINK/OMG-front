@@ -23,14 +23,33 @@ export const strokeButton = styled.div`
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 `;
+
 export const whiteFullButton = styled.div`
   background: #ffffff;
+  display: flex;
+  align-items: center;
   border-radius: 30px;
-  padding: 12px;
+  padding: 0px 20px;
+  height: 50px;
   color: #000000;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
-  text-align: center;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: .2s ease;
+`;
+
+export const greenFullButton = styled.div`
+  background: #009800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border-radius: 30px;
+  padding: 0px 20px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: .2s ease;
