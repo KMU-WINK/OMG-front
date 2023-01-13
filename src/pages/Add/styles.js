@@ -5,7 +5,7 @@ export const Wrap = styled.div`
     background: #009800;
     display: flex;
     flex-direction: column;
-    margin-bottom: 51px;
+    margin-bottom: 40px;
 `;
 
 export const Top = styled.div`

@@ -34,6 +34,7 @@ export const Top2 = styled.div`
 export const buttons = styled.div`
     margin: -80px 20px 10px 20px;
     display: flex;
+    gap: 10px;
     justify-content: space-between;
 `;
 

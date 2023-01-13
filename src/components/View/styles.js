@@ -5,7 +5,7 @@ export const View = styled.div`
     border-radius: 30px;
     padding: 0px 12px;
     color: #000000;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 16px;
     text-align: center;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);

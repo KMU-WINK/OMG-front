@@ -68,14 +68,15 @@ export const CircleButton = styled.div`
 `;
 export const VerticalButton = styled.div`
   display: flex;
+  flex-grow: 1;
+  width: 50px;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background: rgba(49, 173, 49, 0.5);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
-  padding: 15px;
-  width: 110px;
+  padding: 15px 0px;
   height: 130px;
   cursor: pointer;
   > span {

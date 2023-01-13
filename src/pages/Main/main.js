@@ -18,16 +18,16 @@ function Main(props) {
                 <img src={process.env.PUBLIC_URL + '/images/Main/notiIcon.svg'} onClick={()=>navigate("/noti")}/>
             </style.Top>
             <style.Top2>
-                <h1>{props.name}님 안녕하세요<br /> {props.bottles}병의 공병을 재활용 했어요 </h1>
+                <h1>이유빈님 안녕하세요<br /> 5병의 공병을 재활용 했어요 </h1>
             </style.Top2>
-            <View contents={'3병의 공병을 수거하고 2병의 공병을 등록했어요'} />
+            <View contents={[<b style={{color: "#009800"}}>3병</b>, '의 공병을 수거하고 ',<b style={{color: "#009800"}}>2병</b>,'의 공병을 등록했어요']} />
             <style.Wrap2>
                 <style.buttons>
-                    <VerticalButton content1={['근처 3곳에',<br />,'공병이 있어요']}
+                    <VerticalButton content1={['근처 공병을',<br />,'수거해 주세요']}
                         content2={process.env.PUBLIC_URL + '/images/Main/bycicleIcon.svg'}
                         content3={'수거하기'}
                         content4={()=>navigate("/map")}/>
-                    <VerticalButton content1={['공병 등록하고',<br />,'환경을 지켜주세요']}
+                    <VerticalButton content1={['공병 등록으로',<br />,'환경을 지켜요']}
                         content2={process.env.PUBLIC_URL + '/images/Main/bottlesIcon.svg'}
                         content3={'등록하기'} 
                         content4={()=>navigate("/add")} />
@@ -56,9 +56,9 @@ function Main(props) {
                     <span>더보기▶</span>
                 </style.title>
                 <style.banners>
-                    <Banner style1 btnName={'2022 서울 환경 캠페인'}/>
-                    <Banner style2 btnName={'2022 서울 환경 캠페인'}/>
-                    <Banner style3 btnName={'2022 서울 환경 캠페인'}/>
+                    <Banner style1 btnName={['2022 서울', <br />, '환경 캠페인']}/>
+                    <Banner style2 btnName={['2023 부산', <br />, '환경 캠페인']}/>
+                    <Banner style3 btnName={['2024 대전', <br />, '환경 캠페인']}/>
                 </style.banners>
             </style.Wrap2>
             <Footer />

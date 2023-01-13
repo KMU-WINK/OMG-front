@@ -225,7 +225,7 @@ function Add(props) {
             </style.Top>
 
             <style.Top2>
-                <h1>{props.name}님 안녕하세요<br /> 공병 등록을 시작해 볼까요? </h1>
+                <h1>이유빈님 안녕하세요<br /> 공병 등록을 시작해 볼까요? </h1>
             </style.Top2>
 
             <style.Top3>
@@ -271,7 +271,6 @@ function Add(props) {
                     <WhiteFullButton style={check3[0]} onClick={setChoice3} btnName={[check3[1], ' 공동현관 비밀번호가 있습니다']} />
                     <WhiteFullButton style={check3[2]} btnName={[<b>공동현관 비밀번호 | </b>, password]} onClick={openPasswordModal}/>
                 </style.choiceButtons>
-
                 <style.texts>
                     <div>수거를 원하는 공병은 집 문앞에 놓아주세요</div>
                     <div>출입이 제한되는 회사, 학교, 기숙사 등의 장소나</div>
@@ -286,7 +285,7 @@ function Add(props) {
             </style.Wrap2>
             <Footer />
 
-            <Modal1 open={ModalOpen} close={closeModal} header="주소 입력"
+            <Modal1 open={ModalOpen} close={closeModal} header="주소 입력" //모달창 모음
             button1={closeModal} button2={onClickModal} button1Content="취소" button2Content="확인">
             <style.Input>
                 <Input onClick={openModal2} title={'주소'} value={address}/>
