@@ -8,6 +8,7 @@ export const fullButton = styled.div`
   font-weight: 700;
   font-size: 20px;
   text-align: center;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 `;
 export const strokeButton = styled.div`
@@ -19,7 +20,20 @@ export const strokeButton = styled.div`
   font-weight: 700;
   font-size: 20px;
   text-align: center;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+`;
+export const whiteFullButton = styled.div`
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 12px;
+  color: #000000;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: .2s ease;
 `;
 
 export const CircleButton = styled.div`

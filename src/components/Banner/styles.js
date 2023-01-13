@@ -37,6 +37,8 @@ export const bottleBanner = styled.div`
     font-size: 20px;
     text-align: center;
 
+    cursor: pointer;
+
     background: ${props => {
         if (props.style1) return 'conic-gradient(from 180deg at 50% 50%, #009800 0deg, rgba(0, 152, 0, 0) 360deg);'
         if (props.style2) return 'conic-gradient(from 180deg at 50% 50%, #A95C01 0deg, rgba(169, 92, 1, 0) 360deg);'
