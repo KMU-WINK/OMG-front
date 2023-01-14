@@ -15,9 +15,6 @@ function MyPage() {
   const [base64, setBase64] = useState("");
   const [image, setImage] = useState();
   const [fullData, setFullData] = useState();
-  const imgRef = useRef();
-  const [base64, setBase64] = useState("");
-  const [image, setImage] = useState();
 
   useEffect(() => {
     (async () => {
@@ -37,9 +34,6 @@ function MyPage() {
   }, [data]);
 
   const navigate = useNavigate();
-
-  const imgRef = useRef();
-  const [base64, setBase64] = useState("");
 
   const upload = async (e) => {
     let file = imgRef.current.files[0];
