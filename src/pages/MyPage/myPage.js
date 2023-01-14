@@ -3,7 +3,7 @@ import heic2any from "heic2any";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { meService } from "../../apis/services/me";
 import { Dimmed } from "./styles";
 import FullButton from "../../components/Button/fullButton";
@@ -32,6 +32,7 @@ function MyPage() {
   }, [data]);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const upload = async (e) => {
     let file = imgRef.current.files[0];
@@ -56,8 +57,9 @@ function MyPage() {
       setBase64(reader.result);
       setImage({ img: reader.result });
       try {
-        await meApiController.changeProfileImage(reader.result);
+        await meApiController.changeProfileImage({ img: reader.result });
         alert("프로필 사진이 변경되었습니다.");
+        window.location.reload();
       } catch (e) {
         console.log(`my page: ${e.response.status}`);
         throw e;
