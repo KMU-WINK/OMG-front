@@ -7,7 +7,7 @@ export const boardService = {
   updateBoard,
 };
 
-async function getBoardList(dto) {
+async function getBoardList() {
   try {
     const response = await boardApiController.getBoardList();
     console.log(`response : ${response}`);
@@ -34,7 +34,6 @@ async function createBoard(dto) {
     throw e;
   }
 }
-
 async function updateBoard(id, dto) {
   try {
     const response = await boardApiController.updateBoard(id, dto);

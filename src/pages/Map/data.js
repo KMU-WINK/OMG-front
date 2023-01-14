@@ -66,9 +66,10 @@ export const DATA = [
     money: 1000,
     address: "서울 성북구 솔샘로 6길 16-16",
     isLiked: false,
-    click: 35,
-    like: 10,
-    markerData: MARKERDATA_T[0],
+    clicks: 35,
+    likes: [3, 2],
+    lat: 37.60983939384303,
+    lng: 126.99454107397042,
   },
   {
     _id: "2bosadijfaosdf",
@@ -79,9 +80,10 @@ export const DATA = [
     money: 1500,
     address: "서울 성북구 솔샘로 6길 16-16",
     isLiked: true,
-    click: 25,
-    like: 6,
-    markerData: MARKERDATA_T[1],
+    clicks: 25,
+    likes: [],
+    lat: 37.63983939384303,
+    lng: 126.99454107397042,
   },
   {
     _id: "3calsdfjaldskfja",
@@ -92,9 +94,10 @@ export const DATA = [
     money: 2000,
     address: "서울 성북구 솔샘로 6길 16-16",
     isLiked: false,
-    click: 35,
-    like: 10,
-    markerData: MARKERDATA_T[2],
+    clicks: 35,
+    likes: [3],
+    lat: 37.6193939384303,
+    lng: 126.99454107397042,
   },
   {
     _id: "4calsdfjaldskfja",
@@ -105,9 +108,10 @@ export const DATA = [
     money: 2500,
     address: "서울 성북구 솔샘로 6길 16-16",
     isLiked: false,
-    click: 35,
-    like: 10,
-    markerData: MARKERDATA_T[3],
+    clicks: 35,
+    likes: [1, 2, 3],
+    lat: 37.60983939384303,
+    lng: 127.01454107397042,
   },
 ];
 
@@ -115,9 +119,9 @@ const getMarkerData = () => {
   let result = [];
   DATA.map((item) => {
     result.push({
-      title: item.markerData.title,
-      lat: item.markerData.lat,
-      lng: item.markerData.lng,
+      title: item.title,
+      lat: item.lat,
+      lng: item.lng,
     });
   });
 
