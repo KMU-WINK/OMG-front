@@ -70,7 +70,13 @@ function MyPage() {
           <style.FirstContents>
             <label htmlFor={"uploadImg"}>
               <style.ImgBlock>
-                <img src={base64} />
+                {base64 ? (
+                  <img src={base64} />
+                ) : (
+                  <img
+                    src={process.env.PUBLIC_URL + "/images/Common/default.png"}
+                  />
+                )}
                 <img
                   src={process.env.PUBLIC_URL + "/images/MyPage/picIcon.svg"}
                 />
