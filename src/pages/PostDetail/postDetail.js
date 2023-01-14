@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
@@ -11,7 +11,6 @@ function PostDetail(props) {
     const navigate = useNavigate();
     
     const [showReaction, setShowReaction] = useState(false);
-
     const [showMenuPopup, setMenuPopup] = useState(false);
     const [modifyPost, setModifyPost] = useState(false);
     const [deletePost, setDeletePost] = useState(false);
@@ -58,10 +57,23 @@ function PostDetail(props) {
         alert("댓글 전송");
     }
 
+    const dimmed = useRef();
+    const contents = useRef();
+
+    const handleCloseMenu = (e) => {
+        if (dimmed.current?.contains(e.target) && !contents.current?.contains(e.target)
+        ) { setMenuPopup(false);}
+    };
+
+    useEffect(() => {
+        document.addEventListener("click", handleCloseMenu);
+        return () => document.removeEventListener("click", handleCloseMenu);
+    }, []);
+
     const Menu = () => {
         return (
-            <style.menuModalBack>
-                <style.menuModal>
+            <style.menuModalBack ref={dimmed}>
+                <style.menuModal ref={contents}>
                     <span style={{color: "#7A7171", cursor: "pointer"}}>글 메뉴</span>
                     <style.underLine/>
                     <span style={{color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}} onClick={openDeleteModal}>삭제</span>
@@ -90,13 +102,11 @@ function PostDetail(props) {
             <style.reactionBox>
                 <style.reactionImg src={process.env.PUBLIC_URL + '/images/Board/Happy.svg'}/>
                 <span style={{color: "#009800", fontSize: "14px", alignSelf: "center", cursor: "pointer"}} onClick={openReationModal}> 공감하기 </span>
-                
                 {showReaction ? 
                 <Modal4 open={openReationModal} close={closeReactionModal} header=""
             button1={closeReactionModal} button1Content="확인">
                 <span style={{fontSize: "18px", fontWeight: "bold", alignSelf: "center"}}>{"이 글을 공감하시겠습니까?"}</span>
                 </Modal4> : null}
-
                 <style.reactionImg src={process.env.PUBLIC_URL + '/images/Board/Message.svg'}/>
                 <span style={{fontSize: "14px", alignSelf: "center", marginRight: "30px"}}> 5 </span>
             </style.reactionBox>
@@ -106,7 +116,7 @@ function PostDetail(props) {
                 <img src={process.env.PUBLIC_URL + '/images/Board/SendComment.svg'} onClick={clickPost}/>
             </style.SearchContainer>
 
-            {showMenuPopup ? <Menu /> : null}
+            {showMenuPopup ? <Menu/> : null}
             {deletePost ? 
                 <Modal4 open={openDeleteModal} close={closeDeleteModal} header=""
             button1={closeDeleteModal} button1Content="확인">
