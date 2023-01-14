@@ -9,6 +9,7 @@ import GreenFullButton from '../../components/Button/greenFullButton';
 import BottleBanner from '../../components/Banner/bottleBanner';
 import WhiteFullButton from '../../components/Button/whiteFullButton';
 import WhiteView from '../../components/View/whiteView';
+import Modal2 from '../../components/Modal/modal2';
 import moment from '@date-io/moment';
 import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
@@ -30,6 +31,17 @@ function BottleDetail(props) {
 
     const pageClick = () => {
         setPageNum(pageNum + 1);
+    }
+
+    const [modalOpen, setOpenModal] = useState(false); //주의사항 모달 및 관련 로직
+    const [check1, setCheck1] = useState('❎');
+    const [check2, setCheck2] = useState('❎');
+    const [check3, setCheck3] = useState('❎');
+    const [check4, setCheck4] = useState('❎');
+    const openModal = () => setOpenModal(true);
+    const closeModal = () => setOpenModal(false);
+    const okModal = () => {
+
     }
 
     return (
@@ -92,12 +104,50 @@ function BottleDetail(props) {
                             format="yyyy년 MM월 DD일 a hh:mm"
                         />
                     </MuiPickersUtilsProvider>
-
+                    <style.texts>수거예정시간은 다음날 자정까지만 선택할 수 있어요</style.texts>
+                    <GreenFullButton onClick={pageClick} btnName={"다음"}/>
+                    </>
+                    : pageNum === 3 ?
+                    <>
+                    <style.title>수거하기 전 마지막으로 확인해주세요</style.title>
+                    <WhiteView btnName={["소주병 ",<b style={{color: "#009800"}}>{DATA[indexNum].sojuNum}병</b>,
+                                        " | 맥주병 ", <b style={{color: "#009800"}}>{DATA[indexNum].beerNum}병</b>, 
+                                        " | 기타 ", <b style={{color: "#009800"}}>{DATA[indexNum].extraNum}병</b>,]}/>
+                    <WhiteView btnName={["2022년 11월 01일 ", <b style={{color: "#009800"}}>오후 09:00까지</b>, " 수거예정"]}/>
+                    <style.boldTexts>
+                        <div>해당 주소지의 공동현관 비밀번호는</div>
+                        <div>수거예약 확정이후 확인할 수 있어요</div>
+                    </style.boldTexts>
+                    <style.texts>
+                        <div>수거할 공병은 주소지 집문 앞에 놓여져있어요</div>
+                        <div>출입이 제한되는 회사, 학교, 기숙사 등의 장소거나</div>
+                        <div>비밀번호 오류등의 사유로 출입이 어려운 경우</div>
+                        <div>마이페이지 &gt; 수거내역에서</div>
+                        <div>취소사유 선택 후 수거를 취소할 수 있어요</div>
+                    </style.texts>
+                    <GreenFullButton onClick={openModal} btnName={"다음"}/>
                     </>
                     :
-                    <></>
+                    <>
+                    </>
                 }
             </style.Wrap2>
+
+            <Modal2 open={modalOpen} close={closeModal} header="수거하기 전 다음 주의사항에 동의해주세요" button1={okModal} button1Content="수거예약 확정하기">
+                <style.check>
+                    <div>수거할 공병 개수를 확인했습니다.</div>
+                    <div>
+                        <div>수거할 공병을 수거하지 않을시</div>
+                        <div>패널티가 부과될 수 있음에 동의합니다</div>
+                    </div>
+                    <div>선택한 수거예정시간을 확인했습니다</div>
+                    <div>
+                        <div>선택한 수거예정시간 초과 후 수거시</div>
+                        <div>패널티가 부과될 수 있음에 동의합니다</div>
+                    </div>
+                </style.check>
+            </Modal2>
+
             <Footer />
         </style.Wrap>
     );

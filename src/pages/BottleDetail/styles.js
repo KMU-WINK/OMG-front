@@ -93,3 +93,32 @@ export const bottleBanners = styled.div`
     display: flex;
     gap: 20px;
 `;
+
+export const texts = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: #535353;
+`;
+
+export const boldTexts = styled.div`
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ef476f;
+`;
+
+export const check = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    > div {
+        text-align: left;
+    }
+`;
