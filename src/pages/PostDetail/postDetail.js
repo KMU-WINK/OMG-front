@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
+import Modal4 from "../../components/Modal/modal4";
 import { useLocation } from "react-router-dom";
 
 const Menu = () => {
@@ -16,12 +17,16 @@ const Menu = () => {
 function PostDetail(props) {
     const { state } = useLocation();
     const [showMenuPopup, setMenuPopup] = useState(false);
+    const [showReaction, setShowReaction] = useState(false);
     const clickMenu = () => {
         setMenuPopup(true);
     }
 
-    const clickReaction = () => {
-        alert("공감 클릭");
+    const openReationModal = () => {
+        setShowReaction(true);
+    }
+    const closeReactionModal = () => {
+        setShowReaction(false);
     }
 
     const clickPost = () => {
@@ -45,7 +50,14 @@ function PostDetail(props) {
             <style.content>하나, 공병을 가지고 있으면 인근 매장에 가서 보증금을 받으세요 둘, 공병을 가지고 있으면 인근 매장에 가서 보증금을 받으세요. </style.content>
             <style.reactionBox>
                 <style.reactionImg src={process.env.PUBLIC_URL + '/images/Board/Happy.svg'}/>
-                <span style={{color: "#009800", fontSize: "14px", alignSelf: "center", cursor: "pointer"}} onClick={clickReaction}> 공감하기 </span>
+                <span style={{color: "#009800", fontSize: "14px", alignSelf: "center", cursor: "pointer"}} onClick={openReationModal}> 공감하기 </span>
+                
+                {showReaction ? 
+                <Modal4 open={openReationModal} close={closeReactionModal} header=""
+            button1={closeReactionModal} button1Content="확인">
+                <span style={{fontSize: "18px", fontWeight: "bold", alignSelf: "center"}}>{"이 글을 공감하시겠습니까?"}</span>
+                </Modal4> : null}
+
                 <style.reactionImg src={process.env.PUBLIC_URL + '/images/Board/Message.svg'}/>
                 <span style={{fontSize: "14px", alignSelf: "center", marginRight: "30px"}}> 5 </span>
             </style.reactionBox>
