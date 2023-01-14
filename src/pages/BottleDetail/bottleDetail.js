@@ -11,6 +11,10 @@ import WhiteView from "../../components/View/whiteView";
 import Modal2 from "../../components/Modal/modal2";
 import Modal4 from "../../components/Modal/modal4";
 
+import moment from "@date-io/moment";
+import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import "moment/locale/ko";
+
 import { bottleService } from "../../apis/services/bottle";
 import { meService } from "../../apis/services/me";
 
@@ -20,8 +24,8 @@ function BottleDetail(props) {
   const navigator = useNavigate();
 
   const [id, setId] = useState(1); //id 설정
-  const [data, setData] = useState({lat: 0, lng: 0});
-  const [infoData, setInfoData] = useState('')
+  const [data, setData] = useState({ lat: 0, lng: 0 });
+  const [infoData, setInfoData] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -46,7 +50,7 @@ function BottleDetail(props) {
 
   useEffect(() => {
     let like = false;
-    data.likes?.map(e => {
+    data.likes?.map((e) => {
       if (e.user.id === infoData.user.user.id) {
         like = true;
       }
@@ -57,15 +61,24 @@ function BottleDetail(props) {
 
   const [pageNum, setPageNum] = useState(1); //페이지 번호
   const [like, setLike] = useState(false);
-  const [selectedDate, handleDateChange] = useState(new Date());
-  const [choiceDateTime, setChoiceDateTime] = useState([
-    "여기를 눌러 ",
-    <b style={{ color: "#009800" }}>수거예정시간</b>,
-    "을 선택할 수 있어요",
-  ]);
+  const [selectedDate, handleDateChange] = useState(
+    new Date(new Date().getTime() + 10 * 60 * 1000)
+  ); //시간 선택
+
+  useEffect(() => {
+    if (!selectedDate instanceof Date) {
+      return handleDateChange(new Date(selectedDate));
+    }
+    console.log(selectedDate.toISOString());
+    // console.log(moment(selectedDate).format());
+    if (+selectedDate - +new Date() < 9 * 60 * 1000) {
+      openErrorModal2();
+      handleDateChange(new Date(new Date().getTime() + 10 * 60 * 1000));
+    }
+  }, [selectedDate]);
 
   const handleLikeClick = (e) => {
-    if(like === true) bottleService.deleteLike(data.id);
+    if (like === true) bottleService.deleteLike(data.id);
     else bottleService.addLike(data.id);
     setLike(!like);
   };
@@ -106,6 +119,7 @@ function BottleDetail(props) {
       check4 === "✅"
     ) {
       setPageNum(pageNum + 1);
+      // 구현 목표 위치 ============================================================================
       closeModal();
     } else {
       openErrorModal();
@@ -115,6 +129,10 @@ function BottleDetail(props) {
   const [errorModalOpen, setOpenErrorModal] = useState(false);
   const openErrorModal = () => setOpenErrorModal(true);
   const closeErrorModal = () => setOpenErrorModal(false);
+
+  const [errorModal2Open, setOpenErrorModal2] = useState(false);
+  const openErrorModal2 = () => setOpenErrorModal2(true);
+  const closeErrorModal2 = () => setOpenErrorModal2(false);
 
   useEffect(() => {
     try {
@@ -262,10 +280,17 @@ function BottleDetail(props) {
               ]}
             />
             <style.title>수거예정시간을 선택해주세요</style.title>
-            <WhiteFullButton
-              style={{ justifyContent: "center" }}
-              btnName={choiceDateTime}
-            />
+            <MuiPickersUtilsProvider utils={moment}>
+              <DateTimePicker
+                label="수거예정시간"
+                inputVariant="outlined"
+                value={selectedDate}
+                onChange={handleDateChange}
+                format="yyyy년 MM월 DD일 a hh:mm"
+                disablePast="true"
+                maxDate={new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}
+              />
+            </MuiPickersUtilsProvider>
             <style.texts>
               수거예정시간은 다음날 자정까지만 선택할 수 있어요
             </style.texts>
@@ -286,9 +311,9 @@ function BottleDetail(props) {
             />
             <WhiteView
               btnName={[
-                "2022년 11월 01일 ",
-                <b style={{ color: "#009800" }}>오후 09:00까지</b>,
-                " 수거예정",
+                <b style={{ color: "#009800" }}>수거예정시간</b>,
+                <br />,
+                selectedDate.toString(),
               ]}
             />
             <style.boldTexts>
@@ -325,9 +350,9 @@ function BottleDetail(props) {
             />
             <WhiteView
               btnName={[
-                "2022년 11월 01일 ",
-                <b style={{ color: "#009800" }}>오후 09:00까지</b>,
-                " 수거예정",
+                <b style={{ color: "#009800" }}>수거예정시간</b>,
+                <br />,
+                selectedDate.toString(),
               ]}
             />
             <WhiteView
@@ -394,6 +419,16 @@ function BottleDetail(props) {
         button1Content="확인"
       >
         주의사항에 모두 동의해주세요
+      </Modal4>
+
+      <Modal4
+        open={errorModal2Open}
+        close={closeErrorModal2}
+        header="확인해 주세요"
+        button1={closeErrorModal2}
+        button1Content="확인"
+      >
+        수거예정시간은 10분 뒤부터 선택가능 합니다
       </Modal4>
 
       <Footer />
