@@ -4,7 +4,9 @@ export const Wrap = styled.div`
   position: relative;
   background: #ffffff;
   padding: 20px;
-  width: 400px;
+  // width: 400px;
+  width: 80vw;
+  max-width: 400px;
   height: 130px;
   margin-bottom: 10px;
   border-radius: 30px;
