@@ -4,7 +4,7 @@ export const boardService = {
   getBoardList,
   deleteBoard,
   createBoard,
-  updateBoard
+  updateBoard,
 };
 
 async function getBoardList(dto) {
