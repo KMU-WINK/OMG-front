@@ -10,11 +10,8 @@ import BottleBanner from '../../components/Banner/bottleBanner';
 import WhiteFullButton from '../../components/Button/whiteFullButton';
 import WhiteView from '../../components/View/whiteView';
 import Modal2 from '../../components/Modal/modal2';
-// import moment from '@date-io/moment';
-// import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-// import "moment/locale/ko";
 
-function BottleDetail(props) {
+function BottleDetail() {
     const navigator = useNavigate();
 
     const [indexNum, setIndexNum] = useState(1); //데이터 인덱스
@@ -94,15 +91,6 @@ function BottleDetail(props) {
                     <WhiteView btnName={[<b style={{color: "#009800"}}>총 보증금 {DATA[indexNum].money}원</b>, " 예상"]}/>
                     <style.title>수거예정시간을 선택해주세요</style.title>
                     <WhiteFullButton style={{ justifyContent: "center"}} btnName={choiceDateTime}/>
-                    {/*<MuiPickersUtilsProvider utils={moment}>*/}
-                    {/*    <DateTimePicker*/}
-                    {/*        label="수거예정시간"*/}
-                    {/*        inputVariant="outlined"*/}
-                    {/*        value={selectedDate}*/}
-                    {/*        onChange={handleDateChange}*/}
-                    {/*        format="yyyy년 MM월 DD일 a hh:mm"*/}
-                    {/*    />*/}
-                    {/*</MuiPickersUtilsProvider>*/}
                     <style.texts>수거예정시간은 다음날 자정까지만 선택할 수 있어요</style.texts>
                     <GreenFullButton onClick={pageClick} btnName={"다음"}/>
                     </>
