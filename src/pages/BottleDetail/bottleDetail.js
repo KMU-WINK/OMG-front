@@ -134,16 +134,32 @@ function BottleDetail(props) {
 
             <Modal2 open={modalOpen} close={closeModal} header="수거하기 전 다음 주의사항에 동의해주세요" button1={okModal} button1Content="수거예약 확정하기">
                 <style.check>
-                    <div>수거할 공병 개수를 확인했습니다.</div>
-                    <div>
-                        <div>수거할 공병을 수거하지 않을시</div>
-                        <div>패널티가 부과될 수 있음에 동의합니다</div>
-                    </div>
-                    <div>선택한 수거예정시간을 확인했습니다</div>
-                    <div>
-                        <div>선택한 수거예정시간 초과 후 수거시</div>
-                        <div>패널티가 부과될 수 있음에 동의합니다</div>
-                    </div>
+                    <style.x>
+                        <div>{check1} </div>
+                        <div>
+                            <div>수거할 공병 개수를 확인했습니다</div>
+                        </div>
+                    </style.x>
+                    <style.x>
+                        <div>{check2} </div>
+                        <div>
+                            <div>수거할 공병을 수거하지 않을시</div>
+                            <div>패널티가 부과될 수 있음에 동의합니다</div>
+                        </div>
+                    </style.x>
+                    <style.x>
+                        <div>{check3} </div>
+                        <div>
+                            <div>선택한 수거예정시간을 확인했습니다</div>
+                        </div>
+                    </style.x>
+                    <style.x>
+                        <div>{check4}</div>
+                        <div>
+                            <div>선택한 수거예정시간 초과 후 수거시</div>
+                            <div>패널티가 부과될 수 있음에 동의합니다</div>
+                        </div>
+                    </style.x>
                 </style.check>
             </Modal2>
 

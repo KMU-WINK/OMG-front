@@ -122,3 +122,8 @@ export const check = styled.div`
         text-align: left;
     }
 `;
+
+export const x = styled.div`
+    display: flex;
+    align-items: center;
+`;
