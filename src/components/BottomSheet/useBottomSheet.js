@@ -15,7 +15,6 @@ export default function useBottomSheet() {
   const handleTouchStart = (e) => {
     // 이벤트 버블링 방지
     e.stopPropagation();
-    console.log("handle");
 
     isBottomSheetOpen.current = !isBottomSheetOpen.current;
     if (isBottomSheetOpen.current) {
