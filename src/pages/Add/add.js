@@ -11,6 +11,7 @@ import WhiteFullButton from '../../components/Button/whiteFullButton';
 import heic2any from "heic2any";
 import GreenFullButton from '../../components/Button/greenFullButton';
 import {useNavigate} from "react-router";
+import { bottleService } from "../../apis/services/bottle";
 
 function Add(props) {
 
@@ -50,10 +51,26 @@ function Add(props) {
     const [address, setAddress] = useState(''); // 주소
     const [addressDetail, setAddressDetail] = useState(''); // 상세주소
     const [fullAddress, setFullAddress] = useState('여기를 눌러 수거받을 주소를 입력해주세요'); //주소 + 상세주소
+    const [pos, setPos] = useState({lat: 0, lng: 0});
 
-    const onCompletePost = (data) => {
+    const onCompletePost = async (data) => {
         let addr = data.roadAddress; //주소 변수 (도로명 주소 가져옴)
         let extraAddr = ''; // 참고항목 변수
+
+        /* 위도 경도 저장 코드 추가할 부분 */
+        const geocoder = new window.kakao.maps.services.Geocoder();
+        let results = await new Promise((res, rej) => {
+            geocoder.addressSearch(addr, (results, status) => {
+                if(status === window.kakao.maps.services.Status.OK) {
+                    return res(results);
+                }
+                return rej(status);
+            })
+        }).catch(console.log)
+        let result = results[0];
+        console.log(result.y, result.x)
+        setPos({lat: Number.parseFloat(result.y), lng: Number.parseFloat(result.x)});
+
     
         if (data.bname !== '') { // 법정동명이 있을 경우 추가한다. (법정리는 제외)
             extraAddr += data.bname;
@@ -173,6 +190,15 @@ function Add(props) {
         setPasswordModal(false);
     }
 
+    const [userInput, setUserInputs] = useState({
+        "title": ".",
+        "img": base64,
+        // "sojuNum": soju,
+        // "beerNum": beer,
+        // "extraNum": etc,
+        "address": fullAddress,
+    });
+
     const [addError, setAddError] = useState('');
     const checkAdd = () => { //공병 등록하기 모달 및 로직들
         if(fullAddress === '여기를 눌러 수거받을 주소를 입력해주세요'){
@@ -202,7 +228,10 @@ function Add(props) {
     const closeAddErrorModal = () => setAddErrorModal(false);
 
     const [addModal, setAddModal] = useState(false);
-    const openAddModal = () => setAddModal(true);
+    const openAddModal = () => {    //데이터베이스에 입력
+        setAddModal(true);
+        bottleService.createBottle({...userInput, ...pos, sojuNum: soju, beerNum: beer, extraNum: etc});
+    }
     const closeAddModal = () => {
         setAddModal(false);
         navigate("/");
