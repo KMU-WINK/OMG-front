@@ -81,3 +81,44 @@ export const etcFont = styled.div`
     color: #535353;
     margin-bottom: -5px;
 `;
+
+export const title = styled.div`
+    margin: 10px 0 0 0;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+`;
+
+export const bottleBanners = styled.div`
+    display: flex;
+    gap: 20px;
+`;
+
+export const texts = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: #535353;
+`;
+
+export const boldTexts = styled.div`
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ef476f;
+`;
+
+export const check = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    > div {
+        text-align: left;
+    }
+`;
