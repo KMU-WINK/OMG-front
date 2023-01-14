@@ -2,57 +2,49 @@ import styled from "styled-components";
 
 export const Wrap = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   max-width: 480px;
-  margin-bottom: 55px;
+  position: relative;
 `;
 
-export const SearchContainer = styled.div`
-  width: 100%;
-  height: 50px;
-  margin-top: 20px;
+export const Contents = styled.div`
   display: flex;
-  justify-content: center;
-`;
+  flex-direction: column;
+  padding: 24px 20px;
+  height: calc(100vh - 100px);
 
-export const Search = styled.input`
-  width: 80%;
-  max-width: 400px;
-  margin: 0 10px;
-  height: 55px;
-  background: rgba(217, 217, 217, 0.5);
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-  border: none;
-  border-radius: 20px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 19px;
-  line-height: 19px;
-  color: #7a7171;
-  padding-left: 30px;
-  outline: none;
-
-  @media screen and (max-width: 430px) {
-      height: 40px;
-      font-size: 16px;
-    }
-`;
-
-export const mainTitle = styled.div`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 22px;
-  color: #000000;
-  margin-top: 50px;
-  margin-left: 35px;
-
-  @media screen and (max-width: 430px) {
-      margin-top: 40px;
+  > div:first-child {
+    background: rgba(217, 217, 217, 0.5);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
   }
 `;
 
-export const boardContent = styled.div`
+export const Search = styled.input`
+  all: unset;
+  font-size: 20px;
+  color: #7a7171;
+  width: 100%;
+
+  @media screen and (max-width: 430px) {
+    font-size: 16px;
+  }
+`;
+
+export const MainTitle = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+
+  @media screen and (max-width: 430px) {
+    font-size: 16px;
+  }
+`;
+
+export const BoardContent = styled.div`
   width: 100%;
   height: fit-content;
   display: flex;
@@ -67,28 +59,15 @@ export const box = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-export const btnWrite = styled.button`
-  width: 62px;
-  height: 62px;
+
+export const WriteImg = styled.img`
+  padding: 24px;
   background: #009800;
   border: none;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
+  border-radius: 70%;
   cursor: pointer;
-  position: fixed;
-  margin-left: 20%;
-  bottom: 65px;
-
-  @media screen and (max-width: 430px) {
-    width: 55px;
-    height: 55px;
-
-    right: 20px;
-    bottom: 70px;
-  }
-`;
-
-export const writeImg = styled.img`
-  width: 30px;
-  height: 30px;
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
 `;

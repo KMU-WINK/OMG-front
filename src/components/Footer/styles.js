@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrap = styled.div`
   position: fixed;
+  max-width: 480px;
   width: 100%;
   bottom: 0;
   z-index: 99;
@@ -20,7 +21,7 @@ export const BtnLink = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   > img {
     width: 24px;
   }

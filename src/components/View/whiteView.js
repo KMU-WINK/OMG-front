@@ -1,12 +1,11 @@
-import React from 'react';
-import * as style from './styles';
+import React from "react";
+import * as style from "./styles";
 function WhiteView(props) {
-
-    return (
-        <style.whiteView style={props.style} onClick={props.onClick}>
-            <span>{props.btnName}</span>
-        </style.whiteView>
-    );
+  return (
+    <style.whiteView style={props.style} onClick={props.onClick}>
+      <span>{props.btnName}</span>
+    </style.whiteView>
+  );
 }
 
 export default WhiteView;

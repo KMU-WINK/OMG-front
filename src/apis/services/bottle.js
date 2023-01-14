@@ -3,6 +3,7 @@ import { bottleApiController } from "../api/bottle";
 export const bottleService = {
   getBottleList,
   getBottleOne,
+  createBottle,
   addLike,
   deleteLike,
   addClick,
@@ -27,10 +28,19 @@ async function getBottleOne(id) {
   }
 }
 
+async function createBottle(dto) {
+  try {
+    const response = await bottleApiController.createBottle(dto);
+    console.log(`response : ${response}`);
+  } catch (e) {
+    throw e;
+  }
+}
+
 async function addLike(id) {
   try {
     const response = await bottleApiController.addLike(id);
-    console.log(response);
+    console.log(`response : ${response}`);
   } catch (e) {
     throw e;
   }

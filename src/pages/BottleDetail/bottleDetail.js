@@ -3,7 +3,6 @@ import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
 import { useNavigate } from "react-router";
-import { DATA } from "../Map/data";
 import Banner from "../../components/Banner/banner";
 import GreenFullButton from "../../components/Button/greenFullButton";
 import BottleBanner from "../../components/Banner/bottleBanner";
@@ -13,6 +12,7 @@ import Modal2 from "../../components/Modal/modal2";
 import Modal4 from "../../components/Modal/modal4";
 
 import { bottleService } from "../../apis/services/bottle";
+import { meService } from "../../apis/services/me";
 
 const { kakao } = window;
 
@@ -21,6 +21,7 @@ function BottleDetail(props) {
 
   const [id, setId] = useState(1); //id 설정
   const [data, setData] = useState({lat: 0, lng: 0});
+  const [infoData, setInfoData] = useState('')
 
   useEffect(() => {
     (async () => {
@@ -33,12 +34,29 @@ function BottleDetail(props) {
   }, []);
 
   useEffect(() => {
-    console.log(data);
+    //console.log(data);
+    (async () => {
+      try {
+        setInfoData(await meService.getInfo());
+      } catch (e) {
+        console.log(`main page: ${e}`);
+      }
+    })();
   }, [data]);
 
-  const [indexNum, setIndexNum] = useState(1); //데이터 인덱스
+  useEffect(() => {
+    let like = false;
+    data.likes?.map(e => {
+      if (e.user.id === infoData.user.user.id) {
+        like = true;
+      }
+    });
+    setLike(like);
+    console.log(like);
+  }, [infoData]);
+
   const [pageNum, setPageNum] = useState(1); //페이지 번호
-  const [like, setLike] = useState(DATA[indexNum].isLiked);
+  const [like, setLike] = useState(false);
   const [selectedDate, handleDateChange] = useState(new Date());
   const [choiceDateTime, setChoiceDateTime] = useState([
     "여기를 눌러 ",
@@ -47,8 +65,9 @@ function BottleDetail(props) {
   ]);
 
   const handleLikeClick = (e) => {
-    setLike((like) => !like);
-    //like 상태 DATA에 저장하는 코드 필요함
+    if(like === true) bottleService.deleteLike(data.id);
+    else bottleService.addLike(data.id);
+    setLike(!like);
   };
 
   const pageClick = () => {
@@ -116,10 +135,10 @@ function BottleDetail(props) {
         position: new kakao.maps.LatLng(data.lat, data.lng),
         image: markerImage,
       });
-    } catch(err) {
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
-    return () => {}
+    return () => {};
   }, [data]);
 
   return (
@@ -150,10 +169,22 @@ function BottleDetail(props) {
                   src={process.env.PUBLIC_URL + "/images/Common/Profile.svg"}
                 />
                 <style.userInfoBox>
-                  <span style={{ fontWeight: "600" }}> {data?.user?.name} </span>
+                  <span style={{ fontWeight: "600" }}>
+                    {" "}
+                    {data?.user?.name}{" "}
+                  </span>
                   <span>
-                    수거 <b style={{ color: "#009800" }}> {data?.user?.bottleBuy}회 </b> | 등록{" "}
-                    <b style={{ color: "#009800" }}> {data?.user?.bottleSell}회 </b> | 공병지수{" "}
+                    수거{" "}
+                    <b style={{ color: "#009800" }}>
+                      {" "}
+                      {data?.user?.bottleBuy}회{" "}
+                    </b>{" "}
+                    | 등록{" "}
+                    <b style={{ color: "#009800" }}>
+                      {" "}
+                      {data?.user?.bottleSell}회{" "}
+                    </b>{" "}
+                    | 공병지수{" "}
                     <b style={{ color: "#009800" }}> {data?.user?.point}ml </b>
                   </span>
                 </style.userInfoBox>
@@ -169,9 +200,7 @@ function BottleDetail(props) {
                 }
               />
             </style.infoContainer>
-            <style.image
-              src={process.env.PUBLIC_URL + data?.img}
-            />
+            <style.image src={process.env.PUBLIC_URL + data?.img} />
             <style.banners>
               {data?.sojuNum !== 0 ? (
                 <Banner
@@ -228,9 +257,7 @@ function BottleDetail(props) {
             </style.bottleBanners>
             <WhiteView
               btnName={[
-                <b style={{ color: "#009800" }}>
-                  총 보증금 {data?.money}원
-                </b>,
+                <b style={{ color: "#009800" }}>총 보증금 {data?.money}원</b>,
                 " 예상",
               ]}
             />
@@ -292,9 +319,7 @@ function BottleDetail(props) {
             />
             <WhiteView
               btnName={[
-                <b style={{ color: "#009800" }}>
-                  총 보증금 {data?.money}원
-                </b>,
+                <b style={{ color: "#009800" }}>총 보증금 {data?.money}원</b>,
                 " 예상",
               ]}
             />
@@ -308,7 +333,8 @@ function BottleDetail(props) {
             <WhiteView
               btnName={[
                 <b style={{ color: "#009800" }}>공동현관 비밀번호</b>,
-                " | ", data?.entrancePassword
+                " | ",
+                data?.entrancePassword,
               ]}
             />
             <style.boldTexts>

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { handleSuccess, handleError } from "../utils/axiosHandler";
-import { headerJson, authHeaderJson } from "../utils/authHeader";
+import { headerJson, authHeaderJson, authHeader } from "../utils/authHeader";
 
 const model = "api/auth";
 
@@ -22,7 +22,7 @@ function login(dto) {
 function register(dto) {
   const url = `${process.env.REACT_APP_BASE_URL}/${model}/register`;
   axios.interceptors.response.use(handleSuccess, handleError);
-  return axios.post(url, dto, { headers: headerJson() });
+  return axios.post(url, dto, { headers: authHeader() });
 }
 
 function logout() {
@@ -48,5 +48,3 @@ function changePassword(dto) {
   axios.interceptors.response.use(handleSuccess, handleError);
   return axios.put(url, dto, { headers: headerJson() });
 }
-
-

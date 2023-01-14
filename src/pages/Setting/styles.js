@@ -1,10 +1,11 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrap = styled.div`
-    background-color: #D9D9D9;
-  height:100vh;
+  background-color: #d9d9d9;
+  height: 100vh;
   > div {
-    :nth-child(2), :nth-child(3){
+    :nth-child(2),
+    :nth-child(3) {
       margin-bottom: 12px;
     }
   }
@@ -34,18 +35,17 @@ export const Section = styled.div`
     align-items: center;
   }
   > div > img {
-      margin-right: 25px;
+    margin-right: 25px;
   }
   > img {
     cursor: pointer;
   }
   > span {
-    color: #7C7C7C;
+    color: #7c7c7c;
   }
-
 `;
 export const MySwitch = styled.div`
-  border: 2px solid ${(props) => props.mySwitch ? '#009800' : '#7C7C7C'};
+  border: 2px solid ${(props) => (props.mySwitch ? "#009800" : "#7C7C7C")};
   border-radius: 15px;
   width: 50px;
   height: 24px;
@@ -53,13 +53,13 @@ export const MySwitch = styled.div`
   cursor: pointer;
 
   > div {
-    transition: all .5s ease;
+    transition: all 0.5s ease;
     border-radius: 70%;
-    background-color: ${(props) => props.mySwitch ? '#009800' : '#7C7C7C'};
+    background-color: ${(props) => (props.mySwitch ? "#009800" : "#7C7C7C")};
     width: 18px;
     height: 18px;
     position: absolute;
-    right: ${(props) => props.mySwitch ? '4px' : '28px'};
-    // left: ${(props) => props.mySwitch ? 'unset' : '4px'};
+    right: ${(props) => (props.mySwitch ? "4px" : "28px")};
+    // left: ${(props) => (props.mySwitch ? "unset" : "4px")};
   }
-`
+`;
