@@ -4,10 +4,36 @@ import Header from "../../components/Header/header";
 import FullButton from "../../components/Button/fullButton";
 import Input from "../../components/Input/input";
 import {useNavigate} from "react-router";
+import {authApiController} from "../../apis/api/auth";
 
 function Join() {
 
     const navigate = useNavigate();
+
+    const [userInfo, setUserInfo] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        password: "",
+    });
+    const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        setUserInfo({
+            ...userInfo,
+            [name]: value,
+        });
+    };
+
+    const HandleJoin = async () => {
+        if (userInfo.name && userInfo.phone && userInfo.email && userInfo.password) {
+            try {
+                await authApiController.register(userInfo)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        else alert("입력되지 않은 곳이 있습니다.");
+    }
 
     // 전체선택, privacy policy, terms of service
     const [all, setAll] = useState(false);
@@ -66,10 +92,10 @@ function Join() {
             <div>
                 <style.InputWrap>
                     <div>
-                        <Input title={'이름'}/>
-                        <Input title={'전화번호'}/>
-                        <Input title={'이메일'}/>
-                        <Input title={'비밀번호'}/>
+                        <Input title={'이름'} onChange={handleOnChange} name={"name"} value={userInfo.name}/>
+                        <Input title={'전화번호'} onChange={handleOnChange} name={"phone"} value={userInfo.phone}/>
+                        <Input title={'이메일'} onChange={handleOnChange} name={"email"} value={userInfo.email}/>
+                        <Input title={'비밀번호'} onChange={handleOnChange} name={"password"} value={userInfo.password}/>
                         <Input title={'비밀번호 확인'}/>
                         <hr style={{border: "1px solid #E0E0E0"}} />
                     </div>
