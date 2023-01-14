@@ -56,7 +56,7 @@ function BottleDetail(props) {
       }
     });
     setLike(like);
-    console.log(like);
+    // console.log(like);
   }, [infoData]);
 
   const [pageNum, setPageNum] = useState(1); //페이지 번호
@@ -69,7 +69,7 @@ function BottleDetail(props) {
     if (!selectedDate instanceof Date) {
       return handleDateChange(new Date(selectedDate));
     }
-    console.log(selectedDate.toISOString());
+    // console.log(selectedDate.toISOString());
     // console.log(moment(selectedDate).format());
     if (+selectedDate - +new Date() < 9 * 60 * 1000) {
       openErrorModal2();

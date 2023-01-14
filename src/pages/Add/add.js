@@ -224,6 +224,7 @@ function Add(props) {
     if (password === "") {
       setPassword("여기를 눌러 입력해주세요");
     }
+    setPasswordModal(false);
   };
   const [userInput, setUserInputs] = useState({
     title: ".",
@@ -272,6 +273,7 @@ function Add(props) {
       sojuNum: soju,
       beerNum: beer,
       extraNum: etc,
+      entrancePassword: password,
     });
   };
   const closeAddModal = () => {
