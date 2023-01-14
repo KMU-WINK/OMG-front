@@ -3,13 +3,17 @@ import heic2any from "heic2any";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { meService } from "../../apis/services/me";
 import { Dimmed } from "./styles";
 import FullButton from "../../components/Button/fullButton";
+import { meApiController } from "../../apis/api/me";
 
 function MyPage() {
   const [data, setData] = useState();
+  const imgRef = useRef();
+  const [base64, setBase64] = useState("");
+  const [image, setImage] = useState();
 
   useEffect(() => {
     (async () => {
@@ -23,10 +27,12 @@ function MyPage() {
     })();
   }, []);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    setImage(data?.img);
+  }, [data]);
 
-  const imgRef = useRef();
-  const [base64, setBase64] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const upload = async (e) => {
     let file = imgRef.current.files[0];
@@ -47,11 +53,19 @@ function MyPage() {
     }
     const reader = new FileReader();
     reader.readAsDataURL(file);
-    reader.onloadend = () => {
+    reader.onloadend = async () => {
       setBase64(reader.result);
+      setImage({ img: reader.result });
+      try {
+        await meApiController.changeProfileImage({ img: reader.result });
+        alert("프로필 사진이 변경되었습니다.");
+        window.location.reload();
+      } catch (e) {
+        console.log(`my page: ${e.response.status}`);
+        throw e;
+      }
     };
   };
-
   return (
     <style.Wrap>
       <Header title={"마이페이지"} />
@@ -70,8 +84,8 @@ function MyPage() {
           <style.FirstContents>
             <label htmlFor={"uploadImg"}>
               <style.ImgBlock>
-                {base64 ? (
-                  <img src={base64} />
+                {data?.img ? (
+                  <img src={data?.img} />
                 ) : (
                   <img
                     src={process.env.PUBLIC_URL + "/images/Common/default.png"}
