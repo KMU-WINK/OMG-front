@@ -10,6 +10,12 @@ import { boardService } from "../../apis/services/board";
 function PostDetail(props) {
     const { state } = useLocation();
     const navigate = useNavigate();
+    const data = {
+        type: "EDIT",
+        id: state.id,
+        title: state.title,
+        contents: state.contents,
+    }
     
     const [showReaction, setShowReaction] = useState(false);
     const [showMenuPopup, setMenuPopup] = useState(false);
@@ -58,7 +64,7 @@ function PostDetail(props) {
     // 수정 버튼 눌렀을 때 
     const ModifyPost = () => {
         setModifyPost(false);
-        navigate("/write-post");
+        navigate("/write-post", {state: data});
     }
 
 

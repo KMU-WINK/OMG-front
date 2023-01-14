@@ -24,7 +24,7 @@ function Board(props) {
 
     return (
         <style.Wrap>
-            <style.btnWrite onClick={()=> navigator('/write-post')}>
+            <style.btnWrite onClick={()=> navigator('/write-post', {state: {title: "", contents:"", type:"UPLOAD"}})}>
                 <style.writeImg src={process.env.PUBLIC_URL + '/images/Board/Write.svg'}/>
             </style.btnWrite>
             <Header title={"게시판"} />

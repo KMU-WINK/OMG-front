@@ -1,5 +1,6 @@
 import react, {useState} from "react";
 import {useNavigate} from "react-router";
+import { useLocation } from "react-router-dom";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
@@ -7,9 +8,11 @@ import {Col} from "./styles";
 import { boardService } from "../../apis/services/board";
 
 function WritePost(props) {
+    const { state } = useLocation();
+
     const [userInput, setUserInputs] = useState({
-        title: '',
-        content: ''
+        title: state.title ? state.title : '',
+        content: state.contents ? state.contents : ''
     });
     const [showPopup, setShowPopup] = useState(true);
     const navigate = useNavigate();
@@ -17,9 +20,14 @@ function WritePost(props) {
     const UploadPost = () => {
         if (!userInput['title']) alert("글 제목을 입력하세요")
         if (!userInput['content']) alert("글 내용을 입력하세요")
-        boardService.createBoard(userInput);
-        navigate("/board");
-
+        if (state.type === "EDIT") {
+            boardService.updateBoard(state.id, userInput);
+            navigate("/board");
+        } 
+        else if (state.type === "UPLOAD") {
+            boardService.createBoard(userInput);
+            navigate("/board");
+        }
     }
 
     const changeValue = (name) => (e) => {
@@ -31,6 +39,7 @@ function WritePost(props) {
                 return { ...prevState, content: e.target.value }
             }); break;
             default: break;
+            
         }
     }
 
@@ -38,7 +47,7 @@ function WritePost(props) {
         <style.Wrap>
             <Header title={"글 작성하기"} onClick={UploadPost}/>
             <Col>
-            <style.titleInput type={"text"} placeholder={"제목"} onChange={changeValue("title")}/>
+            <style.titleInput type={"text"} value={userInput.title} placeholder={"제목"} onChange={changeValue("title")}/>
             {showPopup ? 
                 <style.cardBox>
                     <style.noticeCard>
@@ -57,7 +66,7 @@ function WritePost(props) {
                     </style.noticeCard>
             </style.cardBox> 
         : null }
-            <style.contentInput type={"text"} placeholder={"글 내용을 입력하세요."} onChange={changeValue("content")}/>
+            <style.contentInput type={"text"} value={userInput.content} placeholder={"글 내용을 입력하세요."} onChange={changeValue("content")}/>
             </Col>
             <Footer />
         </style.Wrap>
