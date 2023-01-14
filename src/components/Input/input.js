@@ -8,7 +8,7 @@ function Input(props) {
       <input
         name={props.name}
         onClick={props.onClick}
-        type={"text"}
+        type={props.type || "text"}
         placeholder={props.title + "을 입력해주세요 "}
         onChange={props.onChange}
         value={props.value}
