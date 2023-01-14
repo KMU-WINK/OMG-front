@@ -38,6 +38,7 @@ export const MainTitle = styled.div`
   font-weight: 700;
   font-size: 20px;
   color: #000000;
+  margin-bottom: 20px;
 
   @media screen and (max-width: 430px) {
     font-size: 16px;
@@ -45,9 +46,8 @@ export const MainTitle = styled.div`
 `;
 
 export const BoardContent = styled.div`
-  width: 100%;
-  height: fit-content;
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
