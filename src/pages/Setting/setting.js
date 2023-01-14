@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import * as style from './styles';
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
-import {MySwitch} from "./styles";
 
 function Setting(props) {
 
@@ -18,6 +17,13 @@ function Setting(props) {
             <Header title={'세팅'}/>
             <div>
                 <style.SubTitle>개인정보</style.SubTitle>
+                <style.Section>
+                    <div>
+                        <img src={process.env.PUBLIC_URL + '/images/Setting/pwIcon.svg'} />
+                        이메일 찾기
+                    </div>
+                    <img src={process.env.PUBLIC_URL + '/images/Common/nextIcon.svg'} onClick={()=> navigate("/find-email")}/>
+                </style.Section>
                 <style.Section>
                     <div>
                         <img src={process.env.PUBLIC_URL + '/images/Setting/pwIcon.svg'} />

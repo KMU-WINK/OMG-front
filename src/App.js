@@ -15,6 +15,7 @@ import PostDetail from './pages/PostDetail/postDetail';
 import Add from './pages/Add/add';
 import Registration from  './pages/Registration/Registration';
 import BottleDetail from './pages/BottleDetail/bottleDetail';
+import FindEmail from "./pages/FindEmail/FindEmail";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                 <Route path="/mypage" element={<MyPage/>} />
                 <Route path="/setting" element={<Setting/>} />
                 <Route path="/change-password" element={<ChangePassword/>} />
+                <Route path="/find-email" element={<FindEmail/>} />
                 <Route path="/add" element={<Add/>} />
                 <Route path="/write-post" element={<WritePost/>} />
                 <Route path="/post-detail" element={<PostDetail/>} />
