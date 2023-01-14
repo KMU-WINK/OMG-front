@@ -4,12 +4,10 @@ import * as style from "./styles";
 import Input from "../../components/Input/input";
 import FullButton from "../../components/Button/fullButton";
 import StrokeButton from "../../components/Button/strokeButton";
-import { format } from "date-fns";
 
 import { authService } from "../../apis/services/auth";
-import { authApiController } from "../../apis/api/auth";
 
-function Login(props) {
+function Login() {
   const navigate = useNavigate();
   const [Account, setAccount] = useState(false);
   const RememberACT = (e) => {
