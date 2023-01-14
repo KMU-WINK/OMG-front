@@ -9,7 +9,7 @@ import { boardService } from '../../apis/services/board';
 
 function Board(props) {
     const navigator = useNavigate();
-    const [boardList, setBoardList] = useState({});
+    const [boardList, setBoardList] = useState([]);
     
     useEffect(() => {
         (async () => {
@@ -20,13 +20,6 @@ function Board(props) {
             }
         })();
     }, []);
-
-    useEffect(() => {
-        console.log(boardList);
-        boardList.map((board) => {
-            console.log(board);
-        })
-    }, [boardList]);
     
 
     return (
@@ -40,10 +33,11 @@ function Board(props) {
                 </style.SearchContainer>
                 <style.mainTitle>내 주변 소식</style.mainTitle>
                 <style.boardContent>
-                    {boardList.map((board) => (
-                        <Card name={board['user']['name']} getCnt={3} setCnt={2} point={board['user']['point']} 
-                        title={board['title']} contents={board['content']} likes={board['likes'].length} comments={board['comments'].length}></Card>
-                     ))}
+                {boardList.map((board) => (
+                    <Card name={board['user']['name']} getCnt={3} setCnt={2} point={board['user']['point']} 
+                        title={board['title']} contents={board['content']} likes={board['likes'].length} comments={board['comments'].length}>
+                        </Card>
+                ))}
                 </style.boardContent>
             <Footer />
         </style.Wrap>
