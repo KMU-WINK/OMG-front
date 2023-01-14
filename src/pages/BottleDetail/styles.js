@@ -81,3 +81,15 @@ export const etcFont = styled.div`
     color: #535353;
     margin-bottom: -5px;
 `;
+
+export const title = styled.div`
+    margin: 10px 0 0 0;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+`;
+
+export const bottleBanners = styled.div`
+    display: flex;
+    gap: 20px;
+`;

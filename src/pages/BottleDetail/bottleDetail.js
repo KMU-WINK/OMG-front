@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import * as style from './styles';
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header"
@@ -6,6 +6,13 @@ import {useNavigate} from "react-router";
 import { DATA } from '../Map/data';
 import Banner from '../../components/Banner/banner';
 import GreenFullButton from '../../components/Button/greenFullButton';
+import BottleBanner from '../../components/Banner/bottleBanner';
+import WhiteFullButton from '../../components/Button/whiteFullButton';
+import WhiteView from '../../components/View/whiteView';
+import moment from '@date-io/moment';
+import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+
+import "moment/locale/ko";
 
 function BottleDetail(props) {
     const navigator = useNavigate();
@@ -13,6 +20,8 @@ function BottleDetail(props) {
     const [indexNum, setIndexNum] = useState(1); //데이터 인덱스
     const [pageNum, setPageNum] = useState(1); //페이지 번호
     const [like, setLike] = useState(DATA[indexNum].isLiked);
+    const [selectedDate, handleDateChange] = useState(new Date());
+    const [choiceDateTime, setChoiceDateTime] = useState(['여기를 눌러 ', <b style={{color: "#009800"}}>수거예정시간</b>,'을 선택할 수 있어요']);
 
     const handleLikeClick = (e) => {
         setLike((like) => !like);
@@ -53,9 +62,9 @@ function BottleDetail(props) {
                     </style.infoContainer>
                     <style.image src={process.env.PUBLIC_URL + "/images/Add/altImg.png"} />
                     <style.banners>
-                        <Banner styleSoju btnName={['소주병', <br />, DATA[indexNum].sojuNum, '병']} />
-                        <Banner styleBeer btnName={['맥주병', <br />, DATA[indexNum].beerNum, '병']} />
-                        <Banner styleEtc btnName={['기타병', <br />, DATA[indexNum].extraNum, '병']} />
+                        { DATA[indexNum].sojuNum !== 0 ? <Banner styleSoju btnName={['소주병', <br />, DATA[indexNum].sojuNum, '병']}/> : <></> }
+                        { DATA[indexNum].beerNum !== 0 ? <Banner styleBeer btnName={['맥주병', <br />, DATA[indexNum].beerNum, '병']}/> : <></> }
+                        { DATA[indexNum].extraNum !== 0 ? <Banner styleEtc btnName={['기타', <br />, DATA[indexNum].extraNum, '병']}/> : <></> }
                         <Banner style2 btnName={['예상 보증금', <br />, DATA[indexNum].money, '원']} />
                         <Banner style3 btnName={['내부 이물질', <br />, '없어요']} />
                         <Banner style3 btnName={['깨진 부분', <br />, '없어요']} />
@@ -65,7 +74,25 @@ function BottleDetail(props) {
                     </>
                     : pageNum === 2 ?
                     <>
-                    ㅁㄴㅇㄹ
+                    <style.title>이유빈님이 수거할 공병이에요</style.title>
+                    <style.bottleBanners>
+                        <BottleBanner style1 style={{margin: "0px", cursor: "default"}} btnName={['소주병', <br />, DATA[indexNum].sojuNum, '병']}/>
+                        <BottleBanner style2 style={{margin: "0px", cursor: "default"}} btnName={['맥주병', <br />, DATA[indexNum].beerNum, '병']}/>
+                        <BottleBanner style3 style={{margin: "0px", cursor: "default"}} btnName={['기타', <br />, DATA[indexNum].extraNum, '병']}/>
+                    </style.bottleBanners>
+                    <WhiteView btnName={[<b style={{color: "#009800"}}>총 보증금 {DATA[indexNum].money}원</b>, " 예상"]}/>
+                    <style.title>수거예정시간을 선택해주세요</style.title>
+                    <WhiteFullButton style={{ justifyContent: "center"}} btnName={choiceDateTime}/>
+                    <MuiPickersUtilsProvider utils={moment}>
+                        <DateTimePicker
+                            label="수거예정시간"
+                            inputVariant="outlined"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            format="yyyy년 MM월 DD일 a hh:mm"
+                        />
+                    </MuiPickersUtilsProvider>
+
                     </>
                     :
                     <></>

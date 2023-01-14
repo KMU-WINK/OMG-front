@@ -16,3 +16,18 @@ export const View = styled.div`
     height: 50px;
     transition: .2s ease;
 `;
+
+export const whiteView = styled.div`
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  padding: 0px 20px;
+  height: 50px;
+  color: #000000;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  transition: .2s ease;
+`;
