@@ -9,6 +9,12 @@ const Menu = () => {
     return (
         <style.menuModalBack>
             <style.menuModal>
+                <span style={{fontSize: "18px", color: "#7A7171", cursor: "pointer"}}>글 메뉴</span>
+                <style.underLine/>
+                <span style={{fontSize: "22px", color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}}>삭제</span>
+                <style.underLine/>
+                <span style={{fontSize: "22px", color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}}>수정</span>
+                
             </style.menuModal>
         </style.menuModalBack>
     )
@@ -18,6 +24,7 @@ function PostDetail(props) {
     const { state } = useLocation();
     const [showMenuPopup, setMenuPopup] = useState(false);
     const [showReaction, setShowReaction] = useState(false);
+
     const clickMenu = () => {
         setMenuPopup(true);
     }
@@ -28,6 +35,8 @@ function PostDetail(props) {
     const closeReactionModal = () => {
         setShowReaction(false);
     }
+
+
 
     const clickPost = () => {
         alert("댓글 전송");
