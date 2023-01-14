@@ -187,7 +187,11 @@ function Add(props) {
 
     const [addError, setAddError] = useState('');
     const checkAdd = () => { //공병 등록하기 모달 및 로직들
-        if(soju === 0 && beer === 0 && etc === 0){
+        if(fullAddress === '여기를 눌러 수거받을 주소를 입력해주세요'){
+            setAddError('공병 수거받을 주소를 입력해 주세요')
+            openAddErrorModal();
+        }
+        else if(soju === 0 && beer === 0 && etc === 0){
             setAddError('공병을 1병 이상 추가해 주세요')
             openAddErrorModal();
         }
