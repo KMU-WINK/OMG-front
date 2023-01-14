@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 function Card(props) {
     const navigator = useNavigate();
     const data = {
+        id: props.id,
+        
         name: props.name,
         getCnt: props.getCnt,
         setCnt: props.setCnt,

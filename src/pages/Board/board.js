@@ -34,7 +34,7 @@ function Board(props) {
                 <style.mainTitle>내 주변 소식</style.mainTitle>
                 <style.boardContent>
                 {boardList.map((board) => (
-                    <Card name={board['user']['name']} bottleSell={board['user']['bottleSell']} bottleBuy={board['user']['bottleBuy']} point={board['user']['point']} 
+                    <Card id={board['id']} name={board['user']['name']} bottleSell={board['user']['bottleSell']} bottleBuy={board['user']['bottleBuy']} point={board['user']['point']} 
                         title={board['title']} contents={board['content']} likes={board['likes'].length} comments={board['comments'].length}>
                         </Card>
                 ))}

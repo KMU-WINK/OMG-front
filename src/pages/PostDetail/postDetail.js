@@ -5,6 +5,7 @@ import Header from "../../components/Header/header";
 import Modal4 from "../../components/Modal/modal4";
 import { useLocation } from "react-router-dom";
 import {useNavigate} from "react-router";
+import { boardService } from "../../apis/services/board";
 
 function PostDetail(props) {
     const { state } = useLocation();
@@ -32,9 +33,11 @@ function PostDetail(props) {
         setDeletePost(true);
     }
     
+    
     // 삭제 모달창에서 확인 버튼 눌렀을 때
     const closeDeleteModal = () => {
         setDeletePost(false);
+        boardService.deleteBoard(state.id);
         // 글 삭제 후 게시판으로 이동 
         navigate("/board");
     }
@@ -114,7 +117,7 @@ function PostDetail(props) {
             </style.reactionBox>
 
             <style.underLine />
-            
+
             <style.SearchContainer>
                 <input type={"text"} placeholder={"댓글을 입력해주세요"}/>
                 <img src={process.env.PUBLIC_URL + '/images/Board/SendComment.svg'} onClick={clickPost}/>
