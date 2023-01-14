@@ -115,6 +115,7 @@ export const boldTexts = styled.div`
 
 export const check = styled.div`
     display: flex;
+    margin: 10px 30px;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
@@ -125,5 +126,8 @@ export const check = styled.div`
 
 export const x = styled.div`
     display: flex;
+    gap: 10px;
     align-items: center;
+    cursor: pointer;
+    user-select: none;
 `;

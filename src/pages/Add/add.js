@@ -213,7 +213,7 @@ function Add(props) {
     const openAddModal = () => setAddModal(true);
     const closeAddModal = () => {
         setAddModal(false);
-        navigate("/")
+        navigate("/");
     }
 
 
