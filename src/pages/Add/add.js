@@ -12,9 +12,23 @@ import heic2any from "heic2any";
 import GreenFullButton from "../../components/Button/greenFullButton";
 import { useNavigate } from "react-router";
 import { bottleService } from "../../apis/services/bottle";
+import { meService } from "../../apis/services/me";
+import { useEffect } from "react";
 
 function Add(props) {
   const navigate = useNavigate();
+
+  const [infoData, setInfoData] = useState();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setInfoData(await meService.getInfo());
+      } catch (e) {
+        console.log(`main page: ${e}`);
+      }
+    })();
+  }, []);
 
   const [ModalOpen, setModalOpen] = useState(false); //주소 입력 모달
   const openModal = () => {
@@ -304,7 +318,7 @@ function Add(props) {
 
       <style.Top2>
         <h1>
-          이유빈님 안녕하세요
+          {infoData?.user?.user?.name}님 안녕하세요
           <br /> 공병 등록을 시작해 볼까요?{" "}
         </h1>
       </style.Top2>
