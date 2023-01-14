@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Wrap = styled.div`
   width: 100%;
   height: 100%;
+  max-width: 480px;
+  margin-bottom: 55px;
 `;
 
 export const SearchContainer = styled.div`
@@ -32,6 +34,7 @@ export const Search = styled.input`
 
   @media screen and (max-width: 400px) {
       height: 40px;
+      font-size: 16px;
     }
 `;
 
@@ -46,7 +49,7 @@ export const mainTitle = styled.div`
 
   @media screen and (max-width: 400px) {
       margin-top: 40px;
-    }
+  }
 `;
 
 export const boardContent = styled.div`
@@ -56,7 +59,6 @@ export const boardContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 60px;
 `;
 
 export const box = styled.div`
@@ -74,8 +76,16 @@ export const btnWrite = styled.button`
   border-radius: 30px;  
   cursor: pointer;
   position: fixed;
-  margin-top: 30%;
-  margin-left: 19%;
+  margin-left: 20%;
+  bottom: 65px;
+
+  @media screen and (max-width: 479px) {
+    width: 55px;
+    height: 55px;
+
+    right: 20px;
+    bottom: 70px;
+  }
 `;
 
 export const writeImg = styled.img`
