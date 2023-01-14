@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const Wrap = styled.div`
   width: 100%;
   height: 100%;
+  max-width: 480px;
+  margin-bottom: 55px;
 `;
 
 export const SearchContainer = styled.div`
@@ -14,9 +16,10 @@ export const SearchContainer = styled.div`
 `;
 
 export const Search = styled.input`
-  width: 100%;
+  width: 80%;
   max-width: 400px;
-  height: 50px;
+  margin: 0 10px;
+  height: 55px;
   background: rgba(217, 217, 217, 0.5);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   border: none;
@@ -28,6 +31,11 @@ export const Search = styled.input`
   color: #7a7171;
   padding-left: 30px;
   outline: none;
+
+  @media screen and (max-width: 430px) {
+      height: 40px;
+      font-size: 16px;
+    }
 `;
 
 export const mainTitle = styled.div`
@@ -36,8 +44,12 @@ export const mainTitle = styled.div`
   font-size: 20px;
   line-height: 22px;
   color: #000000;
-  margin-top: 45px;
+  margin-top: 50px;
   margin-left: 35px;
+
+  @media screen and (max-width: 430px) {
+      margin-top: 40px;
+  }
 `;
 
 export const boardContent = styled.div`
@@ -47,7 +59,6 @@ export const boardContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 60px;
 `;
 
 export const box = styled.div`
@@ -65,8 +76,16 @@ export const btnWrite = styled.button`
   border-radius: 30px;
   cursor: pointer;
   position: fixed;
-  margin-top: 30%;
-  margin-left: 19%;
+  margin-left: 20%;
+  bottom: 65px;
+
+  @media screen and (max-width: 430px) {
+    width: 55px;
+    height: 55px;
+
+    right: 20px;
+    bottom: 70px;
+  }
 `;
 
 export const writeImg = styled.img`

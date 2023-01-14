@@ -122,4 +122,18 @@ export const menuModal = styled.div`
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     font-size: 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    justify-content: center;
 `
+
+export const underLine = styled.div`
+    width: 100%;
+    max-width: 480px;
+    margin-top: 15px;
+    border-bottom: 1.5px solid #E9E9E9;
+    border-top: none; border-left: none; border-right: none;
+    text-align: center;
+`;

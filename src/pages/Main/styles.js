@@ -15,8 +15,8 @@ export const Top = styled.div`
     gap: 10px;
   
     > img {
-        width: 21.5px;
-        height: 21.5px;
+        width: 24px;
+        height: 24px;
         cursor: pointer;
     }
 `;

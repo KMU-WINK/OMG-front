@@ -15,7 +15,7 @@ function Footer(props) {
             <style.BtnLink href={'/write-post'}>
                 <img src={process.env.PUBLIC_URL + '/images/Footer/writeIcon.svg'}/>
             </style.BtnLink>
-            <style.BtnLink href={'/noti'}>
+            <style.BtnLink href={'/board'}>
                 <img src={process.env.PUBLIC_URL + '/images/Footer/notiIcon.svg'}/>
             </style.BtnLink>
             <style.BtnLink href={'/mypage'}>

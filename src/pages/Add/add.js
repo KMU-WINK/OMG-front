@@ -187,7 +187,11 @@ function Add(props) {
 
     const [addError, setAddError] = useState('');
     const checkAdd = () => { //공병 등록하기 모달 및 로직들
-        if(soju === 0 && beer === 0 && etc === 0){
+        if(fullAddress === '여기를 눌러 수거받을 주소를 입력해주세요'){
+            setAddError('공병 수거받을 주소를 입력해 주세요')
+            openAddErrorModal();
+        }
+        else if(soju === 0 && beer === 0 && etc === 0){
             setAddError('공병을 1병 이상 추가해 주세요')
             openAddErrorModal();
         }
@@ -213,15 +217,15 @@ function Add(props) {
     const openAddModal = () => setAddModal(true);
     const closeAddModal = () => {
         setAddModal(false);
-        navigate("/")
+        navigate("/");
     }
 
 
     return (
         <style.Wrap>
             <style.Top>
-                <img src={process.env.PUBLIC_URL + '/images/Main/notiIcon.svg'}/>
-                <img src={process.env.PUBLIC_URL + '/images/Main/myIcon.svg'}/>
+                <img src={process.env.PUBLIC_URL + '/images/Main/myIcon.svg'} onClick={()=>navigate("/mypage")}/>
+                <img src={process.env.PUBLIC_URL + '/images/Main/notiIcon.svg'} onClick={()=>navigate("/noti")}/>
             </style.Top>
 
             <style.Top2>
@@ -229,7 +233,7 @@ function Add(props) {
             </style.Top2>
 
             <style.Top3>
-                <WhiteFullButton style={{ justifyContent: "center",  fontWeight: "600"}} btnName={fullAddress} onClick={openModal}/>
+                <WhiteFullButton style={{ justifyContent: "center", fontWeight: "600", textAlign: "center"}} btnName={fullAddress} onClick={openModal}/>
             </style.Top3>
 
             <style.Wrap2>
@@ -294,7 +298,7 @@ function Add(props) {
 
             <Modal4 open={Modal2Open} close={closeModal2} header="주소 찾기" button1={closeModal2} button1Content="취소">
             <Postcode
-                style={{ width: 400, height: 500 }}
+                style={{ width: "100%", height: "500px" }}
                 jsOptions={{ animation: true, hideMapBtn: true }}
                 onSelected={onCompletePost}
             />

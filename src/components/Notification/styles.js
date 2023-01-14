@@ -7,6 +7,7 @@ export const Flex = styled.div`
   padding: ${(props) => props.padding? props.padding : null};
   border-bottom: ${(props) => props.wrap? '1px solid #E9E9E9' : null};
   cursor: ${(props) => props.wrap? 'pointer' : null};
+  justify-content: space-between;
 `;
 
 export const Column = styled(Flex)`

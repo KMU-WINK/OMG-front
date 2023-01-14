@@ -30,6 +30,7 @@ export const whiteFullButton = styled.div`
   align-items: center;
   border-radius: 30px;
   padding: 0px 20px;
+  text-align: center;
   height: 50px;
   color: #000000;
   font-weight: 400;
