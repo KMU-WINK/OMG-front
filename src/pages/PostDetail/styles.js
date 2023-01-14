@@ -140,8 +140,8 @@ export const SearchContainer = styled.div`
 `;
 
 export const menuModalBack = styled.div`
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     max-width: 480px;
     position: fixed;
     z-index: 99;
@@ -160,12 +160,19 @@ export const menuModal = styled.div`
     background: #ffffff;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    //align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 430px) {
+        width: 365px;
+        height: 170px;
+        > span {
+            font-size: 16px;
+        }
+    }
 `
 
 export const underLine = styled.div`
@@ -174,5 +181,4 @@ export const underLine = styled.div`
     margin-top: 15px;
     border-bottom: 1.5px solid #E9E9E9;
     border-top: none; border-left: none; border-right: none;
-    //text-align: center;
 `;

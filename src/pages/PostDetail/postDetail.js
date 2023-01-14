@@ -62,11 +62,11 @@ function PostDetail(props) {
         return (
             <style.menuModalBack>
                 <style.menuModal>
-                    <span style={{fontSize: "18px", color: "#7A7171", cursor: "pointer"}}>글 메뉴</span>
+                    <span style={{color: "#7A7171", cursor: "pointer"}}>글 메뉴</span>
                     <style.underLine/>
-                    <span style={{fontSize: "22px", color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}} onClick={openDeleteModal}>삭제</span>
+                    <span style={{color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}} onClick={openDeleteModal}>삭제</span>
                     <style.underLine/>
-                    <span style={{fontSize: "22px", color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}} onClick={openModifyModal}>수정</span>
+                    <span style={{color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}} onClick={openModifyModal}>수정</span>
                 </style.menuModal>
             </style.menuModalBack>
         )
