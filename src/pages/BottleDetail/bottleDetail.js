@@ -120,6 +120,9 @@ function BottleDetail(props) {
     ) {
       setPageNum(pageNum + 1);
       // 구현 목표 위치 ============================================================================
+      bottleService.reserveBottle(data.id, {
+        date: selectedDate.toISOString(),
+      });
       closeModal();
     } else {
       openErrorModal();
