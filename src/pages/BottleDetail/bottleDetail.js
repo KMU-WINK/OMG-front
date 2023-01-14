@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
@@ -22,8 +23,9 @@ const { kakao } = window;
 
 function BottleDetail(props) {
   const navigator = useNavigate();
+  const location = useLocation();
 
-  const [id, setId] = useState(1); //id 설정
+  const [id, setId] = useState(location.pathname.split("/").pop()); //id 설정
   const [data, setData] = useState({ lat: 0, lng: 0 });
   const [infoData, setInfoData] = useState("");
 

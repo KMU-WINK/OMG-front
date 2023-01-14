@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as style from "./styles";
 import propTypes from "prop-types";
+import { bottleService } from "../../apis/services/bottle";
 
 function PreviewInfoBox(props) {
   const navigator = useNavigate();
   const [like, setLike] = useState(props.isLiked);
 
   const handleLikeClick = (e) => {
-    // e.stopPropagation();
-    console.log("하트");
-
-    // console.log(props._id);
     //_id로 isLiked 갱신
-    setLike((like) => !like);
+    if (like) {
+      setLike(false);
+      bottleService.deleteLike(props._id);
+    } else {
+      setLike(true);
+      bottleService.addLike(props._id);
+    }
   };
 
   return (
@@ -37,16 +40,14 @@ function PreviewInfoBox(props) {
       </style.MainContent>
       <style.SubContent>
         <style.Money>보증금 {props.money}원</style.Money> 예상
-        <style.Address>
-          {props.address || "서울 성북구 솔샘로 6길 16-16"}
-        </style.Address>
+        <style.Address>{props.address}</style.Address>
       </style.SubContent>
       <style.ExtraContent>{`조희 ${props.clickNum} | 관심 ${props.likeNum}`}</style.ExtraContent>
       <style.DetailBtn
-        onClick={() => {
-          console.log("상세");
-          /*_id api request*/
-          navigator("/setting");
+        onClick={async () => {
+          // 공병 상세 페이지로 이동
+          await bottleService.addClick(props._id);
+          navigator(`/bottle-detail/${props._id}`);
         }}
       >
         상세보기
@@ -62,7 +63,7 @@ PreviewInfoBox.propTypes = {
   extraNum: propTypes.number.isRequired,
   money: propTypes.number.isRequired,
   address: propTypes.string.isRequired,
-  isLiked: propTypes.bool.isRequired,
+  isLiked: propTypes.bool,
   clickNum: propTypes.number.isRequired,
   likeNum: propTypes.number.isRequired,
 };
