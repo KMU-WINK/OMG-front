@@ -5,7 +5,7 @@ import BottleBanner from '../../components/Banner/bottleBanner';
 import Modal1 from '../../components/Modal/modal1';
 import Modal2 from '../../components/Modal/modal2';
 import Modal4 from '../../components/Modal/modal4';
-import Postcode from '@actbase/react-daum-postcode';
+import Postcode from "react-daum-postcode";
 import Input from '../../components/Input/input';
 import WhiteFullButton from '../../components/Button/whiteFullButton';
 import heic2any from "heic2any";
@@ -83,31 +83,19 @@ function Add(props) {
     const [beer, setBeer] = useState(0); //맥주병
     const [etc, setEtc] = useState(0); //기타
 
-    const incSoju = (e) => { //소주병 개수 증가
-        if (soju === 30) openBottleErrorModal();
-        else setSoju(soju + 1);
-    }
-    const decSoju = (e) => { //소주병 개수 감소
-        if (soju === 0) openBottleErrorModal();
-        else setSoju(soju - 1);
-    }
-
-    const incBeer = (e) => { //맥주병 개수 증가
-        if (beer === 30) openBottleErrorModal();
-        else setBeer(beer + 1);
-    }
-    const decBeer = (e) => { //맥주병 개수 감소
-        if (beer === 0) openBottleErrorModal();
-        else setBeer(beer - 1);
-    }
-
-    const incEtc = (e) => { //기타 개수 증가
-        if (etc === 30) openBottleErrorModal();
-        else setEtc(etc + 1);
-    }
-    const decEtc = (e) => { //기타 개수 감소
-        if (etc === 0) openBottleErrorModal();
-        else setEtc(etc - 1);
+    const HandleGlassCount = (e) => {
+        const target =  e.target.id;
+        if((soju === 0 && target === "desSoju") || (beer === 0 && target === "desBeer") || (etc === 0 && target === "desEtc") ||
+            (soju === 30 && target === "incSoju") || (beer === 30 && target === "incBeer") || (etc === 30 && target === "incEtc")) {
+            openBottleErrorModal();
+            return;
+        }
+        if (target === "incSoju") setSoju(soju + 1);
+        else if (target === "desSoju") setSoju(soju - 1);
+        else if (target === "incBeer") setBeer(beer + 1);
+        else if (target === "desBeer") setBeer(beer - 1);
+        else if (target === "incEtc") setEtc(etc + 1);
+        else if (target === "desEtc") setEtc(etc - 1);
     }
 
     const [check1, setCheck1] = useState([{color: "black", background: "white"}, '❎']); //공병상태 확인1
@@ -299,8 +287,7 @@ function Add(props) {
             <Modal4 open={Modal2Open} close={closeModal2} header="주소 찾기" button1={closeModal2} button1Content="취소">
             <Postcode
                 style={{ width: "100%", height: "500px" }}
-                jsOptions={{ animation: true, hideMapBtn: true }}
-                onSelected={onCompletePost}
+                onComplete={onCompletePost}
             />
             </Modal4>
 
@@ -310,25 +297,25 @@ function Add(props) {
 
             <Modal2 open={sojuModalOpen} close={closeSojuModal} header="소주병 개수" button1={closeSojuModal} button1Content="확인">
             <style.count>
-                <style.countButton onClick={decSoju}>-</style.countButton>
+                <style.countButton onClick={HandleGlassCount} id={"desSoju"}>-</style.countButton>
                 소주병<br/>{soju}병
-                <style.countButton onClick={incSoju}>+</style.countButton>
+                <style.countButton onClick={HandleGlassCount} id={"incSoju"}>+</style.countButton>
             </style.count>
             </Modal2>
 
             <Modal2 open={beerModalOpen} close={closeBeerModal} header="맥주병 개수" button1={closeBeerModal} button1Content="확인">
             <style.count>
-                <style.countButton onClick={decBeer}>-</style.countButton>
+                <style.countButton onClick={HandleGlassCount} id={"desBeer"}>-</style.countButton>
                 맥주병<br/>{beer}병
-                <style.countButton onClick={incBeer}>+</style.countButton>
+                <style.countButton onClick={HandleGlassCount} id={"incBeer"}>+</style.countButton>
             </style.count>
             </Modal2>
 
             <Modal2 open={etcModalOpen} close={closeEtcModal} header="기타병 개수" button1={closeEtcModal} button1Content="확인">
             <style.count>
-                <style.countButton onClick={decEtc}>-</style.countButton>
+                <style.countButton onClick={HandleGlassCount} id={"desEtc"}>-</style.countButton>
                 기타<br/>{etc}병
-                <style.countButton onClick={incEtc}>+</style.countButton>
+                <style.countButton onClick={HandleGlassCount} id={"incEtc"}>+</style.countButton>
             </style.count>
             </Modal2>
 
