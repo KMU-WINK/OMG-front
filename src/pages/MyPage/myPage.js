@@ -10,12 +10,17 @@ import FullButton from "../../components/Button/fullButton";
 
 function MyPage() {
   const [data, setData] = useState();
+  const [fullData, setFullData] = useState();
+  const imgRef = useRef();
+  const [base64, setBase64] = useState("");
+  const [image, setImage] = useState();
 
   useEffect(() => {
     (async () => {
       try {
         const data = await meService.getInfo();
         setData(data.user.user);
+        setFullData(data);
       } catch (e) {
         // console.log(`mypage: ${e}`);
         setData({ name: "guest" });
@@ -24,9 +29,6 @@ function MyPage() {
   }, []);
 
   const navigate = useNavigate();
-
-  const imgRef = useRef();
-  const [base64, setBase64] = useState("");
 
   const upload = async (e) => {
     let file = imgRef.current.files[0];
@@ -98,7 +100,7 @@ function MyPage() {
               </div>
               <div>
                 <span>찜내역</span>
-                <span>123 건</span>
+                <span>{fullData?.likedBottle.length} 건</span>
               </div>
             </style.RecordBlock>
           </style.FirstContents>
