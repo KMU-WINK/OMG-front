@@ -105,10 +105,10 @@ function PostDetail(props) {
 
   const UserMenu = () => {
     return (
-      <style.menuModalBack ref={dimmed}>
-        <style.menuModal ref={contents}>
+      <style.MenuModalBack ref={dimmed}>
+        <style.MenuModal ref={contents}>
           <span style={{ color: "#7A7171", cursor: "pointer" }}>글 메뉴</span>
-          <style.underLine />
+          <style.UnderLine />
           <span
             style={{
               color: "#009800",
@@ -119,7 +119,7 @@ function PostDetail(props) {
           >
             삭제
           </span>
-          <style.underLine />
+          <style.UnderLine />
           <span
             style={{
               color: "#009800",
@@ -130,15 +130,15 @@ function PostDetail(props) {
           >
             수정
           </span>
-        </style.menuModal>
-      </style.menuModalBack>
+        </style.MenuModal>
+      </style.MenuModalBack>
     );
   };
 
   const NotUserMenu = () => {
     return (
-      <style.menuModalBack ref={dimmed}>
-        <style.menuModal ref={contents}>
+      <style.MenuModalBack ref={dimmed}>
+        <style.MenuModal ref={contents}>
           <span
             style={{ cursor: "pointer" }}
             onClick={() => {
@@ -148,8 +148,8 @@ function PostDetail(props) {
           >
             신고하기
           </span>
-        </style.menuModal>
-      </style.menuModalBack>
+        </style.MenuModal>
+      </style.MenuModalBack>
     );
   };
 
@@ -159,25 +159,25 @@ function PostDetail(props) {
       <div>
         <Flex wrap={true}>
           <Flex gap={"12px"}>
-            <style.profileImg
+            <style.ProfileImg
               src={process.env.PUBLIC_URL + "/images/Common/Profile.svg"}
             />
-            <style.userInfoBox>
+            <style.UserInfoBox>
               <span> {state.name} </span>
               <span>
                 수거 <span> {state.bottleBuy}회 </span> | 등록
                 <span> {state.bottleSell}회 </span> | 공병지수
                 <span> {state.point}ml </span>
               </span>
-            </style.userInfoBox>
+            </style.UserInfoBox>
           </Flex>
           <span>2시간 전</span>
         </Flex>
-        <style.title>{state.title}</style.title>
-        <style.content>{state.contents} </style.content>
-        <style.reactionBox>
+        <style.Title>{state.title}</style.Title>
+        <style.Content>{state.contents} </style.Content>
+        <style.ReactionBox>
           <Flex gap={"8px"}>
-            <style.reactionImg
+            <style.ReactionImg
               src={process.env.PUBLIC_URL + "/images/Board/Happy.svg"}
             />
             <span onClick={openReationModal}>공감하기</span>
@@ -194,14 +194,14 @@ function PostDetail(props) {
             </Modal4>
           ) : null}
           <Flex gap={"8px"}>
-            <style.reactionImg
+            <style.ReactionImg
               src={process.env.PUBLIC_URL + "/images/Board/Message.svg"}
             />
             <span>{state.comments}</span>
           </Flex>
-        </style.reactionBox>
+        </style.ReactionBox>
       </div>
-      <style.underLine />
+      <style.UnderLine />
       <style.SearchContainer>
         <input type={"text"} placeholder={"댓글을 입력해주세요"} />
         <img

@@ -35,7 +35,7 @@ export const ProfileImg = styled.img`
   }
 `;
 
-export const userInfoBox = styled.div`
+export const UserInfoBox = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -46,7 +46,7 @@ export const userInfoBox = styled.div`
   }
 `;
 
-export const title = styled.div`
+export const Title = styled.div`
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -58,7 +58,7 @@ export const title = styled.div`
   }
 `;
 
-export const content = styled.div`
+export const Content = styled.div`
   font-weight: 400;
   font-size: 16px;
   color: #000000;
@@ -69,7 +69,7 @@ export const content = styled.div`
   }
 `;
 
-export const reactionBox = styled.div`
+export const ReactionBox = styled.div`
   width: 100%;
   max-width: 480px;
   display: flex;
@@ -83,7 +83,7 @@ export const reactionBox = styled.div`
   }
 `;
 
-export const reactionImg = styled.img`
+export const ReactionImg = styled.img`
   width: 24px;
   height: 24px;
 `;
@@ -116,7 +116,7 @@ export const SearchContainer = styled.div`
   }
 `;
 
-export const menuModalBack = styled.div`
+export const MenuModalBack = styled.div`
   width: 100vw;
   height: 100vh;
   max-width: 480px;
@@ -129,7 +129,7 @@ export const menuModalBack = styled.div`
   justify-content: center;
 `;
 
-export const menuModal = styled.div`
+export const MenuModal = styled.div`
   position: fixed;
   bottom: 0;
   margin-bottom: 80px;
@@ -156,7 +156,7 @@ export const menuModal = styled.div`
   }
 `;
 
-export const underLine = styled.div`
+export const UnderLine = styled.div`
   width: 100%;
   border-bottom: 1px solid #e9e9e9;
 `;
