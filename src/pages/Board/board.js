@@ -10,20 +10,20 @@ function Board(props) {
 
     return (
         <style.Wrap>
+            <style.btnWrite onClick={()=> navigator('/write-post')}>
+                <style.writeImg src={process.env.PUBLIC_URL + '/images/Board/Write.svg'}/>
+            </style.btnWrite>
             <Header title={"게시판"} />
-            <style.SearchContainer>
-                <style.Search type={"text"} placeholder={"단어를 검색해보세요"}/>
-            </style.SearchContainer>
-            <style.mainTitle>내 주변 소식</style.mainTitle>
-            <style.boardContent>
-                <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
-                <Card name={"이다은"} getCnt={3} setCnt={2} point={1500}></Card>
-                <Card name={"이다은"} getCnt={3} setCnt={2} point={2000}></Card>
-                <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
-                <style.btnWrite onClick={()=> navigator('/write-post')}>
-                    <style.writeImg src={process.env.PUBLIC_URL + '/images/Board/Write.svg'}/>
-                </style.btnWrite>
-            </style.boardContent>
+                <style.SearchContainer>
+                    <style.Search type={"text"} placeholder={"단어를 검색해보세요"}/>
+                </style.SearchContainer>
+                <style.mainTitle>내 주변 소식</style.mainTitle>
+                <style.boardContent>
+                    <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
+                    <Card name={"이다은"} getCnt={3} setCnt={2} point={1500}></Card>
+                    <Card name={"이다은"} getCnt={3} setCnt={2} point={2000}></Card>
+                    <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
+                </style.boardContent>
             <Footer />
         </style.Wrap>
     );

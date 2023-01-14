@@ -6,7 +6,6 @@ import VerticalButton from '../../components/Button/verticalButton';
 import Banner from '../../components/Banner/banner';
 import {useNavigate} from "react-router";
 
-
 function Main(props) {
 
     const navigate = useNavigate();
@@ -53,7 +52,6 @@ function Main(props) {
                 </style.box>
                 <style.title>
                     <h1>환경 캠페인</h1>
-                    <span>더보기▶</span>
                 </style.title>
                 <style.banners>
                     <Banner style1 btnName={['2022 서울', <br />, '환경 캠페인']}/>

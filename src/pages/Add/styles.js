@@ -10,14 +10,14 @@ export const Wrap = styled.div`
 
 export const Top = styled.div`
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: flex-end;
     margin: 10px 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    gap: 10px;
+  
     > img {
         width: 21.5px;
         height: 21.5px;
-        margin-left: 10px;
+        cursor: pointer;
     }
 `;
 
@@ -107,7 +107,7 @@ export const ImgBlock = styled.div`
     > img {
       object-fit: cover;
       :first-child {
-        width: 440px;
+        width: 100%;
         height: 180px;
         border-radius: 30px;
         background: #D9D9D9;
@@ -115,8 +115,8 @@ export const ImgBlock = styled.div`
       }
       :last-child {
         position: absolute;
-        right: -5px;
-        bottom: -5px;
+        right: 0px;
+        bottom: 0px;
       }
     }
   `;
@@ -125,11 +125,15 @@ export const ImgContents = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    > label {
+        width: 100%;
+    }
 `;
 
 export const texts = styled.div`
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
     font-weight: 500;
     font-size: 14px;
@@ -139,4 +143,79 @@ export const texts = styled.div`
 
 export const bottom = styled.div`
     margin: 10px 20px 30px 10px;
+`;
+
+/////////// ADD2 ////////////
+
+export const Row = styled.div`
+  display: flex;
+  gap: 2%;
+`;
+
+export const Col = styled(Row)`
+  flex-direction: column;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #009800;
+`;
+
+export const Contents = styled.div`
+  margin-bottom: 20px;
+`;
+
+export const Title = styled.div`
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 12px;
+  
+`;
+export const TopWrap = styled.div`
+  padding: 24px 20px;
+  
+  > div:first-child {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 12px;
+  }
+  
+  > div:nth-child(2) {
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  
+  > button {
+    all: unset;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 30px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+`;
+export const InfoWrap = styled.div`
+  background-color: #ffffff;
+  border-radius: 30px 30px 0 0;
+  padding: 24px 20px;
+`;
+
+export const Glass = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+  flex: 1 1 33%;
+  border-radius: 28px;
+  padding: 20px;
+  font-weight: 600;
+  font-size: 18px;
+  background: conic-gradient(from 180deg at 50% 50%, ${(props) => props.back ? props.back : null } 0deg, rgba(0, 152, 0, 0) 360deg);
 `;

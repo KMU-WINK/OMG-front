@@ -2,6 +2,7 @@ import react, {useState} from "react";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
+import {Col} from "./styles";
 
 function WritePost(props) {
     const [title, setTitle] = useState("");
@@ -24,15 +25,16 @@ function WritePost(props) {
     return (
         <style.Wrap>
             <Header title={"글 작성하기"} onClick={UploadPost}/>
+            <Col>
             <style.titleInput type={"text"} placeholder={"제목"} onChange={changeValue("title")}/>
             {showPopup ? 
                 <style.cardBox>
                     <style.noticeCard>
                         <style.line>
-                        <span style={{fontWeight: "700"}}> {`이런 글은 작성하실 수 없어요. \n`} </span>
-                        <button style={{background:"none", border: "none", marginLeft: "40%"}} onClick={() => setShowPopup(false)}>
-                            <img src={process.env.PUBLIC_URL + '/images/Common/close.svg'} />
-                        </button> 
+                            <span style={{fontWeight: "700"}}> {`이런 글은 작성하실 수 없어요. \n`} </span>
+                            <button onClick={() => setShowPopup(false)}>
+                                <img src={process.env.PUBLIC_URL + '/images/Common/close.svg'} />
+                            </button>
                         </style.line>
                         <span style={{fontWeight: "500"}}>
                             {`· 타인의 권리를 침해하거나 불쾌감을 주는 글 
@@ -44,6 +46,7 @@ function WritePost(props) {
             </style.cardBox> 
         : null }
             <style.contentInput type={"text"} placeholder={"글 내용을 입력하세요."} onChange={changeValue("content")}/>
+            </Col>
             <Footer />
         </style.Wrap>
     )

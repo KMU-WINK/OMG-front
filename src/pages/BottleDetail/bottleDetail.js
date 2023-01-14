@@ -10,10 +10,7 @@ import BottleBanner from '../../components/Banner/bottleBanner';
 import WhiteFullButton from '../../components/Button/whiteFullButton';
 import WhiteView from '../../components/View/whiteView';
 import Modal2 from '../../components/Modal/modal2';
-import moment from '@date-io/moment';
-import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
-
-import "moment/locale/ko";
+import Modal4 from '../../components/Modal/modal4';
 
 function BottleDetail(props) {
     const navigator = useNavigate();
@@ -38,11 +35,37 @@ function BottleDetail(props) {
     const [check2, setCheck2] = useState('❎');
     const [check3, setCheck3] = useState('❎');
     const [check4, setCheck4] = useState('❎');
+    const checked1 = () => {
+        if(check1 === '❎') setCheck1('✅');
+        else setCheck1('❎');
+    }
+    const checked2 = () => {
+        if(check2 === '❎') setCheck2('✅');
+        else setCheck2('❎');
+    }
+    const checked3 = () => {
+        if(check3 === '❎') setCheck3('✅');
+        else setCheck3('❎');
+    }
+    const checked4 = () => {
+        if(check4 === '❎') setCheck4('✅');
+        else setCheck4('❎');
+    }
     const openModal = () => setOpenModal(true);
     const closeModal = () => setOpenModal(false);
     const okModal = () => {
-
+        if(check1 === '✅' && check2 === '✅' && check3 === '✅' && check4 === '✅' ){
+            setPageNum(pageNum + 1);
+            closeModal();
+        }
+        else{
+            openErrorModal();
+        }
     }
+
+    const [errorModalOpen, setOpenErrorModal] = useState(false);
+    const openErrorModal = () => setOpenErrorModal(true);
+    const closeErrorModal = () => setOpenErrorModal(false);
 
     return (
         <style.Wrap>
@@ -95,15 +118,6 @@ function BottleDetail(props) {
                     <WhiteView btnName={[<b style={{color: "#009800"}}>총 보증금 {DATA[indexNum].money}원</b>, " 예상"]}/>
                     <style.title>수거예정시간을 선택해주세요</style.title>
                     <WhiteFullButton style={{ justifyContent: "center"}} btnName={choiceDateTime}/>
-                    <MuiPickersUtilsProvider utils={moment}>
-                        <DateTimePicker
-                            label="수거예정시간"
-                            inputVariant="outlined"
-                            value={selectedDate}
-                            onChange={handleDateChange}
-                            format="yyyy년 MM월 DD일 a hh:mm"
-                        />
-                    </MuiPickersUtilsProvider>
                     <style.texts>수거예정시간은 다음날 자정까지만 선택할 수 있어요</style.texts>
                     <GreenFullButton onClick={pageClick} btnName={"다음"}/>
                     </>
@@ -127,26 +141,59 @@ function BottleDetail(props) {
                     </style.texts>
                     <GreenFullButton onClick={openModal} btnName={"다음"}/>
                     </>
-                    :
+                    : pageNum === 4 ?
                     <>
+                        <style.title>수거예약을 확정했어요</style.title>
+                        <WhiteView btnName={["소주병 ",<b style={{color: "#009800"}}>{DATA[indexNum].sojuNum}병</b>,
+                                        " | 맥주병 ", <b style={{color: "#009800"}}>{DATA[indexNum].beerNum}병</b>, 
+                                        " | 기타 ", <b style={{color: "#009800"}}>{DATA[indexNum].extraNum}병</b>,]}/>
+                        <WhiteView btnName={[<b style={{color: "#009800"}}>총 보증금 {DATA[indexNum].money}원</b>, " 예상"]}/>
+                        <WhiteView btnName={["2022년 11월 01일 ", <b style={{color: "#009800"}}>오후 09:00까지</b>, " 수거예정"]}/>
+                        <WhiteView btnName={[<b style={{color: "#009800"}}>공동현관 비밀번호</b>, " | 종누르고 1234"]}/>
+                        <style.boldTexts>
+                            <div>수거예약 확인은 마이페이지 &gt; 수거내역에서</div>
+                            <div>다시 확인할 수 있어요</div>
+                        </style.boldTexts>
+                        <GreenFullButton onClick={() => navigator("/")} btnName={"홈으로 돌아가기"}/>
                     </>
+                    : null
                 }
             </style.Wrap2>
 
             <Modal2 open={modalOpen} close={closeModal} header="수거하기 전 다음 주의사항에 동의해주세요" button1={okModal} button1Content="수거예약 확정하기">
                 <style.check>
-                    <div>수거할 공병 개수를 확인했습니다.</div>
-                    <div>
-                        <div>수거할 공병을 수거하지 않을시</div>
-                        <div>패널티가 부과될 수 있음에 동의합니다</div>
-                    </div>
-                    <div>선택한 수거예정시간을 확인했습니다</div>
-                    <div>
-                        <div>선택한 수거예정시간 초과 후 수거시</div>
-                        <div>패널티가 부과될 수 있음에 동의합니다</div>
-                    </div>
+                    <style.x onClick={checked1}>
+                        <div>{check1}</div>
+                        <div>
+                            <div>수거할 공병 개수를 확인했습니다</div>
+                        </div>
+                    </style.x>
+                    <style.x onClick={checked2}>
+                        <div>{check2}</div>
+                        <div>
+                            <div>수거할 공병을 수거하지 않을시</div>
+                            <div>패널티가 부과될 수 있음에 동의합니다</div>
+                        </div>
+                    </style.x>
+                    <style.x onClick={checked3}>
+                        <div>{check3}</div>
+                        <div>
+                            <div>선택한 수거예정시간을 확인했습니다</div>
+                        </div>
+                    </style.x>
+                    <style.x onClick={checked4}>
+                        <div>{check4}</div>
+                        <div>
+                            <div>선택한 수거예정시간 초과 후 수거시</div>
+                            <div>패널티가 부과될 수 있음에 동의합니다</div>
+                        </div>
+                    </style.x>
                 </style.check>
             </Modal2>
+
+            <Modal4 open={errorModalOpen} close={closeErrorModal} header="확인해 주세요" button1={closeErrorModal} button1Content="확인">
+                주의사항에 모두 동의해주세요
+            </Modal4>
 
             <Footer />
         </style.Wrap>

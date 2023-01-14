@@ -13,9 +13,11 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import WritePost from './pages/WritePost/WritePost';
 import PostDetail from './pages/PostDetail/postDetail';
 import Add from './pages/Add/add';
+import Add2 from './pages/Add/Add2';
 import Registration from  './pages/Registration/Registration';
 import BottleDetail from './pages/BottleDetail/bottleDetail';
 import FindEmail from "./pages/FindEmail/FindEmail";
+import PickUp from "./pages/PickUp/PickUp";
 
 function App() {
   return (
@@ -40,10 +42,12 @@ function App() {
                 <Route path="/change-password" element={<ChangePassword/>} />
                 <Route path="/find-email" element={<FindEmail/>} />
                 <Route path="/add" element={<Add/>} />
+                <Route path="/add2" element={<Add2/>} />
                 <Route path="/write-post" element={<WritePost/>} />
                 <Route path="/post-detail" element={<PostDetail/>} />
                 <Route path="/bottle-detail" element={<BottleDetail/>} />
-                <Route path={"/registration"} element={<Registration />} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="/pick-up" element={<PickUp />} />
             </Routes>
         </BrowserRouter>
     </div>
