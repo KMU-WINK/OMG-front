@@ -115,8 +115,8 @@ export const ImgBlock = styled.div`
       }
       :last-child {
         position: absolute;
-        right: -5px;
-        bottom: -5px;
+        right: 0px;
+        bottom: 0px;
       }
     }
   `;

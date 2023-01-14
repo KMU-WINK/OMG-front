@@ -298,7 +298,7 @@ function Add(props) {
 
             <Modal4 open={Modal2Open} close={closeModal2} header="주소 찾기" button1={closeModal2} button1Content="취소">
             <Postcode
-                style={{ width: 400, height: 500 }}
+                style={{ width: "100%", height: "500px" }}
                 jsOptions={{ animation: true, hideMapBtn: true }}
                 onSelected={onCompletePost}
             />
