@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Modal/styles2.css';
+import './styles2.css';
 
 const Modal4 = (props) => {
     // 중앙에 뜨는 모달창 입니다.
@@ -25,7 +25,7 @@ const Modal4 = (props) => {
   
     return (
       // 모달이 열릴때 openModal 클래스가 생성된다.
-      <div className={open ? 'openModal modal' : 'modal'}>
+      <div className={open ? 'openModal2 modal2' : 'modal2'}>
         {open ? (
           <section>
             <header>

@@ -42,7 +42,7 @@ export const LoginSetting = styled.div`
 export const ButtonBlock = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 10px
+    gap: 12px
 `;
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Modal/styles.css';
+import "./styles.css"
 
 const Modal1 = (props) => {
     // 하단에 뜨는 바텀시트형식 모달창 입니다.

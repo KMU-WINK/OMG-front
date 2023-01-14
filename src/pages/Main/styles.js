@@ -5,7 +5,7 @@ export const Wrap = styled.div`
     background: #009800;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+    margin-bottom: 51px;
 `;
 
 export const Top = styled.div`
@@ -34,6 +34,7 @@ export const Top2 = styled.div`
 export const buttons = styled.div`
     margin: -80px 20px 10px 20px;
     display: flex;
+    gap: 10px;
     justify-content: space-between;
 `;
 
@@ -86,7 +87,7 @@ export const box = styled.div`
 `;
 
 export const banners = styled.div`
-    margin: 0 0 50px 20px;
+    margin: 0 0 0px 20px;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;

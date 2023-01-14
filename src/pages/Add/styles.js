@@ -5,6 +5,7 @@ export const Wrap = styled.div`
     background: #009800;
     display: flex;
     flex-direction: column;
+    margin-bottom: 40px;
 `;
 
 export const Top = styled.div`
@@ -30,8 +31,8 @@ margin: 10px 20px;
     }
 `;
 
-export const View = styled.div`
-    margin: 10px 20px;
+export const Top3 = styled.div`
+    margin: 0px 20px 10px 20px;
 `;
 
 export const Wrap2 = styled.div`
@@ -59,4 +60,83 @@ export const title = styled.div`
 export const banners = styled.div`
     margin: 0px 0px 10px 20px;
     display: flex;
+`;
+
+export const Input = styled.div`
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 5px 0 5px 0;
+`;
+
+export const count = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 18px;
+    gap: 50px;
+`;
+
+export const countButton = styled.div`
+    background: #ffffff;
+    width: 20px;
+    border-radius: 30px;
+    padding: 12px;
+    color: #000000;
+    font-weight: 800;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    user-select: none;
+`;
+
+export const choiceButtons = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 5px 20px 10px 20px;
+    gap: 16px;
+`;
+
+export const ImgBlock = styled.div`
+  position: relative;
+  cursor: pointer;
+  margin: 5px 20px 10px 20px;
+    > img {
+      object-fit: cover;
+      :first-child {
+        width: 440px;
+        height: 180px;
+        border-radius: 30px;
+        background: #D9D9D9;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      :last-child {
+        position: absolute;
+        right: -5px;
+        bottom: -5px;
+      }
+    }
+  `;
+
+export const ImgContents = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+export const texts = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 7px 20px;
+    color: #535353;
+`;
+
+export const bottom = styled.div`
+    margin: 10px 20px 30px 10px;
 `;
