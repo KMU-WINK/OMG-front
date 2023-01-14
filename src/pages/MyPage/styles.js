@@ -110,3 +110,29 @@ export const Block = styled.div`
   }
 `;
 
+export const Dimmed = styled.div`
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    max-width: 380px;
+    width: 100%;
+    height: 480px;
+    margin: 20px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  > div > div {
+    width: 80%;
+  }
+`;

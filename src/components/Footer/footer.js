@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import * as style from './styles';
+import {meService} from "../../apis/services/me";
 
-function Footer(props) {
+function Footer() {
+
+    const [data, setData] = useState();
+
+    useEffect(() => {(
+        async () => {
+            try {
+                const data = await meService.getInfo();
+                setData(data.user?.user);
+            } catch (e) {
+                // console.log(`footer: ${e}`);
+                setData({name: "guest"});
+            }
+        })();
+    }, []);
 
     return (
         <style.Wrap>
@@ -18,7 +33,7 @@ function Footer(props) {
             <style.BtnLink href={'/board'}>
                 <img src={process.env.PUBLIC_URL + '/images/Footer/notiIcon.svg'}/>
             </style.BtnLink>
-            <style.BtnLink href={'/mypage'}>
+            <style.BtnLink href={`/mypage/${data?.name}`}>
                 <img src={process.env.PUBLIC_URL + '/images/Footer/mypageIcon.svg'}/>
             </style.BtnLink>
             </style.Menu>
