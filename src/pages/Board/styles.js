@@ -14,9 +14,10 @@ export const SearchContainer = styled.div`
 `;
 
 export const Search = styled.input`
-  width: 100%;
+  width: 80%;
   max-width: 400px;
-  height: 50px;
+  margin: 0 10px;
+  height: 55px;
   background: rgba(217, 217, 217, 0.5);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   border:none;
@@ -28,6 +29,10 @@ export const Search = styled.input`
   color: #7A7171;
   padding-left: 30px;
   outline: none;
+
+  @media screen and (max-width: 400px) {
+      height: 40px;
+    }
 `;
 
 export const mainTitle = styled.div`
@@ -36,8 +41,12 @@ export const mainTitle = styled.div`
   font-size: 20px;
   line-height: 22px;
   color: #000000;
-  margin-top: 45px;
+  margin-top: 50px;
   margin-left: 35px;
+
+  @media screen and (max-width: 400px) {
+      margin-top: 40px;
+    }
 `;
 
 export const boardContent = styled.div`
