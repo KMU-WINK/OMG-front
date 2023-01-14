@@ -47,35 +47,30 @@ function PostDetail(props) {
     setShowReaction(false);
   };
 
-  // 삭제 모달창 열릴 때
   const openDeleteModal = () => {
     setMenuPopup(false);
     setDeletePost(true);
   };
-  // 삭제 모달창 닫을 때
+
   const closeDeleteModal = () => {
     setDeletePost(false);
   };
-  // 삭제 모달창에서 확인 버튼 눌렀을 때
+
   const DeletePost = () => {
     setDeletePost(false);
     boardService.deleteBoard(state.id);
-    // 글 삭제 후 게시판으로 이동
     navigate("/board");
   };
 
-  // 수정 모달창 열릴 때
   const openModifyModal = () => {
     setMenuPopup(false);
     setModifyPost(true);
   };
 
-  // 수정 모달창 닫을 때
   const closeModifyModal = () => {
     setModifyPost(false);
   };
 
-  // 수정 버튼 눌렀을 때
   const ModifyPost = () => {
     setModifyPost(false);
     navigate("/write-post", { state: data });
@@ -158,7 +153,7 @@ function PostDetail(props) {
     <style.Wrap>
       <Header title={"게시글"} onClick={clickMenu} />
       <style.infoContainer>
-        <style.profileImg
+        <style.ProfileImg
           src={process.env.PUBLIC_URL + "/images/Common/Profile.svg"}
         />
         <style.userInfoBox>
