@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Wrap = styled.div`
-  padding: 20px;
-  margin: 20px;
+  width: 100%;
   background: #ffffff;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
+  margin-bottom: 20px;
 
-  @media screen and (max-width: 430px) {
-    margin: 13px;
+  > div {
+    padding: 20px;
   }
 `;
 

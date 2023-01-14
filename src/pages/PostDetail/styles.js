@@ -4,21 +4,23 @@ export const Wrap = styled.div`
   width: 100%;
   height: 100%;
   max-width: 480px;
+  position: relative;
+
+  > div:nth-child(2) {
+    padding: 24px 20px;
+    height: calc(100vh - 100px);
+  }
 `;
 
-export const infoContainer = styled.div`
-  width: 100%;
-  height: fit-content;
+export const Flex = styled.div`
   display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-  //justify-content: center;
-  margin-left: 10%;
-  @media screen and (max-width: 430px) {
-    > span {
-      font-size: 14px;
-    }
-    margin-left: 7%;
+  margin-bottom: ${(props) => (props.wrap ? "20px" : null)};
+  gap: ${(props) => (props.gap ? props.gap : null)};
+  justify-content: ${(props) => (props.wrap ? "space-between" : null)};
+
+  @media screen and (max-width: 400px) {
+    flex-direction: ${(props) => (props.wrap ? "column" : null)};
+    gap: ${(props) => (props.wrap ? "4px" : null)};
   }
 `;
 
@@ -33,11 +35,8 @@ export const profileImg = styled.img`
 `;
 
 export const userInfoBox = styled.div`
-  width: fit-content;
-  height: fit-content;
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
 
   @media screen and (max-width: 430px) {
     > span {
@@ -51,44 +50,30 @@ export const title = styled.div`
   font-weight: 600;
   font-size: 18px;
   color: #000000;
-  margin-top: 38px;
-  margin-left: 10%;
+  margin-bottom: 12px;
 
   @media screen and (max-width: 430px) {
-    margin-top: 28px;
     font-size: 16px;
-    margin-left: 7%;
   }
 `;
 
 export const content = styled.div`
-  width: 80%;
-  height: fit-content;
-  min-height: 100px;
-  margin-top: 10px;
-  font-style: normal;
   font-weight: 400;
   font-size: 16px;
   color: #000000;
-  margin-top: 25px;
-  margin-left: 10%;
+  margin-bottom: 20px;
 
   @media screen and (max-width: 430px) {
-    margin-top: 18px;
     font-size: 14px;
-    margin-left: 7%;
   }
 `;
 
 export const reactionBox = styled.div`
   width: 100%;
   max-width: 480px;
-  height: fit-content;
   display: flex;
   justify-content: flex-end;
-  margin-top: 22px;
-  padding-bottom: 12px;
-
+  gap: 12px;
   @media screen and (max-width: 430px) {
     > span {
       margin-top: 2px;
@@ -100,41 +85,33 @@ export const reactionBox = styled.div`
 export const reactionImg = styled.img`
   width: 24px;
   height: 24px;
-  margin-right: 5px;
-  margin-left: 15px;
 `;
 
 export const SearchContainer = styled.div`
   width: 100%;
   display: flex;
-  position: fixed;
+  position: absolute;
   align-items: center;
   z-index: 99;
-  max-width: 440px;
-  padding: 0 20px;
+  padding: 8px 0;
   bottom: 80px;
-  height: 43px;
   background: rgba(217, 217, 217, 0.5);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  margin: auto;
+
   > input {
+    all: unset;
+    padding: 0 10px;
+    flex: 1 1 100%;
     border: none;
-    font-weight: 400;
     font-size: 16px;
     color: #7a7171;
-    width: 100%;
-    outline: none;
     background-color: transparent;
   }
   > img {
-    width: 24px;
-    height: 24px;
+    flex: 1 1 24px;
     cursor: pointer;
-  }
-  @media screen and (max-width: 430px) {
-    width: 85%;
-    margin: 0 10px;
+    padding-right: 10px;
   }
 `;
 
@@ -143,7 +120,7 @@ export const menuModalBack = styled.div`
   height: 100vh;
   max-width: 480px;
   position: fixed;
-  z-index: 99;
+  z-index: 100;
   top: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.4);
@@ -156,7 +133,7 @@ export const menuModal = styled.div`
   bottom: 0;
   margin-bottom: 80px;
   width: 440px;
-  height: 195px;
+  height: fit-content;
   background: #ffffff;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
@@ -166,9 +143,12 @@ export const menuModal = styled.div`
   flex-direction: column;
   justify-content: center;
 
+  > span {
+    padding: 16px 0;
+  }
+
   @media screen and (max-width: 430px) {
     width: 365px;
-    height: 170px;
     > span {
       font-size: 16px;
     }
@@ -177,10 +157,5 @@ export const menuModal = styled.div`
 
 export const underLine = styled.div`
   width: 100%;
-  max-width: 480px;
-  margin-top: 15px;
-  border-bottom: 1.5px solid #e9e9e9;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border-bottom: 1px solid #e9e9e9;
 `;
