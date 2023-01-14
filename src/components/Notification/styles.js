@@ -1,17 +1,17 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Flex = styled.div`
   display: flex;
   align-items: center;
-  gap: ${(props) => props.gap? props.gap : null};
-  padding: ${(props) => props.padding? props.padding : null};
-  border-bottom: ${(props) => props.wrap? '1px solid #E9E9E9' : null};
-  cursor: ${(props) => props.wrap? 'pointer' : null};
+  gap: ${(props) => (props.gap ? props.gap : null)};
+  padding: ${(props) => (props.padding ? props.padding : null)};
+  border-bottom: ${(props) => (props.wrap ? "1px solid #E9E9E9" : null)};
+  cursor: ${(props) => (props.wrap ? "pointer" : null)};
   justify-content: space-between;
 `;
 
 export const Column = styled(Flex)`
-    flex-direction: column;
+  flex-direction: column;
 `;
 
 export const Img = styled.img`
@@ -21,6 +21,6 @@ export const Img = styled.img`
 `;
 
 export const Text = styled.span`
-  font-size: ${(props) => props.size? props.size : null};
-  font-weight: ${(props) => props.weight? props.weight : null};
+  font-size: ${(props) => (props.size ? props.size : null)};
+  font-weight: ${(props) => (props.weight ? props.weight : null)};
 `;

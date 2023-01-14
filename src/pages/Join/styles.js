@@ -1,8 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import React from "react";
 
 export const Wrap = styled.div`
-  
   > div:last-child {
     padding: 20px;
   }
@@ -22,7 +21,7 @@ export const InputWrap = styled.div`
     > div {
       display: flex;
       gap: 10px;
-      
+
       :nth-child(2) {
         margin: 20px 0 8px 0;
       }
@@ -39,7 +38,7 @@ export const Modal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   > div {
     background-color: #ffffff;
     width: 80%;

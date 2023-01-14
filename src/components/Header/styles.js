@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrap = styled.div`
   position: sticky;
@@ -18,7 +18,7 @@ export const Title = styled.div`
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  
+
   > img {
     cursor: pointer;
     position: absolute;
@@ -40,6 +40,6 @@ export const Title = styled.div`
     font-size: 16px;
     right: 20px;
     font-weight: 700;
-    color: #FFFFFF;
+    color: #ffffff;
   }
 `;
