@@ -6,7 +6,7 @@ function Card(props) {
   const navigator = useNavigate();
   const data = {
     id: props.id,
-
+    userId: props.userId,
     name: props.name,
     getCnt: props.getCnt,
     setCnt: props.setCnt,
