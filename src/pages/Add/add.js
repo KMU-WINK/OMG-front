@@ -213,7 +213,7 @@ function Add(props) {
     const openAddModal = () => setAddModal(true);
     const closeAddModal = () => {
         setAddModal(false);
-        navigate("/")
+        navigate("/");
     }
 
 
@@ -271,17 +271,16 @@ function Add(props) {
                     <WhiteFullButton style={check3[0]} onClick={setChoice3} btnName={[check3[1], ' 공동현관 비밀번호가 있습니다']} />
                     <WhiteFullButton style={check3[2]} btnName={[<b>공동현관 비밀번호 | </b>, password]} onClick={openPasswordModal}/>
                 </style.choiceButtons>
+
                 <style.texts>
                     <div>수거를 원하는 공병은 집 문앞에 놓아주세요</div>
                     <div>출입이 제한되는 회사, 학교, 기숙사 등의 장소나</div>
                     <div>비밀번호 오류등의 사유로 출입이 어려운 경우</div>
                     <div>부득이하게 수거가 불가능할 수 있어요</div>
                 </style.texts>
-
                 <style.bottom>
                     <GreenFullButton onClick={checkAdd} btnName={'공병 등록하기'}/>
                 </style.bottom>
-
             </style.Wrap2>
             <Footer />
 

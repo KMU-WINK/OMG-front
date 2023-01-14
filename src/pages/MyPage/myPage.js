@@ -66,7 +66,7 @@ function MyPage(props) {
                         <span>등록내역</span>
                         <span>28 건</span>
                     </div>
-                    <div>
+                    <div onClick={()=> navigate('/pick-up')}>
                         <span>수거내역</span>
                         <span>4 건</span>
                     </div>
