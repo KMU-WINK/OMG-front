@@ -28,6 +28,7 @@ export const Section = styled.div`
   padding: 19px 20px;
   font-size: 16px;
   color: #000000;
+  cursor: pointer;
   > div {
     display: flex;
     align-items: center;

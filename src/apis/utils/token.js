@@ -1,4 +1,4 @@
-import { Cookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 
 export const ACCESSTOKEN_KEY = "accessToken";
 export const REFRESHTOKEN_KEY = "refreshToken";
@@ -21,6 +21,6 @@ function setToken(token) {
   }
 }
 
-function removeToken(ACCESSTOKEN_KEY) {
+function removeToken() {
   cookies.remove(ACCESSTOKEN_KEY, { path: "/" });
 }

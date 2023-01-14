@@ -7,7 +7,7 @@ export const boardService = {
 async function getBoardList(dto) {
   try {
     const response = await boardApiController.getBoardList();
-    console.log(`response : ${response.data}`);
+    console.log(`response : ${response}`);
     return response.data;
   } catch (e) {
     throw e;
