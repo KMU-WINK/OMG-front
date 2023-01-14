@@ -54,6 +54,7 @@ function Login() {
             value={loginForm.email}
           />
           <Input
+            type={"password"}
             name={"password"}
             onChange={handleOnChange}
             title={"비밀번호"}
