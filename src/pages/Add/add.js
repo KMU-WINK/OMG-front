@@ -81,7 +81,7 @@ function Add(props) {
     
         setAddress(addr);
         closeModal2();
-      };
+    };
 
   const onChangeAddressDetail = (e) => setAddressDetail(e.target.value); //상세주소 상태관리
 
@@ -217,7 +217,7 @@ function Add(props) {
     if (password === "") {
       setPassword("여기를 눌러 입력해주세요");
     }
-
+  }
     const [userInput, setUserInputs] = useState({
         "title": ".",
         "img": base64,
@@ -226,6 +226,7 @@ function Add(props) {
         // "extraNum": etc,
         "address": fullAddress,
     });
+    
 
   const [addError, setAddError] = useState("");
   const checkAdd = () => {
