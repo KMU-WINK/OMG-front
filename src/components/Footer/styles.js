@@ -24,5 +24,6 @@ export const BtnLink = styled.div`
 
   > img {
     width: 24px;
+    cursor: pointer;
   }
 `;

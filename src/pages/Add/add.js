@@ -179,7 +179,13 @@ function Add(props) {
   const [base64, setBase64] = useState("/images/Add/altImg.png");
 
   const upload = async (e) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      setBase64(reader.result);
+    };
     let file = imgRef.current.files[0];
+    window.file = file;
+    console.log(file);
     const fileName = file.name.split(".")[1].toLowerCase(); //확장자명 체크를 위해 소문자 변환 HEIC, heic
     if (fileName === "heic") {
       let blob = file;
@@ -194,12 +200,12 @@ function Add(props) {
         .catch(function (x) {
           console.log(x);
         });
+    } else {
+      reader.readAsDataURL(file);
     }
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setBase64(reader.result);
-    };
+    // reader.onloadend = () => {
+    //   setBase64(reader.result);
+    // };
   };
 
   const [password, setPassword] = useState("여기를 눌러 입력해주세요"); //비밀번호 관련 모달 및 로직들
@@ -224,6 +230,7 @@ function Add(props) {
     if (password === "") {
       setPassword("여기를 눌러 입력해주세요");
     }
+    setPasswordModal(false);
   };
   const [userInput, setUserInputs] = useState({
     title: ".",
@@ -269,9 +276,12 @@ function Add(props) {
     bottleService.createBottle({
       ...userInput,
       ...pos,
+      img: base64,
+      address: fullAddress,
       sojuNum: soju,
       beerNum: beer,
       extraNum: etc,
+      entrancePassword: password,
     });
   };
   const closeAddModal = () => {

@@ -74,6 +74,7 @@ export const community = styled.div`
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  cursor: pointer;
 `;
 
 export const box = styled.div`

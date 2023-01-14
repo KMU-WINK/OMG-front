@@ -16,6 +16,7 @@ function Main(props) {
 
   // api 연동 예시.. 근데 저도 잘 몰라서.. 이거보다 더 좋은 방법이 있을 수 있습니다..
   const [data, setData] = useState();
+  const [boardData, setBoardData] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -28,8 +29,18 @@ function Main(props) {
   }, []);
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    (async () => {
+      try {
+        let list = await boardService.getBoardList();
+        if (list.length > 3) {
+          list = list.slice(0, 3);
+        }
+        setBoardData(list);
+      } catch (e) {
+        console.log(`main page: ${e}`);
+      }
+    })();
+  }, []);
 
   return (
     <style.Wrap>
@@ -102,9 +113,22 @@ function Main(props) {
           <span onClick={() => navigate("/board")}>더보기▶</span>
         </style.title>
         <style.box>
-          <style.community>커뮤니티 글 1 제목입니다.</style.community>
-          <style.community>커뮤니티 글 2 제목입니다.</style.community>
-          <style.community>커뮤니티 글 3 제목입니다.</style.community>
+          {boardData.map((e) => {
+            return (
+              <style.community onClick={() => navigate("/board")}>
+                {e.title}
+              </style.community>
+            );
+          })}
+          {/* <style.community onClick={() => navigate("/board")}>
+            커뮤니티 글 1 제목입니다.
+          </style.community>
+          <style.community onClick={() => navigate("/board")}>
+            커뮤니티 글 2 제목입니다.
+          </style.community>
+          <style.community onClick={() => navigate("/board")}>
+            커뮤니티 글 3 제목입니다.
+          </style.community> */}
         </style.box>
         <style.title>
           <h1>환경 캠페인</h1>
