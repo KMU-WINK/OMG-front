@@ -3,7 +3,8 @@ import { boardApiController } from "../api/board";
 export const boardService = {
   getBoardList,
   deleteBoard,
-  createBoard
+  createBoard,
+  updateBoard,
 };
 
 async function getBoardList(dto) {
@@ -28,6 +29,15 @@ async function deleteBoard(id) {
 async function createBoard(dto) {
   try {
     const response = await boardApiController.createBoard(dto);
+    console.log(`response : ${response}`);
+  } catch (e) {
+    throw e;
+  }
+}
+
+async function updateBoard(id, dto) {
+  try {
+    const response = await boardApiController.updateBoard(id, dto);
     console.log(`response : ${response}`);
   } catch (e) {
     throw e;
