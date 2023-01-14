@@ -11,6 +11,8 @@ export const FirstContents = styled.div`
   
   > div:nth-child(2) {
     margin-bottom: 16px;
+    text-align: center;
+    
     > span {
       font-weight: 700;
       font-size: 18px;
@@ -49,22 +51,22 @@ export const ImgBlock = styled.div`
 `
 export const RecordBlock = styled.div`
   display: flex;
-  gap: 40px;
   background: #009800;
   color: #ffffff;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
-  padding: 22px 50px;
   margin-bottom: 15px;
+  width: 90%;
+  padding: 12px 0;
   
   > div {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    flex: 1 1 33%;
     
     :nth-child(2) {
-      padding: 0 40px;
       border-left: 2px solid #ffffff;
       border-right: 2px solid #ffffff;
     }
@@ -86,7 +88,7 @@ export const SecondContents = styled.div`
 export const Block = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 16px 0;
   border-bottom: 2px solid #E0E0E0;
   
     > span:first-child {
