@@ -4,11 +4,16 @@ import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
 import Modal4 from "../../components/Modal/modal4";
 import { useLocation } from "react-router-dom";
+import {useNavigate} from "react-router";
 
 function PostDetail(props) {
     const { state } = useLocation();
-    const [showMenuPopup, setMenuPopup] = useState(false);
+    const navigate = useNavigate();
+    
     const [showReaction, setShowReaction] = useState(false);
+
+    const [showMenuPopup, setMenuPopup] = useState(false);
+    const [modifyPost, setModifyPost] = useState(false);
     const [deletePost, setDeletePost] = useState(false);
 
     const clickMenu = () => {
@@ -31,6 +36,21 @@ function PostDetail(props) {
     // 삭제 모달창에서 확인 버튼 눌렀을 때
     const closeDeleteModal = () => {
         setDeletePost(false);
+        // 글 삭제 후 게시판으로 이동 
+        navigate("/board");
+    }
+
+    // 수정 모달창 열릴 때 
+    const openModifyModal = () => {
+        setMenuPopup(false);
+        setModifyPost(true);
+    }
+    
+    // 수정 모달창에서 확인 버튼 눌렀을 때
+    const closeModifyModal = () => {
+        setModifyPost(false);
+        // 글쓰기 화면으로 넘어감 (글 내용 그대로 가지고) 
+        
     }
 
 
@@ -46,7 +66,7 @@ function PostDetail(props) {
                     <style.underLine/>
                     <span style={{fontSize: "22px", color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}} onClick={openDeleteModal}>삭제</span>
                     <style.underLine/>
-                    <span style={{fontSize: "22px", color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}}>수정</span>
+                    <span style={{fontSize: "22px", color: "#009800", fontWeight: "bold", marginTop: "18px", cursor: "pointer"}} onClick={openModifyModal}>수정</span>
                 </style.menuModal>
             </style.menuModalBack>
         )
@@ -92,6 +112,11 @@ function PostDetail(props) {
                 <span style={{fontSize: "18px", fontWeight: "bold", alignSelf: "center"}}>{"이 글을 삭제하시겠습니까?"}</span>
                 </Modal4> : null}
 
+            {modifyPost ? 
+                <Modal4 open={openModifyModal} close={closeModifyModal} header=""
+            button1={closeModifyModal} button1Content="확인">
+                <span style={{fontSize: "18px", fontWeight: "bold", alignSelf: "center"}}>{"이 글을 수정하시겠습니까?"}</span>
+                </Modal4> : null}
             <Footer />
         </style.Wrap>
     )
