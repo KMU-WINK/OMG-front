@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
@@ -18,10 +19,11 @@ const { kakao } = window;
 
 function BottleDetail(props) {
   const navigator = useNavigate();
+  const location = useLocation();
 
-  const [id, setId] = useState(1); //id 설정
-  const [data, setData] = useState({lat: 0, lng: 0});
-  const [infoData, setInfoData] = useState('')
+  const [id, setId] = useState(location.pathname.split("/").pop()); //id 설정
+  const [data, setData] = useState({ lat: 0, lng: 0 });
+  const [infoData, setInfoData] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -46,7 +48,7 @@ function BottleDetail(props) {
 
   useEffect(() => {
     let like = false;
-    data.likes?.map(e => {
+    data.likes?.map((e) => {
       if (e.user.id === infoData.user.user.id) {
         like = true;
       }
@@ -65,7 +67,7 @@ function BottleDetail(props) {
   ]);
 
   const handleLikeClick = (e) => {
-    if(like === true) bottleService.deleteLike(data.id);
+    if (like === true) bottleService.deleteLike(data.id);
     else bottleService.addLike(data.id);
     setLike(!like);
   };

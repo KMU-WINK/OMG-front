@@ -48,7 +48,7 @@ function App() {
           <Route path="/add2" element={<Add2 />} />
           <Route path="/write-post" element={<WritePost />} />
           <Route path="/post-detail" element={<PostDetail />} />
-          <Route path="/bottle-detail" element={<BottleDetail />} />
+          <Route path="/bottle-detail/:id" element={<BottleDetail />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/pick-up" element={<PickUp />} />
         </Routes>
