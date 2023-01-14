@@ -14,7 +14,11 @@ function Card(props) {
         contents: props.contents,
 
         likes: props.likes,
-        comments: props.comments
+        comments: props.comments,
+
+        bottleSell: props.bottleSell,   //등록 횟수
+        bottleBuy: props.bottleBuy     // 수거 횟수 
+
     }
 
     const handleClick = () => {
@@ -28,8 +32,8 @@ function Card(props) {
                     <style.profileImg src={process.env.PUBLIC_URL + '/images/Common/Profile.svg'}/>
                     <style.userInfoBox>
                         <span > {props.name} </span>
-                        <span > 수거 <span style={{color: "#009800"}}> {props.getCnt}회 </span> |
-                        등록 <span style={{color: "#009800"}}> {props.setCnt}회 </span> |
+                        <span > 수거 <span style={{color: "#009800"}}> {props.bottleBuy}회 </span> |
+                        등록 <span style={{color: "#009800"}}> {props.bottleSell}회 </span> |
                         공병지수 <span style={{color: "#009800"}}> {props.point}ml </span> </span>
                     </style.userInfoBox>
                 </div>
