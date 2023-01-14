@@ -50,6 +50,7 @@ function Board(props) {
             contents={board["content"]}
             likes={board["likes"].length}
             comments={board["comments"].length}
+            userId={board["user"]["id"]}
           ></Card>
         ))}
       </style.boardContent>

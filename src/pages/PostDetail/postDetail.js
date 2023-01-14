@@ -6,6 +6,7 @@ import Modal4 from "../../components/Modal/modal4";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { boardService } from "../../apis/services/board";
+import { meService } from "../../apis/services/me";
 
 function PostDetail(props) {
   const { state } = useLocation();
@@ -13,6 +14,7 @@ function PostDetail(props) {
   const data = {
     type: "EDIT",
     id: state.id,
+    userId: state.userId,
     title: state.title,
     contents: state.contents,
   };
@@ -21,6 +23,18 @@ function PostDetail(props) {
   const [showMenuPopup, setMenuPopup] = useState(false);
   const [modifyPost, setModifyPost] = useState(false);
   const [deletePost, setDeletePost] = useState(false);
+
+  const [currentUser, setCurrentUser] = useState("");
+  useEffect(() => {
+    (async () => {
+      try {
+        const getInfo = await meService.getInfo();
+        setCurrentUser(getInfo["user"]["user"]["id"]);
+      } catch (e) {
+        console.log(e);
+      }
+    })();
+  }, []);
 
   const clickMenu = () => {
     setMenuPopup(true);
@@ -88,7 +102,7 @@ function PostDetail(props) {
     return () => document.removeEventListener("click", handleCloseMenu);
   }, []);
 
-  const Menu = () => {
+  const UserMenu = () => {
     return (
       <style.menuModalBack ref={dimmed}>
         <style.menuModal ref={contents}>
@@ -116,6 +130,24 @@ function PostDetail(props) {
             onClick={openModifyModal}
           >
             수정
+          </span>
+        </style.menuModal>
+      </style.menuModalBack>
+    );
+  };
+
+  const NotUserMenu = () => {
+    return (
+      <style.menuModalBack ref={dimmed}>
+        <style.menuModal style={{ height: "130px" }} ref={contents}>
+          <span
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              alert("신고 기능은 아직 구현 중입니다.");
+              setMenuPopup(false);
+            }}
+          >
+            신고하기
           </span>
         </style.menuModal>
       </style.menuModalBack>
@@ -212,7 +244,11 @@ function PostDetail(props) {
         />
       </style.SearchContainer>
 
-      {showMenuPopup ? <Menu /> : null}
+      {showMenuPopup && currentUser === data.userId ? (
+        <UserMenu />
+      ) : showMenuPopup && currentUser !== data.userId ? (
+        <NotUserMenu />
+      ) : null}
       {deletePost ? (
         <Modal4
           open={openDeleteModal}
