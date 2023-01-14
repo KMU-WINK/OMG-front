@@ -18,7 +18,6 @@ function Map(props) {
 
   const [markerIdx, setMarkerIdx] = useState(-1);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(true);
-  const [isMarkerOnClick, setIsMarkerOnClick] = useState(false);
 
   // marker 표시할 data
   // const [markerPosition, setMarkerPosition] = useState([]);
@@ -71,7 +70,6 @@ function Map(props) {
     return () => {
       console.log(`index: ${index}`);
       console.log(`markerIdx : ${markerIdx}`);
-      console.log(`markeronclick : ${isMarkerOnClick}`);
       console.log(`bottomsheet : ${isBottomSheetOpen}`);
       // if (index !== markerIdx) {
       setIsBottomSheetOpen(false);
@@ -80,9 +78,9 @@ function Map(props) {
     };
   };
 
-  // useEffect(() => {
-  //   setMarkerPosition(MARKERDATA);
-  // }, []);
+  useEffect(() => {
+    // bottle list get
+  }, []);
 
   useEffect(() => {
     const mapScript = document.createElement("script");
@@ -115,14 +113,14 @@ function Map(props) {
           // 영역정보의 북동쪽 정보를 얻어옵니다
           var neLatlng = bounds.getNorthEast();
 
-          var message =
-            "<p>영역좌표는 남서쪽 위도, 경도는  " +
-            swLatlng.toString() +
-            "이고 <br>";
-          message +=
-            "북동쪽 위도, 경도는  " + neLatlng.toString() + "입니다 </p>";
+          // var message =
+          //   "<p>영역좌표는 남서쪽 위도, 경도는  " +
+          //   swLatlng.toString() +
+          //   "이고 <br>";
+          // message +=
+          //   "북동쪽 위도, 경도는  " + neLatlng.toString() + "입니다 </p>";
 
-          // console.log(message);
+          // console.log(`남서 : ${swLatlng.toString()}`);
         });
 
         // 마커 이미지의 이미지 주소
@@ -268,18 +266,6 @@ function Map(props) {
           </style.searchBar>
         </style.TopWrap>
         <style.BottomWrap>
-          {/* {onClickMarkerInfo} */}
-          {/* <style.BottomBtnWrap>
-            <style.ShowListBtn>
-              <CircleButton
-                onClick={() => {
-                  navigator("/main");
-                }}
-                src={process.env.PUBLIC_URL + "/images/Map/mapListIcon.svg"}
-              />
-            </style.ShowListBtn>
-          </style.BottomBtnWrap> */}
-          {/* {isMarkerOnClick ? onClickMarkerInfo(markerIdx) : null} */}
           {isBottomSheetOpen ? (
             <BottomSheet>{previewInfos()}</BottomSheet>
           ) : (

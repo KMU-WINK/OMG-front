@@ -58,7 +58,7 @@ export const Handle = styled.div`
 `;
 
 export const BottomBtnWrap = styled.div`
-  margin-left: 87%;
+  margin-left: 85%;
   margin-bottom: 10px;
 `;
 
