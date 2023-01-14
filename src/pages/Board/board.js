@@ -1,12 +1,33 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import * as style from './styles';
 import { useNavigate } from 'react-router-dom';
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
 import Card from "../../components/Card/card";
+import { boardService } from '../../apis/services/board';
+
 
 function Board(props) {
     const navigator = useNavigate();
+    const [boardList, setBoardList] = useState({});
+    
+    useEffect(() => {
+        (async () => {
+            try {
+                setBoardList(await boardService.getBoardList());
+            } catch (e) {
+                console.log(e)
+            }
+        })();
+    }, []);
+
+    useEffect(() => {
+        console.log(boardList);
+        boardList.map((board) => {
+            console.log(board);
+        })
+    }, [boardList]);
+    
 
     return (
         <style.Wrap>
@@ -19,10 +40,10 @@ function Board(props) {
                 </style.SearchContainer>
                 <style.mainTitle>내 주변 소식</style.mainTitle>
                 <style.boardContent>
-                    <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
-                    <Card name={"이다은"} getCnt={3} setCnt={2} point={1500}></Card>
-                    <Card name={"이다은"} getCnt={3} setCnt={2} point={2000}></Card>
-                    <Card name={"이다은"} getCnt={3} setCnt={2} point={500}></Card>
+                    {boardList.map((board) => (
+                        <Card name={board['user']['name']} getCnt={3} setCnt={2} point={board['user']['point']} 
+                        title={board['title']} contents={board['content']} likes={board['likes'].length} comments={board['comments'].length}></Card>
+                     ))}
                 </style.boardContent>
             <Footer />
         </style.Wrap>

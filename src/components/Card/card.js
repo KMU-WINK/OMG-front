@@ -4,15 +4,21 @@ import { useNavigate } from 'react-router-dom';
 
 function Card(props) {
     const navigator = useNavigate();
-    const info = {
+    const data = {
         name: props.name,
         getCnt: props.getCnt,
         setCnt: props.setCnt,
-        point: props.point 
+        point: props.point,
+
+        title: props.title,
+        contents: props.contents,
+
+        likes: props.likes,
+        comments: props.comments
     }
 
     const handleClick = () => {
-        navigator('/post-detail', {state: info});
+        navigator('/post-detail', {state: data});
     }
     
     return (
@@ -30,14 +36,14 @@ function Card(props) {
                 <span style={{color: "#7A7171", fontSize: "14px"}}>2시간 전</span>
             </style.infoContainer>
             <style.contentBox>
-                <style.title >공병 회수에 대해 알아보자!</style.title>
-                <style.content>하나, 공병을 가지고 있으면 인근 매장에 가서 보증금을 받으세요 둘, 공병을 가지고 있으면 인근 매장에 가서 보증금을 받으세요</style.content>
+                <style.title >{props.title}</style.title>
+                <style.content>{props.contents}</style.content>
             </style.contentBox>
             <style.reactionBox>
                 <style.reactionImg src={process.env.PUBLIC_URL + '/images/Board/Happy.svg'}/>
-                <span style={{color: "#009800"}}> 3 </span>
+                <span style={{color: "#009800"}}> {props.likes} </span>
                 <style.reactionImg src={process.env.PUBLIC_URL + '/images/Board/Message.svg'}/>
-                <span> 5 </span>
+                <span> {props.comments} </span>
             </style.reactionBox>
         </style.Wrap>
     )
