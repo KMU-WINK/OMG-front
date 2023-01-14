@@ -32,7 +32,7 @@ export const Search = styled.input`
   padding-left: 30px;
   outline: none;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 430px) {
       height: 40px;
       font-size: 16px;
     }
@@ -47,7 +47,7 @@ export const mainTitle = styled.div`
   margin-top: 50px;
   margin-left: 35px;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 430px) {
       margin-top: 40px;
   }
 `;
@@ -79,7 +79,7 @@ export const btnWrite = styled.button`
   margin-left: 20%;
   bottom: 65px;
 
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 430px) {
     width: 55px;
     height: 55px;
 

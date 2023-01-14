@@ -7,7 +7,7 @@ export const Wrap = styled.div`
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 430px) {
       margin: 13px;
     }
 `;
@@ -26,7 +26,7 @@ export const infoContainer = styled.div`
 export const profileImg = styled.img`
     width: 36px;
     height: 36px;
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 430px) {
       width: 32px;
       height: 32px;
     }
@@ -37,7 +37,7 @@ export const userInfoBox = styled.div`
     flex-direction: column;
     margin-left: 20px;
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 430px) {
       > span {
         font-size: 14px;
         margin-left: 0px;
@@ -58,7 +58,7 @@ export const title = styled.div`
     color: #000000;
     margin-bottom: 8px;
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 430px) {
       font-size: 14px;
     }
 `;
@@ -75,7 +75,7 @@ export const content = styled.div`
     -webkit-box-orient: vertical;
     margin-bottom: 20px;
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 430px) {
       font-size: 14px;
     }
 `;
@@ -83,7 +83,7 @@ export const content = styled.div`
 export const reactionBox = styled.div`
     display: flex;
     justify-content: flex-end;
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 430px) {
       > span {
         font-size: 14px;
       }
@@ -96,7 +96,7 @@ export const reactionImg = styled.img`
     margin-right: 5px;
     margin-left: 15px;
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 430px) {
       width: 20px;
       height: 20px;
     }
