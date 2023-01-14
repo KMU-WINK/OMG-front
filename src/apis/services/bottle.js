@@ -6,6 +6,7 @@ export const bottleService = {
   createBottle,
   addLike,
   deleteLike,
+  reserveBottle,
 };
 
 async function getBottleList(dto) {
@@ -49,6 +50,15 @@ async function addLike(id) {
 async function deleteLike(id) {
   try {
     const response = await bottleApiController.deleteLike(id);
+    console.log(`response : ${response}`);
+  } catch (e) {
+    throw e;
+  }
+}
+
+async function reserveBottle(id, dto) {
+  try {
+    const response = await bottleApiController.reserveBottle(id, dto);
     console.log(`response : ${response}`);
   } catch (e) {
     throw e;
