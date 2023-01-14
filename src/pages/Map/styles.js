@@ -60,7 +60,9 @@ export const ShowListBtn = styled.div`
 `;
 
 export const BottomInfoBoxWrap = styled.div`
-  width: 440px;
+  // width: 440px;
+  width: 100vw;
+  max-width: 400px;
   bottom: 70px;
   min-height: 180px;
   max-height: 350px;
