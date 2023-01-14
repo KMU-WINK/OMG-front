@@ -48,5 +48,3 @@ function changePassword(dto) {
   axios.interceptors.response.use(handleSuccess, handleError);
   return axios.put(url, dto, { headers: headerJson() });
 }
-
-

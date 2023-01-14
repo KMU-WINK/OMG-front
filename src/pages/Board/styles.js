@@ -33,9 +33,9 @@ export const Search = styled.input`
   outline: none;
 
   @media screen and (max-width: 430px) {
-      height: 40px;
-      font-size: 16px;
-    }
+    height: 40px;
+    font-size: 16px;
+  }
 `;
 
 export const mainTitle = styled.div`
@@ -48,7 +48,7 @@ export const mainTitle = styled.div`
   margin-left: 35px;
 
   @media screen and (max-width: 430px) {
-      margin-top: 40px;
+    margin-top: 40px;
   }
 `;
 

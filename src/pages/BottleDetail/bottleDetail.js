@@ -20,7 +20,7 @@ function BottleDetail(props) {
   const navigator = useNavigate();
 
   const [id, setId] = useState(1); //id 설정
-  const [data, setData] = useState({lat: 0, lng: 0});
+  const [data, setData] = useState({ lat: 0, lng: 0 });
 
   useEffect(() => {
     (async () => {
@@ -116,10 +116,10 @@ function BottleDetail(props) {
         position: new kakao.maps.LatLng(data.lat, data.lng),
         image: markerImage,
       });
-    } catch(err) {
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
-    return () => {}
+    return () => {};
   }, [data]);
 
   return (
@@ -150,10 +150,22 @@ function BottleDetail(props) {
                   src={process.env.PUBLIC_URL + "/images/Common/Profile.svg"}
                 />
                 <style.userInfoBox>
-                  <span style={{ fontWeight: "600" }}> {data?.user?.name} </span>
+                  <span style={{ fontWeight: "600" }}>
+                    {" "}
+                    {data?.user?.name}{" "}
+                  </span>
                   <span>
-                    수거 <b style={{ color: "#009800" }}> {data?.user?.bottleBuy}회 </b> | 등록{" "}
-                    <b style={{ color: "#009800" }}> {data?.user?.bottleSell}회 </b> | 공병지수{" "}
+                    수거{" "}
+                    <b style={{ color: "#009800" }}>
+                      {" "}
+                      {data?.user?.bottleBuy}회{" "}
+                    </b>{" "}
+                    | 등록{" "}
+                    <b style={{ color: "#009800" }}>
+                      {" "}
+                      {data?.user?.bottleSell}회{" "}
+                    </b>{" "}
+                    | 공병지수{" "}
                     <b style={{ color: "#009800" }}> {data?.user?.point}ml </b>
                   </span>
                 </style.userInfoBox>
@@ -169,9 +181,7 @@ function BottleDetail(props) {
                 }
               />
             </style.infoContainer>
-            <style.image
-              src={process.env.PUBLIC_URL + data?.img}
-            />
+            <style.image src={process.env.PUBLIC_URL + data?.img} />
             <style.banners>
               {data?.sojuNum !== 0 ? (
                 <Banner
@@ -228,9 +238,7 @@ function BottleDetail(props) {
             </style.bottleBanners>
             <WhiteView
               btnName={[
-                <b style={{ color: "#009800" }}>
-                  총 보증금 {data?.money}원
-                </b>,
+                <b style={{ color: "#009800" }}>총 보증금 {data?.money}원</b>,
                 " 예상",
               ]}
             />
@@ -292,9 +300,7 @@ function BottleDetail(props) {
             />
             <WhiteView
               btnName={[
-                <b style={{ color: "#009800" }}>
-                  총 보증금 {data?.money}원
-                </b>,
+                <b style={{ color: "#009800" }}>총 보증금 {data?.money}원</b>,
                 " 예상",
               ]}
             />
@@ -308,7 +314,8 @@ function BottleDetail(props) {
             <WhiteView
               btnName={[
                 <b style={{ color: "#009800" }}>공동현관 비밀번호</b>,
-                " | ", data?.entrancePassword
+                " | ",
+                data?.entrancePassword,
               ]}
             />
             <style.boldTexts>
