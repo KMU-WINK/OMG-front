@@ -50,12 +50,17 @@ function PostDetail(props) {
         setModifyPost(true);
     }
     
-    // 수정 모달창에서 확인 버튼 눌렀을 때
+    // 수정 모달창 닫을 때 
     const closeModifyModal = () => {
         setModifyPost(false);
-        // 글쓰기 화면으로 넘어감 (글 내용 그대로 가지고) 
-        
     }
+
+    // 수정 버튼 눌렀을 때 
+    const ModifyPost = () => {
+        setModifyPost(false);
+        navigate("/write-post");
+    }
+
 
 
     const clickPost = () => {
@@ -134,7 +139,7 @@ function PostDetail(props) {
 
             {modifyPost ? 
                 <Modal4 open={openModifyModal} close={closeModifyModal} header=""
-            button1={closeModifyModal} button1Content="확인">
+            button1={ModifyPost} button1Content="확인">
                 <span style={{fontSize: "18px", fontWeight: "bold", alignSelf: "center"}}>{"이 글을 수정하시겠습니까?"}</span>
                 </Modal4> : null}
             <Footer />

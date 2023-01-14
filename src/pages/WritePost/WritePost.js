@@ -1,23 +1,35 @@
 import react, {useState} from "react";
+import {useNavigate} from "react-router";
 import * as style from "./styles";
 import Footer from "../../components/Footer/footer";
 import Header from "../../components/Header/header";
 import {Col} from "./styles";
+import { boardService } from "../../apis/services/board";
 
 function WritePost(props) {
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    const [userInput, setUserInputs] = useState({
+        title: '',
+        content: ''
+    });
     const [showPopup, setShowPopup] = useState(true);
+    const navigate = useNavigate();
 
     const UploadPost = () => {
-        if (!title) alert("글 제목을 입력하세요")
-        if (!content) alert("글 내용을 입력하세요")
+        if (!userInput['title']) alert("글 제목을 입력하세요")
+        if (!userInput['content']) alert("글 내용을 입력하세요")
+        boardService.createBoard(userInput);
+        navigate("/board");
+
     }
 
     const changeValue = (name) => (e) => {
         switch(name) {
-            case "title": setTitle(e.target.value); break;
-            case "content": setContent(e.target.value); break;
+            case "title": setUserInputs((prevState) => {
+                return { ...prevState, title: e.target.value }
+            }); break;
+            case "content": setUserInputs((prevState) => {
+                return { ...prevState, content: e.target.value }
+            }); break;
             default: break;
         }
     }
