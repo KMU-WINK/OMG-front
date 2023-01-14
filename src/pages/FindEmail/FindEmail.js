@@ -26,7 +26,7 @@ function FindEmail() {
         if (Form.name && Form.phone) {
             try {
                 await authApiController.ForgotEmail(Form);
-                alert("문자를 확인해 주세요 !")
+                alert("문자를 확인해주세요 !")
             } catch (e) {
                 console.log(e)
             }

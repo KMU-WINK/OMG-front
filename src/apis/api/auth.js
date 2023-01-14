@@ -9,6 +9,8 @@ export const authApiController = {
   register,
   logout,
   ForgotEmail,
+  getToken,
+  changePassword,
 };
 
 function login(dto) {
@@ -34,4 +36,17 @@ function ForgotEmail(dto) {
   axios.interceptors.response.use(handleSuccess, handleError);
   return axios.post(url, dto, { headers: headerJson() });
 }
+
+function getToken(dto) {
+  const url = `${process.env.REACT_APP_BASE_URL}/${model}/forgot/password`;
+  axios.interceptors.response.use(handleSuccess, handleError);
+  return axios.post(url, dto, { headers: headerJson() });
+}
+
+function changePassword(dto) {
+  const url = `${process.env.REACT_APP_BASE_URL}/${model}/forgot/password`;
+  axios.interceptors.response.use(handleSuccess, handleError);
+  return axios.put(url, dto, { headers: headerJson() });
+}
+
 
