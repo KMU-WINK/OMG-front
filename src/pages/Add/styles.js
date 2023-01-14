@@ -10,14 +10,14 @@ export const Wrap = styled.div`
 
 export const Top = styled.div`
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: flex-end;
     margin: 10px 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    gap: 10px;
+  
     > img {
         width: 21.5px;
         height: 21.5px;
-        margin-left: 10px;
+        cursor: pointer;
     }
 `;
 
@@ -107,7 +107,7 @@ export const ImgBlock = styled.div`
     > img {
       object-fit: cover;
       :first-child {
-        width: 440px;
+        width: 100%;
         height: 180px;
         border-radius: 30px;
         background: #D9D9D9;
@@ -125,11 +125,15 @@ export const ImgContents = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    > label {
+        width: 100%;
+    }
 `;
 
 export const texts = styled.div`
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
     font-weight: 500;
     font-size: 14px;
