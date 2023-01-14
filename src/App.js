@@ -37,7 +37,7 @@ function App() {
                 <Route path="/board" element={<Board/>} />
                 <Route path="/map" element={<Map/>} />
                 <Route path="/noti" element={<Notification/>} />
-                <Route path="/mypage" element={<MyPage/>} />
+                <Route path="/mypage/:id" element={<MyPage/>} />
                 <Route path="/setting" element={<Setting/>} />
                 <Route path="/change-password" element={<ChangePassword/>} />
                 <Route path="/find-email" element={<FindEmail/>} />
