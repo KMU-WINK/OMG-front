@@ -8,6 +8,9 @@ export const Wrap = styled.div`
       margin-bottom: 12px;
     }
   }
+  > div:nth-child(2) {
+    margin-top: 12px;
+  }
 `;
 
 export const SubTitle = styled.div`
