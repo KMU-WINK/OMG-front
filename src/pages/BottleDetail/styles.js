@@ -27,6 +27,7 @@ export const address = styled.div`
     background: rgba(0, 152, 0, 0.7);
     display: flex;
     align-items: center;
+    text-align: center;
     justify-content: center;
     height: 50px;
     border-radius: 30px;
@@ -62,7 +63,7 @@ export const userInfoBox = styled.div`
 
 export const image = styled.img`
     object-fit: cover;
-    width: 440px;
+    width: 100%;
     height: 180px;
     border-radius: 30px;
     background: #D9D9D9;
@@ -96,6 +97,7 @@ export const bottleBanners = styled.div`
 
 export const texts = styled.div`
     display: flex;
+    text-align: center;
     flex-direction: column;
     align-items: center;
     font-weight: 500;
@@ -105,6 +107,7 @@ export const texts = styled.div`
 
 export const boldTexts = styled.div`
     display: flex;
+    text-align: center;
     margin-top: 20px;
     flex-direction: column;
     align-items: center;
@@ -115,6 +118,7 @@ export const boldTexts = styled.div`
 
 export const check = styled.div`
     display: flex;
+    margin: 10px 30px;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
@@ -125,5 +129,8 @@ export const check = styled.div`
 
 export const x = styled.div`
     display: flex;
+    gap: 10px;
     align-items: center;
+    cursor: pointer;
+    user-select: none;
 `;

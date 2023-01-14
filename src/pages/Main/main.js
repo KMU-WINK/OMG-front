@@ -6,7 +6,6 @@ import VerticalButton from '../../components/Button/verticalButton';
 import Banner from '../../components/Banner/banner';
 import {useNavigate} from "react-router";
 
-
 function Main(props) {
 
     const navigate = useNavigate();

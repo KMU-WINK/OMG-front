@@ -213,15 +213,15 @@ function Add(props) {
     const openAddModal = () => setAddModal(true);
     const closeAddModal = () => {
         setAddModal(false);
-        navigate("/")
+        navigate("/");
     }
 
 
     return (
         <style.Wrap>
             <style.Top>
-                <img src={process.env.PUBLIC_URL + '/images/Main/notiIcon.svg'}/>
-                <img src={process.env.PUBLIC_URL + '/images/Main/myIcon.svg'}/>
+                <img src={process.env.PUBLIC_URL + '/images/Main/myIcon.svg'} onClick={()=>navigate("/mypage")}/>
+                <img src={process.env.PUBLIC_URL + '/images/Main/notiIcon.svg'} onClick={()=>navigate("/noti")}/>
             </style.Top>
 
             <style.Top2>
@@ -229,7 +229,7 @@ function Add(props) {
             </style.Top2>
 
             <style.Top3>
-                <WhiteFullButton style={{ justifyContent: "center",  fontWeight: "600"}} btnName={fullAddress} onClick={openModal}/>
+                <WhiteFullButton style={{ justifyContent: "center", fontWeight: "600", textAlign: "center"}} btnName={fullAddress} onClick={openModal}/>
             </style.Top3>
 
             <style.Wrap2>
