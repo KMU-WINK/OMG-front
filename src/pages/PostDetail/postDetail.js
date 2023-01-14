@@ -100,6 +100,7 @@ function PostDetail(props) {
                 <style.reactionImg src={process.env.PUBLIC_URL + '/images/Board/Message.svg'}/>
                 <span style={{fontSize: "14px", alignSelf: "center", marginRight: "30px"}}> 5 </span>
             </style.reactionBox>
+            <style.underLine />
             <style.SearchContainer>
                 <input type={"text"} placeholder={"댓글을 입력해주세요"}/>
                 <img src={process.env.PUBLIC_URL + '/images/Board/SendComment.svg'} onClick={clickPost}/>

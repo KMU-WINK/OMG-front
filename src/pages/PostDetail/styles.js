@@ -12,12 +12,24 @@ export const infoContainer = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: 20px;
-    justify-content: center;
+    //justify-content: center;
+    margin-left: 10%;
+    @media screen and (max-width: 430px) {
+      > span {
+        font-size: 14px;
+      }
+      margin-left: 7%;
+    }
 `;
 
 export const profileImg = styled.img`
     width: 36px;
     height: 36px;
+
+    @media screen and (max-width: 430px) {
+      width: 32px;
+      height: 32px;
+    }
 `
 
 export const userInfoBox = styled.div`
@@ -25,7 +37,13 @@ export const userInfoBox = styled.div`
     height: fit-content;
     display: flex;
     flex-direction: column;
-    margin-left: 17px;
+    margin-left: 20px;
+
+    @media screen and (max-width: 430px) {
+      > span {
+        font-size: 14px; 
+      }
+    }
 `;
 
 export const title = styled.div`
@@ -35,6 +53,12 @@ export const title = styled.div`
     color: #000000;
     margin-top: 38px;
     margin-left: 10%;
+
+    @media screen and (max-width: 430px) {
+        margin-top: 28px;
+        font-size: 16px;
+        margin-left: 7%;
+    }
 `;
 
 export const content = styled.div`
@@ -48,6 +72,12 @@ export const content = styled.div`
     color: #000000;
     margin-top: 25px;
     margin-left: 10%;
+
+    @media screen and (max-width: 430px) {
+        margin-top: 18px;
+        font-size: 14px;
+        margin-left: 7%;
+    }
 `;
 
 export const reactionBox = styled.div`
@@ -57,10 +87,14 @@ export const reactionBox = styled.div`
     display: flex;
     justify-content: flex-end;
     margin-top: 22px;
-
     padding-bottom: 12px;
-    border-bottom: 1.5px solid #E9E9E9;
-    border-top: none; border-left: none; border-right: none;
+
+    @media screen and (max-width: 430px) {
+        > span {
+            margin-top: 2px;
+            font-size: 12px;
+        }
+    }
 `;
 
 export const reactionImg = styled.img`
@@ -98,6 +132,11 @@ export const SearchContainer = styled.div`
         height: 24px;
         cursor: pointer;
     }
+    @media screen and (max-width: 430px) {
+        width: 85%;
+        margin: 0 10px;
+    }
+    
 `;
 
 export const menuModalBack = styled.div`
@@ -135,5 +174,5 @@ export const underLine = styled.div`
     margin-top: 15px;
     border-bottom: 1.5px solid #E9E9E9;
     border-top: none; border-left: none; border-right: none;
-    text-align: center;
+    //text-align: center;
 `;
