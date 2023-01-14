@@ -19,7 +19,7 @@ export const Wrap2 = styled.div`
   background: white;
   display: flex;
   flex-direction: column;
-  border-radius: 30px 30px 0 0;
+  border-radius: 0;
 `;
 
 export const address = styled.div`

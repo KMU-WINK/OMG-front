@@ -30,7 +30,6 @@ function Main(props) {
   useEffect(() => {
     console.log(data);
   }, [data]);
-  //
 
   return (
     <style.Wrap>
@@ -46,15 +45,15 @@ function Main(props) {
       </style.Top>
       <style.Top2>
         <h1>
-          이유빈님 안녕하세요
-          <br /> 5병의 공병을 재활용 했어요{" "}
+          {data?.user?.user?.name}님 안녕하세요
+          <br />{data?.myBottle?.length + data?.completeBottle?.length}병의 공병을 재활용 했어요
         </h1>
       </style.Top2>
       <View
         contents={[
-          <b style={{ color: "#009800" }}>3병</b>,
+          <b style={{ color: "#009800" }}>{data?.completeBottle?.length}병</b>,
           "의 공병을 수거하고 ",
-          <b style={{ color: "#009800" }}>2병</b>,
+          <b style={{ color: "#009800" }}>{data?.myBottle?.length}병</b>,
           "의 공병을 등록했어요",
         ]}
       />

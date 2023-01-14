@@ -12,10 +12,29 @@ import WhiteView from "../../components/View/whiteView";
 import Modal2 from "../../components/Modal/modal2";
 import Modal4 from "../../components/Modal/modal4";
 
+import { bottleService } from "../../apis/services/bottle";
+
 const { kakao } = window;
 
 function BottleDetail(props) {
   const navigator = useNavigate();
+
+  const [id, setId] = useState(1); //id 설정
+  const [data, setData] = useState({lat: 0, lng: 0});
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setData(await bottleService.getBottleOne(id));
+      } catch (e) {
+        console.log(`main page: ${e}`);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const [indexNum, setIndexNum] = useState(1); //데이터 인덱스
   const [pageNum, setPageNum] = useState(1); //페이지 번호
@@ -78,43 +97,30 @@ function BottleDetail(props) {
   const openErrorModal = () => setOpenErrorModal(true);
   const closeErrorModal = () => setOpenErrorModal(false);
 
-  const [mapCenter, setMapCenter] = useState({
-    lat: DATA[indexNum].markerData.lat,
-    lng: DATA[indexNum].markerData.lng,
-  });
-
   useEffect(() => {
-    const mapScript = document.createElement("script");
+    try {
+      let container = document.getElementById("map");
+      let options = {
+        center: new kakao.maps.LatLng(data.lat, data.lng),
+        level: 2,
+      };
+      let map = new kakao.maps.Map(container, options);
 
-    mapScript.async = true;
-    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAOMAP_KEY}&autoload=false`;
-
-    document.head.appendChild(mapScript);
-
-    const onLoadKakaoMap = () => {
-      new kakao.maps.load(() => {
-        let container = document.getElementById("map");
-        let options = {
-          center: new kakao.maps.LatLng(mapCenter.lat, mapCenter.lng),
-          level: 2,
-        };
-        let map = new kakao.maps.Map(container, options);
-
-        // 마커 이미지의 이미지 주소
-        let imageSrc = process.env.PUBLIC_URL + "/images/Common/markerIcon.svg";
-        const imageSize = new kakao.maps.Size(24, 35);
-        // 마커 이미지 생성
-        const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-        const marker = new kakao.maps.Marker({
-          map: map,
-          position: new kakao.maps.LatLng(mapCenter.lat, mapCenter.lng),
-          image: markerImage,
-        });
+      // 마커 이미지의 이미지 주소
+      let imageSrc = process.env.PUBLIC_URL + "/images/Common/markerIcon.svg";
+      const imageSize = new kakao.maps.Size(24, 35);
+      // 마커 이미지 생성
+      const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+      const marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(data.lat, data.lng),
+        image: markerImage,
       });
-    };
-    mapScript.addEventListener("load", onLoadKakaoMap);
-    return () => mapScript.removeEventListener("load", onLoadKakaoMap);
-  }, []);
+    } catch(err) {
+      console.log(err)
+    }
+    return () => {}
+  }, [data]);
 
   return (
     <style.Wrap>
@@ -129,13 +135,13 @@ function BottleDetail(props) {
           style={{
             maxWidth: "480px",
             width: "100vw",
-            height: "230px",
+            height: "200px",
           }}
         ></div>
       </style.map>
 
       <style.Wrap2>
-        <style.address>{DATA[indexNum].address}</style.address>
+        <style.address>{data?.address}</style.address>
         {pageNum === 1 ? ( //1페이지
           <>
             <style.infoContainer>
@@ -144,11 +150,11 @@ function BottleDetail(props) {
                   src={process.env.PUBLIC_URL + "/images/Common/Profile.svg"}
                 />
                 <style.userInfoBox>
-                  <span style={{ fontWeight: "600" }}> 이유빈 </span>
+                  <span style={{ fontWeight: "600" }}> {data?.user?.name} </span>
                   <span>
-                    수거 <b style={{ color: "#009800" }}> 1회 </b> | 등록{" "}
-                    <b style={{ color: "#009800" }}> 2회 </b> | 공병지수{" "}
-                    <b style={{ color: "#009800" }}> 30ml </b>
+                    수거 <b style={{ color: "#009800" }}> {data?.user?.bottleBuy}회 </b> | 등록{" "}
+                    <b style={{ color: "#009800" }}> {data?.user?.bottleSell}회 </b> | 공병지수{" "}
+                    <b style={{ color: "#009800" }}> {data?.user?.point}ml </b>
                   </span>
                 </style.userInfoBox>
               </div>
@@ -164,42 +170,36 @@ function BottleDetail(props) {
               />
             </style.infoContainer>
             <style.image
-              src={process.env.PUBLIC_URL + "/images/Add/altImg.png"}
+              src={process.env.PUBLIC_URL + data?.img}
             />
             <style.banners>
-              {DATA[indexNum].sojuNum !== 0 ? (
+              {data?.sojuNum !== 0 ? (
                 <Banner
                   styleSoju
-                  btnName={["소주병", <br />, DATA[indexNum].sojuNum, "병"]}
+                  btnName={["소주병", <br />, data?.sojuNum, "병"]}
                 />
-              ) : (
-                <></>
-              )}
-              {DATA[indexNum].beerNum !== 0 ? (
+              ) : null}
+              {data?.beerNum !== 0 ? (
                 <Banner
                   styleBeer
-                  btnName={["맥주병", <br />, DATA[indexNum].beerNum, "병"]}
+                  btnName={["맥주병", <br />, data?.beerNum, "병"]}
                 />
-              ) : (
-                <></>
-              )}
-              {DATA[indexNum].extraNum !== 0 ? (
+              ) : null}
+              {data?.extraNum !== 0 ? (
                 <Banner
                   styleEtc
-                  btnName={["기타", <br />, DATA[indexNum].extraNum, "병"]}
+                  btnName={["기타", <br />, data?.extraNum, "병"]}
                 />
-              ) : (
-                <></>
-              )}
+              ) : null}
               <Banner
                 style2
-                btnName={["예상 보증금", <br />, DATA[indexNum].money, "원"]}
+                btnName={["예상 보증금", <br />, data?.money, "원"]}
               />
               <Banner style3 btnName={["내부 이물질", <br />, "없어요"]} />
               <Banner style3 btnName={["깨진 부분", <br />, "없어요"]} />
             </style.banners>
             <style.etcFont>
-              조회 {DATA[indexNum].click} | 관심 {DATA[indexNum].like}
+              조회 {data?.clicks} | 관심 {data?.likes?.length}
             </style.etcFont>
             <GreenFullButton
               onClick={pageClick}
@@ -213,23 +213,23 @@ function BottleDetail(props) {
               <BottleBanner
                 style1
                 style={{ margin: "0px", cursor: "default" }}
-                btnName={["소주병", <br />, DATA[indexNum].sojuNum, "병"]}
+                btnName={["소주병", <br />, data?.sojuNum, "병"]}
               />
               <BottleBanner
                 style2
                 style={{ margin: "0px", cursor: "default" }}
-                btnName={["맥주병", <br />, DATA[indexNum].beerNum, "병"]}
+                btnName={["맥주병", <br />, data?.beerNum, "병"]}
               />
               <BottleBanner
                 style3
                 style={{ margin: "0px", cursor: "default" }}
-                btnName={["기타", <br />, DATA[indexNum].extraNum, "병"]}
+                btnName={["기타", <br />, data?.extraNum, "병"]}
               />
             </style.bottleBanners>
             <WhiteView
               btnName={[
                 <b style={{ color: "#009800" }}>
-                  총 보증금 {DATA[indexNum].money}원
+                  총 보증금 {data?.money}원
                 </b>,
                 " 예상",
               ]}
@@ -250,11 +250,11 @@ function BottleDetail(props) {
             <WhiteView
               btnName={[
                 "소주병 ",
-                <b style={{ color: "#009800" }}>{DATA[indexNum].sojuNum}병</b>,
+                <b style={{ color: "#009800" }}>{data?.sojuNum}병</b>,
                 " | 맥주병 ",
-                <b style={{ color: "#009800" }}>{DATA[indexNum].beerNum}병</b>,
+                <b style={{ color: "#009800" }}>{data?.beerNum}병</b>,
                 " | 기타 ",
-                <b style={{ color: "#009800" }}>{DATA[indexNum].extraNum}병</b>,
+                <b style={{ color: "#009800" }}>{data?.extraNum}병</b>,
               ]}
             />
             <WhiteView
@@ -283,17 +283,17 @@ function BottleDetail(props) {
             <WhiteView
               btnName={[
                 "소주병 ",
-                <b style={{ color: "#009800" }}>{DATA[indexNum].sojuNum}병</b>,
+                <b style={{ color: "#009800" }}>{data?.sojuNum}병</b>,
                 " | 맥주병 ",
-                <b style={{ color: "#009800" }}>{DATA[indexNum].beerNum}병</b>,
+                <b style={{ color: "#009800" }}>{data?.beerNum}병</b>,
                 " | 기타 ",
-                <b style={{ color: "#009800" }}>{DATA[indexNum].extraNum}병</b>,
+                <b style={{ color: "#009800" }}>{data?.extraNum}병</b>,
               ]}
             />
             <WhiteView
               btnName={[
                 <b style={{ color: "#009800" }}>
-                  총 보증금 {DATA[indexNum].money}원
+                  총 보증금 {data?.money}원
                 </b>,
                 " 예상",
               ]}
@@ -308,7 +308,7 @@ function BottleDetail(props) {
             <WhiteView
               btnName={[
                 <b style={{ color: "#009800" }}>공동현관 비밀번호</b>,
-                " | 종누르고 1234",
+                " | ", data?.entrancePassword
               ]}
             />
             <style.boldTexts>
