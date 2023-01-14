@@ -7,13 +7,30 @@ import Banner from "../../components/Banner/banner";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { boardService } from "../../apis/services/board";
+import { bottleService } from "../../apis/services/bottle";
+import { meService } from "../../apis/services/me";
+import { useState } from "react";
 
 function Main(props) {
   const navigate = useNavigate();
 
+  // api 연동 예시.. 근데 저도 잘 몰라서.. 이거보다 더 좋은 방법이 있을 수 있습니다..
+  const [data, setData] = useState();
+
   useEffect(() => {
-    boardService.getBoardList();
-  });
+    (async () => {
+      try {
+        setData(await meService.getInfo());
+      } catch (e) {
+        console.log(`main page: ${e}`);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+  //
 
   return (
     <style.Wrap>
