@@ -19,7 +19,7 @@ function Header(props) {
                     : props.title === "게시글" ?
                         <img src={process.env.PUBLIC_URL + '/images/Common/meatballs.svg'} onClick={props.onClick}/>
                     : props.title === "알림" ?
-                        <img src={process.env.PUBLIC_URL + '/images/Common/meatballs.svg'}/>
+                        <img src={process.env.PUBLIC_URL + '/images/Common/meatballs.svg'} onClick={props.onClick}/>
                     :   null
                 }
             </style.Title>
