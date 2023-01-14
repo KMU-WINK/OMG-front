@@ -43,7 +43,7 @@ function Login() {
   return (
     <style.Wrap>
       <style.LogoBlock>
-        <img src={""} />
+        <img src={process.env.PUBLIC_URL + "/images/Common/default.png"} />
       </style.LogoBlock>
       <style.InputBlock>
         <div>
