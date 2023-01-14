@@ -90,8 +90,8 @@ function Login() {
         </style.LoginSetting>
       </style.InputBlock>
       <style.ButtonBlock>
-        <FullButton btnName={"로그인"} onClick={handleLogin}/>
-        <StrokeButton btnName={"회원가입"} onClick={()=> navigate('/join')}/>
+        <FullButton btnName={"로그인"} onClick={handleLogin} />
+        <StrokeButton btnName={"회원가입"} onClick={() => navigate("/join")} />
       </style.ButtonBlock>
     </style.Wrap>
   );
