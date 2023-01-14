@@ -8,7 +8,12 @@ function Header(props) {
   return (
     <style.Wrap>
       <style.Title>
-        <img src={process.env.PUBLIC_URL + "/images/Header/backIcon.svg"} />
+        <img
+          src={process.env.PUBLIC_URL + "/images/Header/backIcon.svg"}
+          onClick={() => {
+            navigator(-1);
+          }}
+        />
         <span>{props.title}</span>
         {props.title === "마이페이지" ? (
           <img

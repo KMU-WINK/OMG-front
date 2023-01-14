@@ -16,7 +16,6 @@ function BottomSheet({ children }) {
   const isBottomSheetOpen = useRef(true);
 
   const handleBottomSheet = (e) => {
-    console.log("button");
     isBottomSheetOpen.current = !isBottomSheetOpen.current;
     if (isBottomSheetOpen.current) {
       content.current.style.setProperty("transform", `translateY(${MAX_Y}px)`);
@@ -36,7 +35,9 @@ function BottomSheet({ children }) {
   return (
     <style.Wrapper ref={content}>
       <style.BottomBtnWrap>
-        <style.ShowListBtn>
+        <style.ShowListBtn
+          style={{ display: children.length === 0 ? "none" : "" }}
+        >
           <CircleButton
             onClick={() => {
               handleBottomSheet();
@@ -45,7 +46,9 @@ function BottomSheet({ children }) {
           />
         </style.ShowListBtn>
       </style.BottomBtnWrap>
-      <style.BottomSheetWrapper>
+      <style.BottomSheetWrapper
+        style={{ display: children.length === 0 ? "none" : "" }}
+      >
         <style.HeaderWrapper ref={sheet}>
           <style.Handle />
         </style.HeaderWrapper>
