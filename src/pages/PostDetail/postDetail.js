@@ -6,6 +6,7 @@ import Modal4 from "../../components/Modal/modal4";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { boardService } from "../../apis/services/board";
+import { meService } from "../../apis/services/me";
 
 function PostDetail(props) {
   const { state } = useLocation();
@@ -13,6 +14,7 @@ function PostDetail(props) {
   const data = {
     type: "EDIT",
     id: state.id,
+    userId: state.userId,
     title: state.title,
     contents: state.contents,
   };
@@ -21,6 +23,18 @@ function PostDetail(props) {
   const [showMenuPopup, setMenuPopup] = useState(false);
   const [modifyPost, setModifyPost] = useState(false);
   const [deletePost, setDeletePost] = useState(false);
+
+  const [currentUser, setCurrentUser] = useState("");
+  useEffect(() => {
+    (async () => {
+      try {
+        const getInfo = await meService.getInfo();
+        setCurrentUser(getInfo["user"]["user"]["id"]);
+      } catch (e) {
+        console.log(e);
+      }
+    })();
+  }, []);
 
   const clickMenu = () => {
     setMenuPopup(true);
@@ -33,35 +47,30 @@ function PostDetail(props) {
     setShowReaction(false);
   };
 
-  // 삭제 모달창 열릴 때
   const openDeleteModal = () => {
     setMenuPopup(false);
     setDeletePost(true);
   };
-  // 삭제 모달창 닫을 때
+
   const closeDeleteModal = () => {
     setDeletePost(false);
   };
-  // 삭제 모달창에서 확인 버튼 눌렀을 때
+
   const DeletePost = () => {
     setDeletePost(false);
     boardService.deleteBoard(state.id);
-    // 글 삭제 후 게시판으로 이동
     navigate("/board");
   };
 
-  // 수정 모달창 열릴 때
   const openModifyModal = () => {
     setMenuPopup(false);
     setModifyPost(true);
   };
 
-  // 수정 모달창 닫을 때
   const closeModifyModal = () => {
     setModifyPost(false);
   };
 
-  // 수정 버튼 눌렀을 때
   const ModifyPost = () => {
     setModifyPost(false);
     navigate("/write-post", { state: data });
@@ -88,7 +97,7 @@ function PostDetail(props) {
     return () => document.removeEventListener("click", handleCloseMenu);
   }, []);
 
-  const Menu = () => {
+  const UserMenu = () => {
     return (
       <style.menuModalBack ref={dimmed}>
         <style.menuModal ref={contents}>
@@ -122,11 +131,29 @@ function PostDetail(props) {
     );
   };
 
+  const NotUserMenu = () => {
+    return (
+      <style.menuModalBack ref={dimmed}>
+        <style.menuModal style={{ height: "130px" }} ref={contents}>
+          <span
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              alert("신고 기능은 아직 구현 중입니다.");
+              setMenuPopup(false);
+            }}
+          >
+            신고하기
+          </span>
+        </style.menuModal>
+      </style.menuModalBack>
+    );
+  };
+
   return (
     <style.Wrap>
       <Header title={"게시글"} onClick={clickMenu} />
       <style.infoContainer>
-        <style.profileImg
+        <style.ProfileImg
           src={process.env.PUBLIC_URL + "/images/Common/Profile.svg"}
         />
         <style.userInfoBox>
@@ -212,7 +239,11 @@ function PostDetail(props) {
         />
       </style.SearchContainer>
 
-      {showMenuPopup ? <Menu /> : null}
+      {showMenuPopup && currentUser === data.userId ? (
+        <UserMenu />
+      ) : showMenuPopup && currentUser !== data.userId ? (
+        <NotUserMenu />
+      ) : null}
       {deletePost ? (
         <Modal4
           open={openDeleteModal}

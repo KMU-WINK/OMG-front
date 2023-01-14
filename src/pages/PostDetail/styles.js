@@ -22,9 +22,10 @@ export const infoContainer = styled.div`
   }
 `;
 
-export const profileImg = styled.img`
-  width: 36px;
-  height: 36px;
+export const ProfileImg = styled.img`
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
 
   @media screen and (max-width: 430px) {
     width: 32px;
@@ -183,4 +184,29 @@ export const underLine = styled.div`
   border-top: none;
   border-left: none;
   border-right: none;
+`;
+
+export const UserImg = styled.img`
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+
+  @media screen and (max-width: 430px) {
+    width: 28px;
+    height: 28px;
+  }
+`;
+
+export const CommentInfoBox = styled.div`
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+
+  @media screen and (max-width: 430px) {
+    > span {
+      font-size: 14px;
+    }
+  }
 `;

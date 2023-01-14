@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrap = styled.div`
   position: fixed;
+  max-width: 480px;
   width: 100%;
   bottom: 0;
   z-index: 99;
@@ -16,7 +17,7 @@ export const Menu = styled.div`
   border-top: 1px solid #f1f1f5;
 `;
 
-export const BtnLink = styled.a`
+export const BtnLink = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
