@@ -14,12 +14,14 @@ function MyPage() {
   const imgRef = useRef();
   const [base64, setBase64] = useState("");
   const [image, setImage] = useState();
+  const [fullData, setFullData] = useState();
 
   useEffect(() => {
     (async () => {
       try {
         const data = await meService.getInfo();
         setData(data.user.user);
+        setFullData(data);
       } catch (e) {
         // console.log(`mypage: ${e}`);
         setData({ name: "guest" });
@@ -32,7 +34,6 @@ function MyPage() {
   }, [data]);
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const upload = async (e) => {
     let file = imgRef.current.files[0];
@@ -112,7 +113,7 @@ function MyPage() {
               </div>
               <div>
                 <span>찜내역</span>
-                <span>123 건</span>
+                <span>{fullData?.likedBottle.length} 건</span>
               </div>
             </style.RecordBlock>
           </style.FirstContents>
