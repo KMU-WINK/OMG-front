@@ -11,6 +11,7 @@ export const bottleApiController = {
   deleteBottle,
   addLike,
   deleteLike,
+  addClick,
 };
 
 function getBottleList() {
@@ -40,11 +41,17 @@ function deleteBottle(id) {
 function addLike(id) {
   const url = `${process.env.REACT_APP_BASE_URL}/${model}/${id}/like`;
   axios.interceptors.response.use(handleSuccess, handleError);
-  return axios.post(url, { headers: authHeaderJson() });
+  return axios.post(url, {}, { headers: authHeaderJson() });
 }
 
 function deleteLike(id) {
   const url = `${process.env.REACT_APP_BASE_URL}/${model}/${id}/like`;
   axios.interceptors.response.use(handleSuccess, handleError);
   return axios.delete(url, { headers: authHeaderJson() });
+}
+
+function addClick(id) {
+  const url = `${process.env.REACT_APP_BASE_URL}/${model}/${id}/click`;
+  axios.interceptors.response.use(handleSuccess, handleError);
+  return axios.post(url, {}, { headers: authHeaderJson() });
 }
