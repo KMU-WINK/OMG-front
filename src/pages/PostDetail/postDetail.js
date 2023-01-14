@@ -32,10 +32,12 @@ function PostDetail(props) {
         setMenuPopup(false);
         setDeletePost(true);
     }
-    
-    
-    // 삭제 모달창에서 확인 버튼 눌렀을 때
+    // 삭제 모달창 닫을 때 
     const closeDeleteModal = () => {
+        setDeletePost(false);
+    }
+    // 삭제 모달창에서 확인 버튼 눌렀을 때
+    const DeletePost = () => {
         setDeletePost(false);
         boardService.deleteBoard(state.id);
         // 글 삭제 후 게시판으로 이동 
@@ -126,7 +128,7 @@ function PostDetail(props) {
             {showMenuPopup ? <Menu/> : null}
             {deletePost ? 
                 <Modal4 open={openDeleteModal} close={closeDeleteModal} header=""
-            button1={closeDeleteModal} button1Content="확인">
+            button1={DeletePost} button1Content="확인">
                 <span style={{fontSize: "18px", fontWeight: "bold", alignSelf: "center"}}>{"이 글을 삭제하시겠습니까?"}</span>
                 </Modal4> : null}
 
