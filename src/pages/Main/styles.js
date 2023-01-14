@@ -79,6 +79,7 @@ export const community = styled.div`
 
 export const box = styled.div`
   margin: 0 20px 10px 20px;
+  min-height: 130px;
   background: #ffffff;
   border-radius: 30px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
