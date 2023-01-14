@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import * as style from "./styles";
 import { meService } from "../../apis/services/me";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
   const [data, setData] = useState();
+  const navigator = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -11,7 +13,6 @@ function Footer() {
         const data = await meService.getInfo();
         setData(data.user?.user);
       } catch (e) {
-        // console.log(`footer: ${e}`);
         setData({ name: "guest" });
       }
     })();
@@ -20,19 +21,25 @@ function Footer() {
   return (
     <style.Wrap>
       <style.Menu>
-        <style.BtnLink href={"/"}>
+        <style.BtnLink onClick={() => navigator("/")}>
           <img src={process.env.PUBLIC_URL + "/images/Footer/mainIcon.svg"} />
         </style.BtnLink>
-        <style.BtnLink href={"/map"}>
+        <style.BtnLink onClick={() => navigator("/map")}>
           <img src={process.env.PUBLIC_URL + "/images/Footer/mapIcon.svg"} />
         </style.BtnLink>
-        <style.BtnLink href={"/write-post"}>
+        <style.BtnLink
+          onClick={() =>
+            navigator("/write-post", {
+              state: { title: "", contents: "", type: "UPLOAD" },
+            })
+          }
+        >
           <img src={process.env.PUBLIC_URL + "/images/Footer/writeIcon.svg"} />
         </style.BtnLink>
-        <style.BtnLink href={"/board"}>
+        <style.BtnLink onClick={() => navigator("/board")}>
           <img src={process.env.PUBLIC_URL + "/images/Footer/notiIcon.svg"} />
         </style.BtnLink>
-        <style.BtnLink href={`/mypage/${data?.name}`}>
+        <style.BtnLink onClick={() => navigator(`/mypage/${data?.name}`)}>
           <img src={process.env.PUBLIC_URL + "/images/Footer/mypageIcon.svg"} />
         </style.BtnLink>
       </style.Menu>

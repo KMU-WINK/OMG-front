@@ -12,6 +12,7 @@ export const bottleApiController = {
   addLike,
   deleteLike,
   addClick,
+  reserveBottle,
 };
 
 function getBottleList() {
@@ -54,4 +55,10 @@ function addClick(id) {
   const url = `${process.env.REACT_APP_BASE_URL}/${model}/${id}/click`;
   axios.interceptors.response.use(handleSuccess, handleError);
   return axios.post(url, {}, { headers: authHeaderJson() });
+}
+
+function reserveBottle(id, dto) {
+  const url = `${process.env.REACT_APP_BASE_URL}/${model}/${id}/reserve`;
+  axios.interceptors.response.use(handleSuccess, handleError);
+  return axios.post(url, dto, { headers: authHeaderJson() });
 }

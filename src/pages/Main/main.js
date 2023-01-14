@@ -43,32 +43,39 @@ function Main(props) {
           onClick={() => navigate("/noti")}
         />
       </style.Top>
-      { data?.user?.user?.name === undefined ? <>
-      <style.Top2>
-        <h1>
-          게스트님 안녕하세요<br />로그인하고 환경보호에 동참해주세요
-        </h1>
-      </style.Top2>
-      <View contents={"로그인 후 모든 기능을 이용할 수 있어요"}/> </>
-      : <>
-      <style.Top2>
-        <h1>
-          {data?.user?.user?.name}님 안녕하세요
-          <br />
-          {data?.myBottle?.length + data?.completeBottle?.length}병의 공병을
-          재활용 했어요
-        </h1>
-      </style.Top2>
-    <View
-      contents={[
-        <b style={{ color: "#009800" }}>{data?.completeBottle?.length}병</b>,
-        "의 공병을 수거하고 ",
-        <b style={{ color: "#009800" }}>{data?.myBottle?.length}병</b>,
-        "의 공병을 등록했어요",
-      ]}
-    />
-    </>
-    }
+      {data?.user?.user?.name === undefined ? (
+        <>
+          <style.Top2>
+            <h1>
+              게스트님 안녕하세요
+              <br />
+              로그인하고 환경보호에 동참해주세요
+            </h1>
+          </style.Top2>
+          <View contents={"로그인 후 모든 기능을 이용할 수 있어요"} />{" "}
+        </>
+      ) : (
+        <>
+          <style.Top2>
+            <h1>
+              {data?.user?.user?.name}님 안녕하세요
+              <br />
+              {data?.myBottle?.length + data?.completeBottle?.length}병의 공병을
+              재활용 했어요
+            </h1>
+          </style.Top2>
+          <View
+            contents={[
+              <b style={{ color: "#009800" }}>
+                {data?.completeBottle?.length}병
+              </b>,
+              "의 공병을 수거하고 ",
+              <b style={{ color: "#009800" }}>{data?.myBottle?.length}병</b>,
+              "의 공병을 등록했어요",
+            ]}
+          />
+        </>
+      )}
       <style.Wrap2>
         <style.buttons>
           <VerticalButton
