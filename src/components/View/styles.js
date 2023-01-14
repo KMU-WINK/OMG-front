@@ -21,6 +21,7 @@ export const whiteView = styled.div`
   background: #ffffff;
   display: flex;
   align-items: center;
+  text-align: center;
   border-radius: 30px;
   padding: 0px 20px;
   height: 50px;
