@@ -3,8 +3,8 @@ import * as style from './styles';
 function FullButton(props) {
 
     return (
-        <style.fullButton>
-            <span onClick={props.onClick}>{props.btnName}</span>
+        <style.fullButton onClick={props.onClick} id={props.id}>
+            {props.btnName}
         </style.fullButton>
     );
 }

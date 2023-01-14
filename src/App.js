@@ -16,6 +16,7 @@ import Add from './pages/Add/add';
 import Registration from  './pages/Registration/Registration';
 import BottleDetail from './pages/BottleDetail/bottleDetail';
 import FindEmail from "./pages/FindEmail/FindEmail";
+import PickUp from "./pages/PickUp/PickUp";
 
 function App() {
   return (
@@ -43,7 +44,8 @@ function App() {
                 <Route path="/write-post" element={<WritePost/>} />
                 <Route path="/post-detail" element={<PostDetail/>} />
                 <Route path="/bottle-detail" element={<BottleDetail/>} />
-                <Route path={"/registration"} element={<Registration />} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="/pick-up" element={<PickUp />} />
             </Routes>
         </BrowserRouter>
     </div>
