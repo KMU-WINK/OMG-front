@@ -2,7 +2,8 @@ import { authApiController } from "../api/auth";
 import { TokenService } from "../utils/token";
 
 export const authService = {
-  login, logout
+  login,
+  logout,
 };
 
 async function login(dto) {
@@ -26,6 +27,6 @@ async function logout() {
   try {
     TokenService.removeToken();
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 }

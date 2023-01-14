@@ -53,7 +53,10 @@ function Main(props) {
       : <>
       <style.Top2>
         <h1>
-          {data?.user?.user?.name}님 안녕하세요 <br />{data?.myBottle?.length + data?.completeBottle?.length}병의 공병을 재활용 했어요
+          {data?.user?.user?.name}님 안녕하세요
+          <br />
+          {data?.myBottle?.length + data?.completeBottle?.length}병의 공병을
+          재활용 했어요
         </h1>
       </style.Top2>
     <View

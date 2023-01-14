@@ -37,7 +37,7 @@ export const whiteFullButton = styled.div`
   font-size: 16px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: .2s ease;
+  transition: 0.2s ease;
 `;
 
 export const greenFullButton = styled.div`
@@ -53,7 +53,7 @@ export const greenFullButton = styled.div`
   font-size: 16px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: .2s ease;
+  transition: 0.2s ease;
 `;
 
 export const CircleButton = styled.div`
