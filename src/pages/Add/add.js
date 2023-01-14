@@ -5,7 +5,7 @@ import BottleBanner from '../../components/Banner/bottleBanner';
 import Modal1 from '../../components/Modal/modal1';
 import Modal2 from '../../components/Modal/modal2';
 import Modal4 from '../../components/Modal/modal4';
-import Postcode from '@actbase/react-daum-postcode';
+import Postcode from "react-daum-postcode";
 import Input from '../../components/Input/input';
 import WhiteFullButton from '../../components/Button/whiteFullButton';
 import heic2any from "heic2any";
@@ -287,8 +287,7 @@ function Add(props) {
             <Modal4 open={Modal2Open} close={closeModal2} header="주소 찾기" button1={closeModal2} button1Content="취소">
             <Postcode
                 style={{ width: "100%", height: "500px" }}
-                jsOptions={{ animation: true, hideMapBtn: true }}
-                onSelected={onCompletePost}
+                onComplete={onCompletePost}
             />
             </Modal4>
 
