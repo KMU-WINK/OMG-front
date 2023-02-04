@@ -1,5 +1,5 @@
 # OMG - front
-2022-02 ~ 2023-01 WINK 팀 프로젝트 One More Glass (OMG)
+2022-09 ~ 2023-01 WINK 팀 프로젝트 One More Glass (OMG)
 
 
 ## 개발주제
